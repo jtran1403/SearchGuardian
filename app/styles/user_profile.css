@@ -1,0 +1,998 @@
+.btns{
+    -moz-user-select: none;
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    color: #333333;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    height: 24px;
+    width:60px;
+    margin-right:5px;
+    line-height: 12px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btns:hover, .btn:focus {
+    background-position: 0 -15px;
+    color: #333333;
+    text-decoration: none;
+    transition: background-position 0.1s linear 0s;
+}
+
+.btn-primary{
+    background-color: #006DCC;
+    background-image: linear-gradient(to bottom, #0088CC, #0044CC);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+    background-color: #0044CC;
+    color: #FFFFFF;
+}
+
+.well {
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+.ui-tabs-selected{
+    background-color: #0D2040;
+}
+
+.menu-header{
+    border:solid 1px black;
+    width:100px; 
+    height:50px;
+    padding: 10px 10px 10px 10px;
+}
+
+.tabContent {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #999999;
+    border-radius: 0;
+    border-right: 1px solid #999999;
+    border-top: 1px solid #999999;
+    float: left;
+    font-size: 12px;
+    height: 404px;
+    padding: 10px 10px 30px;
+}
+
+li {
+    list-style:none;
+    background-image:none;
+    background-repeat:none;
+    background-position:0; 
+}
+/*#ui-datepicker-div {
+    background-color: #0D2040;
+}
+.ui-datepicker-calendar tbody td .ui-state-default {
+    background: url("") repeat-x scroll 50% 50% #0A172A;
+    border: 1px solid #113253;
+    color: #FFFFFF;
+}
+.ui-datepicker-calendar thead th {
+    background-color: #152848;
+    border: 1px solid #113253;
+    color: #3399FF;
+}
+.ui-datepicker .ui-widget-header {
+    background: none repeat scroll 0 0 #0D2040;
+    border: medium none;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    padding: 3px;
+}
+
+.tabsHidden {
+    display: none;
+}
+
+.ui-widget, .ui-datepicker, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: Arial,Helvetica,sans-serif;
+}
+#productSearchContainer p {
+    font-size: 12px;
+    margin: 0;
+}
+#productSearchContainer {
+    font-size: 12px;
+    margin: 0 auto;
+    width: 960px;
+}
+
+.productSearch {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 425px;
+    margin: 12px 0 0 20px;
+    min-width: 420px;
+    opacity: 1;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+}
+#planTripTabs .tabs {
+    border-bottom: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-radius: 0;
+    border-top: 1px solid #666666;
+    float: left;
+    padding: 0;
+}
+#planTripTabs .tabs li {
+    background-color: #DDDDDF;
+    border-color: #FFFFFF -moz-use-text-color -moz-use-text-color;
+    border-radius: 0;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+    clear: both;
+    height: 67px;
+    margin: 0;
+    width: 120px;
+}
+#planTripTabs .tabs li:first-child {
+    border-top: medium none;
+}
+#planTripTabs .tabs li.double {
+    height: 85px;
+}
+#planTripTabs .tabs li .pointer {
+    display: none;
+}
+#planTripTabs .tabs li.ui-tabs-selected {
+    background-color: #0E203F;
+}
+#planTripTabs .combineAndSave {
+    background-color: #CEE2F4;
+    height: 20px;
+    margin: 145px 0 0 -96px;
+    position: absolute;
+    text-align: center;
+    transform: rotate(-90deg);
+    width: 172px;
+}
+#planTripTabs .combineAndSaveBig {
+    background-color: #CEE2F4;
+    height: 40px;
+    margin: 135px 0 0 -96px;
+    position: absolute;
+    text-align: center;
+    transform: rotate(-90deg);
+    width: 172px;
+}
+#planTripTabs .combineAndSave p {
+    font-weight: bold;
+    margin-top: 2px;
+}
+#planTripTabs .combineAndSave span.highlight {
+    color: #DD0000;
+}
+#planTripTabs .combineAndSaveBig p {
+    font-weight: bold;
+    margin-top: 2px;
+}
+#planTripTabs .combineAndSaveBig span.highlight {
+    color: #DD0000;
+}
+#planTripTabs .holidaysByBA {
+    color: #35628B;
+}
+#planTripTabs .tabs li.ui-tabs-selected .pointer {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -250px -5px rgba(0, 0, 0, 0);
+    display: block;
+    height: 13px;
+    margin: 24px 0 0 120px;
+    position: absolute;
+    width: 7px;
+}
+#planTripTabs .tabs li.ui-tabs-selected.double .pointer {
+    margin-top: 35px;
+}
+#planTripTabs .tabs li .icons {
+    border-right: 1px dotted #9EA4AF;
+    float: left;
+    height: 100%;
+    margin-right: 5px;
+    padding: 0 5px;
+}
+#planTripTabs .tabs li p {
+    float: left;
+    margin: 23px 0 0 40px;
+    position: absolute;
+}
+#planTripTabs .tabs li.flightOnly p, #planTripTabs .tabs li.carRental p, #planTripTabs .tabs li.whereWeFly p {
+    margin-top: 16px;
+}
+#planTripTabs .tabs li.hotels p, #planTripTabs .tabs li.explore p {
+    margin-top: 23px;
+}
+#planTripTabs .tabs li.double p {
+    margin-top: 20px;
+}
+#planTripTabs .tabs li .icon {
+    display: block;
+    height: 22px;
+    margin-top: 20px;
+    width: 24px;
+}
+#planTripTabs .tabs li.double .icon {
+    margin-top: 8px;
+}
+#planTripTabs .tabs li.double .icon:first-child {
+    margin-top: 18px;
+}
+#planTripTabs .tabs li .flightIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li.ui-tabs-selected .flightIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -24px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li .hotelIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -48px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li.ui-tabs-selected .hotelIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -72px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li .carIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -96px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li.ui-tabs-selected .carIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -120px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li .exploreIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -144px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li.ui-tabs-selected .exploreIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons.png") no-repeat scroll -168px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li a {
+    color: #0E203F;
+    height: 100%;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+#planTripTabs li.ui-tabs-selected a {
+    color: #FFFFFF;
+}
+#planTripTabs .tabContent {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #999999;
+    border-radius: 0;
+    border-right: 1px solid #999999;
+    border-top: 1px solid #999999;
+    float: left;
+    font-size: 12px;
+    height: 404px;
+    padding: 10px 10px 30px;
+}
+#flightsContainer.tabContent {
+    height: 444px;
+    padding: 0 10px;
+}
+#planTripTabs .tabContent a {
+    color: #1E80E1;
+    text-decoration: none;
+}
+#planTripTabs .tabContent input, #planTripTabs .tabContent select {
+    background-color: #F9F9F9;
+    border: 1px solid #AAAAAA;
+    border-radius: 2px;
+}
+#planTripTabs .tabContent input[type="radio"] {
+    background-color: rgba(0, 0, 0, 0);
+    border: medium none;
+}
+#planTripTabs .tabContent a:hover {
+    text-decoration: underline;
+}
+#planTripTabs .tabContent select, #planTripTabs .tabContent input {
+    margin: 0;
+    padding: 2px 2px 2px 0;
+    vertical-align: bottom;
+}
+#planTripTabs .tabContent input[name="journeyType"] {
+    padding-top: 0;
+}
+#planTripTabs .tabContent input[type="text"] {
+    padding: 2px 2px 2px 3px;
+}
+#planTripTabs .tabContent select:-moz-placeholder, #planTripTabs .tabContent input:-moz-placeholder {
+    color: #000000;
+}
+#planTripTabs .tabContent input[disabled] {
+    color: #AAAAAA;
+}
+#planTripTabs .tabContent label {
+    font-weight: bold;
+}
+#planTripTabs .tabContent .formRow {
+    margin: 0 0 8px;
+}
+#planTripTabs .tabContent .formRow.halfDepth {
+    margin-bottom: 4px;
+}
+#planTripTabs .tabContent .formRow.halfDepthBtn {
+    margin-bottom: 7px;
+}
+#planTripTabs .tabContent .formRow .button {
+    border: 1px solid #AE1000;
+    border-radius: 3px;
+    float: right;
+    font-size: 14px;
+    padding: 6px 10px;
+}
+#planTripTabs .tabContent .formRow .button.primary {
+    background-color: #E00000;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#planTripTabs .tabContent .formRow .button.secondary {
+    background-color: #E9E9E9;
+    color: #1E80E1;
+}
+#planTripTabs .tabContent .formRow .paxSelector {
+    float: left;
+    width: 80px;
+}
+#planTripTabs .tabContent .paxSelector label {
+    display: block;
+    font-weight: bold;
+    margin: 0 0 2px;
+    text-align: center;
+}
+#planTripTabs .tabContent .paxSelector label .age {
+    font-size: 11px;
+    font-weight: normal;
+}
+#planTripTabs .tabContent .paxSelector select {
+    display: block;
+    margin: 0 21px;
+}
+#flightsContainer {
+    width: 250px;
+}
+#flightsContainer .leftLabel {
+    float: left;
+}
+#flightsContainer #showRecentSearches a {
+    color: #FFFFFF;
+}
+#flightsContainer #showRecentSearches {
+    display: none;
+}
+#flightsContainer form {
+    padding-top: 10px;
+}
+#flightsContainer #showRecentSearches {
+    float: right;
+}
+#showRecentSearches.btn a.secondary {
+    background: -moz-linear-gradient(center top , #4B97FA 0%, #3C78C7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    box-shadow: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 2px 10px 4px;
+    text-decoration: none;
+}
+#showRecentSearches.btn a.secondary:focus, #showRecentSearches.btn a.secondary:hover {
+    background: -moz-linear-gradient(center top , #88BCFF 0%, #4B97FA 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#showRecentSearches.btn a.secondary:active {
+    box-shadow: 0 1px 3px 0 rgba(0, 50, 100, 0.4) inset;
+    outline: 0 none;
+}
+#flightsContainer #showRecentSearches.disabled {
+    visibility: hidden;
+}
+#flightsContainer p.faq {
+    font-size: 10px;
+}
+.flightSelector select[name="depCountry"], .flightSelector select[name="from"], .flightSelector select[name="depCountryPkg"], .flightSelector select[name="fromPkg"] {
+    width: 100%;
+}
+.flightSelector input[name="to"], .flightSelector input[name="packageTo"] {
+    width: 97%;
+}
+.flightSelector input[name="depDate"], .flightSelector input[name="retDate"] {
+    float: left;
+    width: 45%;
+}
+.flightSelector input[name="retDate"], .flightSelector a.multiCity {
+    float: right;
+}
+#flightsContainer .calendarIcon.depDate, #flightsAndHotelsContainer .calendarIcon.depDate, #flightsAndCarsContainer .calendarIcon.depDate {
+    margin: -1px 0 0 98px;
+}
+#flightsContainer .calendarIcon.retDate, #flightsAndHotelsContainer .calendarIcon.retDate, #flightsAndCarsContainer .calendarIcon.retDate {
+    margin: -1px 0 0 232px;
+}
+#hotelsContainer .calendarIcon.depDate, #flightsAndHotelsContainer .packageHotels .calendarIcon.depDate {
+    margin: 3px 0 0 90px;
+}
+#hotelsContainer .calendarIcon.retDate, #flightsAndHotelsContainer .packageHotels .calendarIcon.retDate {
+    margin: 3px 0 0 214px;
+}
+#carsContainer .calendarIcon.depDate, #carsContainer .calendarIcon.retDate, #flightsAndCarsContainer .packageCars .calendarIcon.depDate, #flightsAndCarsContainer .packageCars .calendarIcon.retDate {
+    margin: -1px 0 0 118px;
+}
+.flightSelector label[for="cabin"], .flightSelector label[for="restrictionType"] {
+    display: block;
+    margin: 0;
+}
+.flightSelector select[name="cabin"], .flightSelector select[name="restrictionType"] {
+    float: left;
+    width: 70%;
+}
+#hotelsContainer {
+    min-width: 380px;
+}
+#hotelsContainer label.roomsRequired, #flightsAndHotelsContainer label.roomsRequired {
+    display: block;
+    float: left;
+    width: 75px;
+}
+#hotelsContainer select[name="roomsRqd"], #flightsAndHotelsContainer select[name="roomsRqd"] {
+    margin: 3px 0 0 5px;
+}
+#hotelsContainer label[for="hotelGOTo"] {
+    display: block;
+}
+#hotelsContainer input[name="hotelGOTo"] {
+    width: 96%;
+}
+#hotelsContainer .numberOfNights label, #flightsAndHotelsContainer .numberOfNights label {
+    display: block;
+    float: left;
+    width: 85px;
+}
+#hotelsContainer input[name="checkInGO"], #hotelsContainer input[name="checkOutGO"], #hotelsContainer input[name="numNightsGO"], #flightsAndHotelsContainer input[name="checkInPkg"], #flightsAndHotelsContainer input[name="checkOutPkg"], #flightsAndHotelsContainer input[name="numNightsPkg"] {
+    margin-top: 4px;
+}
+#hotelsContainer input[name="numNightsGO"], #flightsAndHotelsContainer input[name="numNightsPkg"] {
+    width: 25px;
+}
+#hotelsContainer input.planTripDatePicker, #flightsAndHotelsContainer .packageHotels .planTripDatePicker {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    width: 105px;
+}
+#hotelsContainer .occupancyHeader, #flightsAndHotelsContainer .occupancyHeader, #flightsAndCarsContainer .occupancyHeader {
+    display: block;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    width: 80px;
+}
+#hotelsContainer .occupancyHeader:first-child, #flightsAndHotelsContainer .occupancyHeader:first-child {
+    margin-left: 55px;
+}
+#hotelsContainer .occupancyHeader .age, #flightsAndHotelsContainer .occupancyHeader .age, #flightsAndCarsContainer .occupancyHeader .age {
+    font-size: 11px;
+    font-weight: normal;
+}
+#hotelsContainer select.occupancySelector, #flightsAndHotelsContainer select.occupancySelector {
+    margin: 0 0 0 41px;
+}
+#hotelsContainer select.occupancySelector.adult, #flightsAndHotelsContainer select.occupancySelector.adult {
+    margin-left: 2px;
+}
+#hotelsContainer .roomNumber, #flightsAndHotelsContainer .roomNumber {
+    float: left;
+    width: 75px;
+}
+#planTripTabs .tabContent .formRow .moreOptions {
+    float: right;
+}
+#hotelsContainer .childAgeHeaders span, #flightsAndHotelsContainer .childAgeHeaders span {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin-left: 5px;
+    width: 52px;
+}
+#hotelsContainer .childAgeHeaders span:first-child, #flightsAndHotelsContainer .childAgeHeaders span:first-child {
+    display: block;
+    margin-left: 0;
+    width: 75px;
+}
+#planTripTabs #hotelsContainer .childAgeSelector, #planTripTabs #flightsAndHotelsContainer .childAgeSelector {
+    margin-left: 8px;
+    width: 45px;
+}
+#planTripTabs #hotelsContainer .childAgeSelector[data-childnumber="1"], #planTripTabs #flightsAndHotelsContainer .childAgeSelector[data-childnumber="1"] {
+    margin-left: 5px;
+}
+#flightsAndHotelsContainer .contentPanel {
+    float: left;
+}
+#flightsAndHotelsContainer .hotelPackageDates {
+    display: none;
+    min-width: 375px;
+}
+#flightsAndHotelsContainer .contentPanel.flightSelector {
+    width: 250px;
+}
+#flightsAndHotelsContainer .contentPanel.packageHotels {
+    border-left: 1px solid #DDDDDF;
+    margin-left: 10px;
+    min-height: 400px;
+    min-width: 300px;
+    padding-left: 10px;
+}
+#flightsAndCarsContainer .contentPanel {
+    float: left;
+}
+#flightsAndCarsContainer .carPackageDates {
+    display: none;
+}
+#flightsAndCarsContainer .contentPanel.flightSelector {
+    width: 250px;
+}
+#flightsAndCarsContainer .contentPanel.packageCars {
+    border-left: 1px solid #DDDDDF;
+    margin-left: 10px;
+    min-height: 400px;
+    min-width: 350px;
+    padding-left: 10px;
+}
+#flightsAndCarsContainer {
+    min-width: 370px;
+}
+#flightsAndCarsContainer .contentPanel.packageCars .formRow {
+    margin-bottom: 20px;
+}
+#flightsAndCarsContainer .contentPanel.packageCars .formRow.occupancyHeaders {
+    margin-bottom: 8px;
+}
+#flightsAndCarsContainer .packageCars .date {
+    float: left;
+    margin-right: 10px;
+}
+#flightsAndCarsContainer .packageCars .date label, #flightsAndCarsContainer .packageCars .time label {
+    display: block;
+}
+#carsContainer .ageConfirmation, #flightsAndCarsContainer .packageCars .ageConfirmation {
+    background-color: #FFFFDD;
+    border: 3px solid #BEB88A;
+    border-radius: 2px;
+    padding: 5px;
+}
+#carsContainer .ageConfirmation input, #flightsAndCarsContainer .packageCars .ageConfirmation input {
+    border: medium none;
+    float: left;
+    margin: 5px 0 0;
+}
+#carsContainer .ageConfirmation label, #flightsAndCarsContainer .packageCars .ageConfirmation label {
+    float: left;
+    margin: 4px 4px 0;
+}
+#flightsAndCarsContainer .childAges > label {
+    display: block;
+    float: left;
+    margin: 17px 10px 0 0;
+}
+#flightsAndCarsContainer .ageSelectorContainer {
+    float: left;
+    margin-left: 5px;
+}
+#flightsAndCarsContainer .ageSelectorContainer label {
+    display: block;
+}
+#carsContainer {
+    min-width: 310px;
+}
+#carsContainer.tabContent .formRow {
+    margin-bottom: 20px;
+}
+#carsContainer label {
+    display: block;
+}
+#carsContainer input[name="carGOTo"] {
+    width: 98%;
+}
+#carsContainer .date {
+    float: left;
+    margin-right: 10px;
+}
+#carsContainer input.planTripDatePicker, #flightsAndCarsContainer .packageCars .planTripDatePicker {
+    display: block;
+    float: left;
+    width: 134px;
+}
+#carsContainer .oneWayCarCheckbox input {
+    float: left;
+    width: 20px;
+}
+#carsContainer input[name="carDropOff"] {
+    width: 98%;
+}
+#experiencesContainer .exploreItem {
+    float: left;
+    margin-left: 10px;
+    width: 255px;
+}
+#experiencesContainer .exploreItem.first {
+    margin-left: 0;
+}
+#experiencesContainer h3 {
+    color: #E00000;
+}
+#experiencesContainer .exploreImage {
+    display: block;
+    float: left;
+    height: 110px;
+    margin-right: 10px;
+    width: 100px;
+}
+#experiencesContainer .leadCopy {
+    max-width: 750px;
+}
+#experiencesContainer .exploreCopy {
+    margin-left: 110px;
+}
+#experiencesContainer .exploreImage.holidayFinder {
+    background: url("/cms/global/assets/images/site/plantrip/vsg-travel-tool-icons.png") no-repeat scroll 0 -8px rgba(0, 0, 0, 0);
+}
+#experiencesContainer .exploreImage.lowPriceFinder {
+    background: url("/cms/global/assets/images/site/plantrip/vsg-travel-tool-icons.png") no-repeat scroll -100px -8px rgba(0, 0, 0, 0);
+}
+#experiencesContainer .exploreImage.tripSeeker {
+    background: url("/cms/global/assets/images/site/plantrip/vsg-travel-tool-icons.png") no-repeat scroll -200px -8px rgba(0, 0, 0, 0);
+}
+#experiencesContainer .exploreImage.valueCalculator {
+    background: url("/cms/global/assets/images/site/plantrip/vsg-travel-tool-icons.png") no-repeat scroll -300px -8px rgba(0, 0, 0, 0);
+}
+#experiencesContainer .exploreImage.whereWeFly {
+    background: url("/cms/global/assets/images/site/plantrip/vsg-travel-tool-icons.png") no-repeat scroll -400px -8px rgba(0, 0, 0, 0);
+}
+.autocompleteResults {
+    clear: both;
+    display: none;
+    position: relative;
+    z-index: 998;
+}
+.autocompleteResults ul#destChoices {
+    background-color: #FFFFFF;
+    border-color: #7F9DB9;
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    left: 0;
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    top: 1px;
+    z-index: 998;
+}
+.autocompleteResults ul#destChoices li {
+    background-color: #FFFFFF;
+    color: #000000;
+    cursor: pointer;
+    display: block;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: normal;
+    height: 14px;
+    line-height: 13px;
+    margin: 0;
+    overflow: hidden;
+    padding: 2px;
+    white-space: nowrap;
+}
+.autocompleteResults ul#destChoices li.acHighlight {
+    background-color: #404490;
+    color: #FFFFFF;
+}
+.autocompleteResults ul#destChoices li span.autoCompleteMatch, .autocompleteResults ul#destChoices li.acHighlight span.autoCompleteMatch {
+    float: none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+.autocompleteResults ul#destChoices li.titleParent {
+    background-color: #DDDDDD;
+    color: #000000;
+    cursor: default;
+}
+.autocompleteResults ul#destChoices li.titleChild {
+    margin-left: 10px;
+}
+#productSearchContainer .ui-datepicker-calendar tbody .ui-datepicker-current-day .ui-state-default {
+    background: none repeat scroll 0 0 #0000FF;
+    color: #FFFFFF;
+}
+#planTripTabs .tabs li #complexIcon {
+    display: block;
+    height: 22px;
+    margin-top: 14px;
+    width: 24px;
+}
+#flightsAndHotelsContainer.childAgeHeaders > label {
+    display: block;
+    float: left;
+    margin: 17px 10px 0 0;
+}
+#flightsAndHotelsContainer .ageSelectorContainer {
+    float: left;
+    margin-left: 5px;
+}
+#flightsAndHotelsContainer .ageSelectorContainer label {
+    display: block;
+    margin-left: 8px;
+    padding-top: 10px;
+    text-align: center;
+}
+#planTripTabs .tabContent .ageSelectorContainer label {
+    margin-left: 1px;
+    padding-top: 10px;
+    text-align: center;
+}
+#flightsAndHotelsContainer .pkgFormRow {
+    display: none;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+#flightsAndHotelsContainer .complexFormRow {
+    display: none;
+    margin-bottom: 8px;
+    padding-top: 10px;
+}
+#flightsAndHotelsContainer .complexHotelOccupancy {
+    display: none;
+}
+#flightsAndHotelsContainer .complexProductFormRow {
+    display: none;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+#flightsAndHotelsContainer .complexProductHotelOccupancy {
+    display: none;
+}
+#flightsAndCarsContainer .complexCarFormRow {
+    display: none;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+#planTripTabs .tabs li .single .hotels {
+    height: 52px;
+}
+#planTripTabs .tabs li.customiseYourTrip p {
+    margin-top: 16px;
+}
+#planTripTabs .tabs li .customiseYourTripIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons_v3.png") no-repeat scroll -424px 0 rgba(0, 0, 0, 0);
+}
+#planTripTabs .tabs li.ui-tabs-selected .customiseYourTripIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons_v3.png") no-repeat scroll -448px 0 rgba(0, 0, 0, 0);
+}
+#customiseYourTripContainer {
+    min-width: 440px;
+}
+#customiseYourTripContainer.tabContent .formRow {
+    margin-bottom: 20px;
+}
+#planTripTabs .tabs li .tripIcon {
+    display: block;
+    height: 24px;
+    margin-top: 12px;
+    width: 24px;
+}
+.tripFlightIcon {
+    background: url("/cms/global/assets/images/site/plantrip/plan-trip-icons_v3.png") no-repeat scroll -424px 0 rgba(0, 0, 0, 0);
+}
+.lineSpacing {
+    border-bottom: 1px solid #DDDDDF;
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+    margin: 8px 10px 10px 8px;
+}
+.formRowText {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.flightImageText {
+    color: #0E203F;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+.customiseFormRow {
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 117px;
+    margin-top: -44px;
+}
+.radioType {
+    margin-bottom: 8px;
+    margin-right: 210px;
+}
+.formRowFlights {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.hotelRadioType {
+    margin-bottom: 8px;
+    margin-right: 238px;
+}
+.carRadioType {
+    margin-bottom: 8px;
+    margin-right: 210px;
+}
+.borderSpacing {
+    border-bottom: 4px solid #DDDDDF;
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+    margin: 8px 10px 10px 8px;
+}
+.buttonFormRow {
+    background: url("/cms/global/assets/images/site/icon/ffsbeta/buttonRightPrimaryArrow.gif") no-repeat scroll right top rgba(0, 0, 0, 0);
+    float: right;
+    width: 100px;
+}
+.productImageSpan {
+    float: left;
+    margin-top: 30px;
+    padding-left: 20px;
+}
+#hotelsContainer .partTripHotelCheckbox input {
+    float: left;
+    padding-bottom: 8px;
+    width: 20px;
+}
+#carsContainer .partTripCarCheckbox input {
+    float: left;
+    padding-bottom: 8px;
+    width: 20px;
+}
+.pkgOptions {
+    padding-right: 10px;
+}
+#hotelsContainer .hotelOptions {
+    display: none;
+}
+#carsContainer .carOptions {
+    display: none;
+}
+#carsContainer .carOptions .formRow {
+    margin-bottom: 20px;
+}
+#carsContainer .carOptions .formRow.occupancyHeaders {
+    margin-bottom: 8px;
+}
+#carsContainer .occupancyHeader .age {
+    font-size: 11px;
+    font-weight: normal;
+}
+#carsContainer .occupancyHeader {
+    display: block;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    width: 80px;
+}
+.carPkgOptions {
+    float: left;
+    margin-right: 20px;
+}
+#carsContainer .carPkgOptions label {
+    margin-left: 15px;
+    margin-top: -14px;
+}
+.flightsBG {
+    background-image: url("/cms/global/assets/images/site/icon_vsg/flight_car_icon.png");
+    background-position: 18px 1px;
+    background-repeat: no-repeat;
+    height: 30px;
+    margin-left: 1px;
+    margin-right: 15px;
+    margin-top: 2px;
+    width: 50px;
+}
+.hotelsBG {
+    background-image: url("/cms/global/assets/images/site/icon_vsg/flight_hotel_icon.png");
+    background-position: -52px -61px;
+    background-repeat: no-repeat;
+    height: 30px;
+    margin-left: 10px;
+    width: 45px;
+}
+.carsBG {
+    background-image: url("/cms/global/assets/images/site/icon_vsg/flight_car_icon.png");
+    background-position: -48px -5px;
+    background-repeat: no-repeat;
+    height: 30px;
+    margin-left: 14px;
+    width: 40px;
+}
+#customiseYourTripSearchButton {
+    margin-right: 10px;
+}
+
+#planTripTabs .tabContent .adultAge {
+    display: block;
+}
+#planTripTabs .tabContent .dropRooms {
+    display: block;
+    margin-top: 8px;
+}
+#planTripTabs .tabContent .formRow.ageDropdownHeader {
+    display: block;
+}
+#planTripTabs .tabContent .hotelsDataHolder {
+    display: none;
+}
+#customiseYourTripDataHolder {
+    display: none;
+}
+#planTripTabs .tabContent .ageHeader {
+    display: block;
+    padding-bottom: 8px;
+}
+#planTripTabs .tabContent .carPaxMixHeader {
+    display: block;
+}
+#planTripTabs .tabContent .flightsAndHotelsDataHolder {
+    display: none;
+}
+#carGoPaxMixHeader {
+    display: block;
+}
+#planTripTabs .tabContent .labelChild {
+    display: block;
+    float: left;
+    margin: 17px 17px 0 0;
+    padding-top: 10px;
+}
+#planTripTabs .tabContent .childAge {
+    float: left;
+    margin-top: 10px;
+    text-align: center;
+    width: 61px;
+}
+
+.disabledButton {
+    background-color: #E0E0E0;
+    border: 1px solid #E0E0E0;
+    color: #A5A5A5;
+}
+.activeButton {
+    background-color: #E00000;
+    border: 1px solid #AE1000;
+    color: #FFFFFF;
+}
+*/

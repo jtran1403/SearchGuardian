@@ -1,0 +1,78 @@
+
+
+
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a href="#/">Home</a></li>
+    <li><a href="#/">About</a></li>
+    <li><a href="#/">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">SearchGuardian</h3>
+</div>
+
+
+
+<div class="userInformation well" ng-controller= "UserInfoCtrl">
+  <h4> Enter the target's information:</h4>
+  <form>
+    <p> First Name:
+      <input type="text" name ="firstName" ng-model="firstName"/> {{ firstName }}</p>
+    <p> Last Name: 
+      <input type="text" name ="lastName" ng-model="lastName"/> {{ lastName }}</p> 
+    <p> Date of birth:
+      <select id="days" class="DoB"></select>
+      <select id="months" class="DoB"></select>
+      <select id="years" class="DoB"></select></p>
+
+      <input type="hidden" ng-model="id" />
+
+    <p>
+      <input type="button" value="Confirm" class="btns btn-primary" ng-click="saveContact()" />
+      <input type="button" value="Reset" class="btns btn-primary" ng-click="resetContact()" />
+      <input type="button" value="Next" class="btns btn-primary" ng-click="" />
+    </p>
+  </form>
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> Application based on the basic application from the Yeoman team</p>
+</div>
+
+<script>
+
+  $(function() {
+    for (i = new Date().getFullYear(); i > 1900; i--)
+    {
+        $('#years').append($('<option />').val(i).html(i));
+    }
+        
+    for (i = 1; i <= 12; i++)
+    {
+        $('#months').append($('<option />').val(i).html(i));
+    }
+    
+    updateDays(); 
+        
+    $('#years, #months').change(function(){
+        updateDays(); 
+    });
+
+  });
+
+  function updateDays(){
+    $('#days').html('');
+    month = $('#months').val();
+    year = $('#years').val();
+    days = updateMonth(month, year);
+
+    for(i=1; i < days+1 ; i++)
+    {
+        $('#days').append($('<option />').val(i).html(i));
+    }
+
+  }
+
+  function updateMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+  }
+</script>
