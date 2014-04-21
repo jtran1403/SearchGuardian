@@ -2,10 +2,11 @@
 
 /* Controllers */
 
-var controllers = angular.module('searchGuardianControllers', []);
+var searchGuardianControllers = angular.module('searchGuardianControllers', []);
 
-controllers.controller('MainCtrl', function ($scope) {
-    $scope.greetMe = "u"; 
+searchGuardianControllers.controller('MainCtrl',
+  function ($scope) {
+    $scope.greetMe ='u';
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -13,7 +14,7 @@ controllers.controller('MainCtrl', function ($scope) {
     ];
   });
 /*
-controllers.service('User', function(){
+searchGuardianControllers.service('User', function(){
 	var uid = 0;
 	var.infos = [];
 
@@ -25,11 +26,10 @@ controllers.service('User', function(){
 
 });*/
 
-controllers.controller('UserInfoCtrl', ['$scope', 
+searchGuardianControllers.controller('UserInfoCtrl',['$scope',
   function($scope) {
-    $scope.firstName = "hz";
-    $scope.lastName = "";
-    $scope.greetMe = "u"; 
+    $scope.firstName = '';
+    $scope.lastName = '';
+    $scope.greetMe = '';
   }]);
-
 

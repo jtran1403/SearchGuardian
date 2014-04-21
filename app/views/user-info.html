@@ -16,9 +16,9 @@
   <h4> Enter the target's information:</h4>
   <form>
     <p> First Name:
-      <input type="text" name ="firstName" ng-model="firstName"/> {{ firstName }}</p>
+      <input type="text" id ="firstName" ng-model="firstName"/> {{ firstName }}</p>
     <p> Last Name: 
-      <input type="text" name ="lastName" ng-model="lastName"/> {{ lastName }}</p> 
+      <input type="text" id ="lastName" ng-model="lastName"/> {{ lastName }}</p> 
     <p> Date of birth:
       <select id="days" class="DoB"></select>
       <select id="months" class="DoB"></select>
@@ -27,11 +27,40 @@
       <input type="hidden" ng-model="id" />
 
     <p>
-      <input type="button" value="Confirm" class="btns btn-primary" ng-click="saveContact()" />
-      <input type="button" value="Reset" class="btns btn-primary" ng-click="resetContact()" />
-      <input type="button" value="Next" class="btns btn-primary" ng-click="" />
+      <input type="button" value="Confirm" class="btns btn-primary" onClick="showDivs();" />
+      <input type="button" value="Reset" class="btns btn-primary" ng-click="" />
     </p>
   </form>
+</div>
+
+<div id="userInformationConfirm" style="display:none">
+  <table class = "table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of birth</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.DoB }}</td>
+        <td>
+            <a  href="#" ng-click="edit(contact.id)">edit</a>
+        </td>
+     </tr>
+    </tbody>
+  </table>  
+</div>
+
+<div id="searchTargets" style="display:none">
+  <h4> Select search targets:</h4>
+  <form>
+    <input type="checkbox" name="targets" value="Facebook"> Facebook <br>
+    <input type="checkbox" name="targets" value="LinkedIn"> LinkedIn 
+  </form> 
 </div>
 
 <div class="footer">
@@ -75,4 +104,10 @@
   function updateMonth(month, year) {
     return new Date(year, month, 0).getDate();
   }
+
+  function showDivs(){
+    document.getElementById('userInformationConfirm').style.display ='block';   
+    document.getElementById('searchTargets').style.display='block';
+  }
+
 </script>

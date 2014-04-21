@@ -1,13 +1,15 @@
 'use strict';
 
-angular
-  .module('searchGuardianApp', [
+var searchGuardianApp = angular.module('searchGuardianApp',[
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+    'ngRoute',
+    'searchGuardianControllers',
+  ]);
+
+searchGuardianApp.config(['$routeProvider',
+  function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -20,4 +22,4 @@ angular
       .otherwise({
         redirectTo:  '/'
       });
-  });
+  }]);
