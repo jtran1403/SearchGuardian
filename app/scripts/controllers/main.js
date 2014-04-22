@@ -13,23 +13,51 @@ searchGuardianControllers.controller('MainCtrl',
       'Karma'
     ];
   });
-/*
-searchGuardianControllers.service('User', function(){
-	var uid = 0;
-	var.infos = [];
 
-	this.confirm = function(user){
-		if(contact.id == null){
-			contact.id = uid++;
-		}
-	}
+searchGuardianControllers.service('UserService', function(){
+  var users = [{  }];
 
-});*/
+  this.list = function () {
+    return users;
+  };
 
-searchGuardianControllers.controller('UserInfoCtrl',['$scope',
-  function($scope) {
-    $scope.firstName = '';
-    $scope.lastName = '';
-    $scope.greetMe = '';
-  }]);
+});
+
+searchGuardianControllers.controller('UserInfoCtrl',
+  function($scope, UserService) {
+
+    $scope.user = {
+      firstName:' ',
+      lastName:' ',
+      dateOfBirth:' '
+    };
+
+    var emptyForm = angular.copy($scope.user);
+
+    $scope.setBirthDate = function ()
+    {
+      $scope.user.dateOfBirth = $scope.dayBirth + '/' + $scope.monthBirth + '/' + $scope.yearBirth;
+    }
+
+    $scope.resetForm = function ()
+    {
+      $scope.user = angular.copy(emptyForm);
+      $scope.dayBirth =' ';
+      $scope.monthBirth =' ';
+      $scope.yearBirth =' ';
+    };
+
+    $scope.resetDay = function ()
+    {
+      $scope.dayBirth = '1';
+      setBirthDate();
+    }
+
+    $scope.isFilled = function ()
+    {
+      return !angular.equals($scope.user, emptyForm);
+    };
+ 
+    $scope.users = UserService.list();
+  });
 
