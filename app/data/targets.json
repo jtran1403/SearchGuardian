@@ -1,14 +1,17 @@
 [
   {
     "id":0,
-    "name":"Facebook"
+    "name":"Facebook",
+    "selected":false
   },      
   {
     "id":1,
-    "name":"LinkedIn"
+    "name":"LinkedIn",
+    "selected":false
   },
   {
     "id":2,
-    "name":"Twitter"
+    "name":"Twitter",
+    "selected":false
   }
 ]

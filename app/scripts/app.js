@@ -6,6 +6,7 @@ var searchGuardianApp = angular.module('searchGuardianApp',[
     'ngSanitize',
     'ngRoute',
     'searchGuardianControllers',
+    'facebookControllers'
   ]);
 
 searchGuardianApp.config(['$routeProvider',
@@ -18,6 +19,10 @@ searchGuardianApp.config(['$routeProvider',
       .when('/user-info', {
         templateUrl: 'views/user-info.html',
         controller: 'UserInfoCtrl'
+      })
+      .when('/targets/Facebook', {
+        templateUrl: 'views/fb-results.html',
+        controller: 'fbCtrl'
       })
       .otherwise({
         redirectTo:  '/'

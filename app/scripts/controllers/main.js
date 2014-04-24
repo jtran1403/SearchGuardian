@@ -13,18 +13,9 @@ searchGuardianControllers.controller('MainCtrl',
       'Karma'
     ];
   });
-/*
-searchGuardianControllers.service('UserService', function(){
-  var users = [{  }];
-
-  this.list = function () {
-    return users;
-  };
-
-});*/
 
 searchGuardianControllers.controller('UserInfoCtrl',
-  function($scope, $http) {
+  function($scope, $http, $filter) {
     $scope.user = {
       firstName:' ',
       lastName:' ',
@@ -56,13 +47,28 @@ searchGuardianControllers.controller('UserInfoCtrl',
       return !angular.equals($scope.user, emptyForm);
     };
  
-    $scope.user.selectedTargets = [];
+  //  $scope.user.selectedTargets = [];
 
     $http.get('data/targets.json').success(function(data) {
       $scope.targets = data;
     });
 
-    $scope.uncheckCheckboxes = function() {
-      $scope.user.selectedTargets = [];
+    $scope.selection = [];
+
+    $scope.updateSelection = function(id){
+      if($scope.targets[id].selected){
+        $scope.selection.splice($scope.selection.indexOf($scope.targets[id]),1);
+      }
+      else
+      {
+        $scope.selection.push($scope.targets[id]);
+      }
+      $scope.targets[id].selected = !$scope.targets[id].selected;
+      $scope.selection = $filter('orderBy')($scope.selection, 'id');
     };
+
+    $scope.uncheckCheckboxes = function() {
+      $scope.selection = [];
+    };
+
   });

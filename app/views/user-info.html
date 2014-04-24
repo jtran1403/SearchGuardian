@@ -51,16 +51,17 @@
 
   <div id="searchTargets" style="display:none; margin-top:25px">
     <h4> Get results from:</h4>
-      <label ng-repeat= "target in targets" style="display: block;">
-        <span><p><input type="checkbox" checklist-model=="user.selectedTargets" checklist-value="target"> {{target.name}} </p></span>
-      </label>
+    <label ng-repeat= "target in targets" style="display: block;">
+      <p><input type="checkbox" name="target.name" value="target.id"  ng-click="updateSelection(target.id)" check-list="selection"> {{target.name}} </p>
+    </label>
 
-      <pre class="ng-binding"> {{user.selectedTargets|json}} </pre>
+    <pre class="ng-binding"> {{selection|json}} </pre>
+
     <p><input type="button" value="Search" class="btns btn-primary" ng-click="facebook()" /></p>
   </div>
 
-  <div id="userAuthentication" collapse="isCollapsed" style="height: auto;" >
-
+  <div id="userAuthentication" style="height: auto;" >
+    <p><a class="btn btn-lg btn-success" href="#/targets/Facebook"> Facebook <span class="glyphicon glyphicon-ok"></span></a></p>
   </div>
 
 </div>
