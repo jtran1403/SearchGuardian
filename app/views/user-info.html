@@ -30,8 +30,8 @@
       <input type="button" value="Confirm" class="btns btn-primary" ng-click="setBirthDate()" onClick="showHidden();" />
       <input type="button" value="Reset" class="btns btn-primary" ng-click="resetForm()" />
     </p>
-    
-    <table id="userInformationConfirm" style = "display:none" class = "table table-striped table-bordered">
+
+    <table id="userInformationConfirm" style ="display:none" class = "table table-striped table-bordered">
       <thead>
       <tr>
           <th>First Name</th>
@@ -51,12 +51,16 @@
 
   <div id="searchTargets" style="display:none; margin-top:25px">
     <h4> Get results from:</h4>
-    <form>
-      <p><input type="radio" name="targets" value="Facebook"> Facebook </p>
-      <p><input type="radio" name="targets" value="LinkedIn"> LinkedIn </p>
-      <p><input type="radio" name="targets" value="Twitter"> Twitter </p>
-      <p><input type="button" value="Search" class="btns btn-primary" ng-click="facebook()" /></p>
-    </form> 
+      <label ng-repeat= "target in targets" style="display: block;">
+        <span><p><input type="checkbox" checklist-model=="user.selectedTargets" checklist-value="target"> {{target.name}} </p></span>
+      </label>
+
+      <pre class="ng-binding"> {{user.selectedTargets|json}} </pre>
+    <p><input type="button" value="Search" class="btns btn-primary" ng-click="facebook()" /></p>
+  </div>
+
+  <div id="userAuthentication" collapse="isCollapsed" style="height: auto;" >
+
   </div>
 
 </div>
@@ -104,8 +108,7 @@
   }
 
   function showHidden(){
-    document.getElementById('userInformationConfirm').style.display ='block';   
+    document.getElementById('userInformationConfirm').style.display ='block';
     document.getElementById('searchTargets').style.display='block';
   }
-
 </script>

@@ -13,7 +13,7 @@ searchGuardianControllers.controller('MainCtrl',
       'Karma'
     ];
   });
-
+/*
 searchGuardianControllers.service('UserService', function(){
   var users = [{  }];
 
@@ -21,11 +21,10 @@ searchGuardianControllers.service('UserService', function(){
     return users;
   };
 
-});
+});*/
 
 searchGuardianControllers.controller('UserInfoCtrl',
-  function($scope, UserService) {
-
+  function($scope, $http) {
     $scope.user = {
       firstName:' ',
       lastName:' ',
@@ -33,11 +32,11 @@ searchGuardianControllers.controller('UserInfoCtrl',
     };
 
     var emptyForm = angular.copy($scope.user);
-
+    
     $scope.setBirthDate = function ()
     {
       $scope.user.dateOfBirth = $scope.dayBirth + '/' + $scope.monthBirth + '/' + $scope.yearBirth;
-    }
+    };
 
     $scope.resetForm = function ()
     {
@@ -50,14 +49,20 @@ searchGuardianControllers.controller('UserInfoCtrl',
     $scope.resetDay = function ()
     {
       $scope.dayBirth = '1';
-      setBirthDate();
-    }
+    };
 
     $scope.isFilled = function ()
     {
       return !angular.equals($scope.user, emptyForm);
     };
  
-    $scope.users = UserService.list();
-  });
+    $scope.user.selectedTargets = [];
 
+    $http.get('data/targets.json').success(function(data) {
+      $scope.targets = data;
+    });
+
+    $scope.uncheckCheckboxes = function() {
+      $scope.user.selectedTargets = [];
+    };
+  });
