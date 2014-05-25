@@ -1,46 +1,28 @@
 'use strict';
 
-var defaultSettings = {
-  'appID'          : '',
-  'permissions'    : '',
-  'channelFile'    : 'bower_components/angular-facebook-utils/channel.html',
-  'routingEnabled' : false,
-  'loginPath'      : '/'
-};
+var facebookControllers = angular.module('facebookControllers', []);
 
-var facebookUtils = angular.module('facebookUtils', ['ngRoute'])
-  .constant('facebookConfigDefaults', defaultSettings)
-  .constant('facebookConfigSettings', defaultSettings)
-  .run([
-    'facebookConfigSettings', 'facebookConfigDefaults', '$rootScope', '$location', 'facebookUser', '$route',
-    function(facebookConfigSettings, facebookConfigDefaults, $rootScope, $location, facebookUser, $route) {
+facebookControllers.constant('facebookConfigSettings', {
+    'routingEnabled' : true,
+    'channelFile'    : 'channel.html',
+    'appID'          : '1461372730766438'
+  });
 
-      //handle routing
-      if (facebookConfigSettings.routingEnabled) {
-        $rootScope.$on('$routeChangeStart', function(event, next, current) {
+facebookControllers.controller('FbCtrl', 
+  function($rootScope, $scope, facebookUser) {
+    $rootScope.loggedInUser = {};
 
-          if (next && next.$$route && next.$$route.needAuth) {
-            facebookUser.then(function(user) {
-              if (!user.loggedIn) {
-                // reload the login route
-                $location.path(facebookConfigSettings.loginPath || facebookConfigDefaults.loginPath);
-              }
-            });
-          }
-          /*
-          * NOTE:
-          * It's important to repeat the control also in the backend,
-          * before sending back from the server reserved information.
-          */
+    $rootScope.$on('fbLoginSuccess', function(name, response) {
+      facebookUser.then(function(user) {
+        user.api('/me').then(function(response) {
+          $rootScope.loggedInUser = response;
         });
+      });
+    });
 
-        $rootScope.$on('fbLogoutSuccess', function() {
-
-          if ($route.current.$$route.needAuth) {
-            // reload the login route
-            $location.path(facebookConfigSettings.loginPath || facebookConfigDefaults.loginPath);
-          }
-        });
-      }
-    }
-  ]);
+    $rootScope.$on('fbLogoutSuccess', function() {
+      $scope.$apply(function() {
+        $rootScope.loggedInUser = {};
+      });
+    });
+  });

@@ -6,6 +6,7 @@ var searchGuardianApp = angular.module('searchGuardianApp',[
     'ngSanitize',
     'ngRoute',
     'searchGuardianControllers',
+    'facebookControllers',
     'facebookUtils'
   ]);
 
@@ -13,7 +14,7 @@ searchGuardianApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
       .when('/user-info', {
@@ -22,8 +23,26 @@ searchGuardianApp.config(['$routeProvider',
       })
       .when('/targets/Facebook', {
         templateUrl: 'views/fb-results.html',
+        controller: 'FbCtrl'
+      })      
+      .when('/targets/LinkedIn', {
+        templateUrl: 'views/li-results.html',
+        controller: 'LiCtrl'
+      })
+      .when('/targets/Google', {
+        templateUrl: 'views/li-results.html',
+        controller: 'LiCtrl'
+      })
+      .when('/main', {
+        templateUrl : 'views/main.html',
+        controller  : angular.noop
+      })
+      .when('/private', {
+        templateUrl : 'views/private.html',
+        controller  : 'FbCtrl'
       })
       .otherwise({
         redirectTo:  '/'
       });
   }]);
+
