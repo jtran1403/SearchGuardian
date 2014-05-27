@@ -4,16 +4,6 @@
 
 var searchGuardianControllers = angular.module('searchGuardianControllers', []);
 
-searchGuardianControllers.controller('MainCtrl',
-  function ($scope) {
-    $scope.greetMe ='u';
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
-
 searchGuardianControllers.controller('UserInfoCtrl',
   function($scope, $http, $filter) {
     $scope.user = {

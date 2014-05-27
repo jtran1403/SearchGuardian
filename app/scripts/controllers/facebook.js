@@ -8,7 +8,7 @@ facebookControllers.constant('facebookConfigSettings', {
     'appID'          : '1461372730766438'
   });
 
-facebookControllers.controller('FbCtrl', 
+facebookControllers.controller('FbCtrl',
   function($rootScope, $scope, facebookUser) {
     $rootScope.loggedInUser = {};
 

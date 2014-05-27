@@ -15,7 +15,7 @@ searchGuardianApp.config(['$routeProvider',
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'MainCtrl'
+        controller: angular.noop
       })
       .when('/user-info', {
         templateUrl: 'views/user-info.html',
@@ -24,14 +24,10 @@ searchGuardianApp.config(['$routeProvider',
       .when('/targets/Facebook', {
         templateUrl: 'views/fb-results.html',
         controller: 'FbCtrl'
-      })      
+      })
       .when('/targets/LinkedIn', {
         templateUrl: 'views/li-results.html',
-        controller: 'LiCtrl'
-      })
-      .when('/targets/Google', {
-        templateUrl: 'views/li-results.html',
-        controller: 'LiCtrl'
+        controller: angular.noop
       })
       .when('/main', {
         templateUrl : 'views/main.html',
