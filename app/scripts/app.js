@@ -25,12 +25,8 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
         templateUrl: 'views/fb-results.html',
         controller: angular.noop
       })
-      .when('/targets/login_LinkedIn', {
-        templateUrl: 'views/login_LinkedIn.html',
-        controller:'LiCtrl'
-      })
-      .when('/targets/results_LinkedIn', {
-        templateUrl: 'views/results_LinkedIn.html',
+      .when('/targets/LinkedIn', {
+        templateUrl: 'views/linkedin.html',
         controller:'LiCtrl'
       })
       .when('/main', {
