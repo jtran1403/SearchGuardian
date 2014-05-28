@@ -1,0 +1,15 @@
+<body ng-controller="LiCtrl">
+	<!-- header -->
+
+<ng:include src="'views/header.html'"></ng:include>
+
+<div class="container-fixed">
+	<h1>Hi, {{userprofile.firstName}} {{userprofile.lastName}}</h1>
+	<a href="{{userprofile.publicProfileUrl}}" target="_blank"> 
+		<img class="img-polaroid" ng-src="{{userprofile.pictureUrl}}"/>
+	</a>
+</div>
+
+<button class="btn btn-mini btn-inverse" style="margin-top:0px;" type="button" ng-click="logoutLinkedIn()">Logout</button>
+
+</body>

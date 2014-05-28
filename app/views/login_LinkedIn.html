@@ -1,0 +1,32 @@
+
+<body ng-controller="LiCtrl">
+	<!-- header -->
+	<ng:include src="'views/header.html'"></ng:include>
+	<!-- body -->
+	<div class="container-semifluid" id="appBody">
+
+		<div class="container-fixed">
+			<h1>Hi, {{userprofile.firstName}} {{userprofile.lastName}}</h1>
+			<a href="{{userprofile.publicProfileUrl}}" target="_blank"> 
+				<img class="img-polaroid" ng-src="{{userprofile.pictureUrl}}"/>
+			</a>
+		</div>
+
+		<div class="row-fluid">
+			<div class="container-fixed">
+				<div class="hero-unit">
+					<p>Please sign in with your LinkedIn account. How cool is that?</p>
+					<script type="IN/Login"></script>
+				<div>
+			</div>
+		</div>
+		<hr>
+
+		<footer>
+			<p>Designed by <a href="http://codepioneer.wordpress.com">Eugenio Cuevas</a> in 2013</p>
+		</footer>
+
+		<button class="btn btn-mini btn-inverse" style="margin-top:0px;" type="button" ng-click="logoutLinkedIn()">Logout</button>
+
+	</div>
+</body>
