@@ -1,0 +1,12 @@
+<ng:include src="'views/header.html'"></ng:include>
+
+<fb:login-button scope="public_profile,email" onlogin="testAPI();" data-auto-logout-link="true">
+</fb:login-button>
+
+<div>
+
+    {{welcomeMsg}}
+    
+</div>
+
+<div id="fb-root"></div>

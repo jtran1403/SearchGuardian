@@ -25,17 +25,20 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
 
-    <!-- Scrips from David Chang: https://github.com/davidchang/angular-facebook-utils -->
-    <script src="bower_components/angular-facebook-utils/src/facebookUtils.min.js"></script>
 
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
 
-    <!-- Facebook scripts
-    <script src="scripts/controllers/facebookSDK.js"></script>
-    <script src="scripts/controllers/facebook.js"></script>
-    <script src="scripts/controllers/facebookLoginButton.js"></script>
-    <script src="scripts/controllers/facebookUser.js"></script-->
+    <!-- Facebook scripts-->
+    <script src="scripts/controllers/facebookController.js"></script>
+    <script src="scripts/facebook/facebook.js"></script>
+
+
+    <!-- Scrips from David Chang: https://github.com/davidchang/angular-facebook-utils
+    <script src="bower_components/angular-facebook-utils/src/facebookUtils.min.js"></script>
+    <script src="scripts/facebook/facebookSDK.js"></script>
+    <script src="scripts/facebook/facebookLoginButton.js"></script>
+    <script src="scripts/facebook/facebookUser.js"></script-->
 
     <!-- LinkedIn scripts -->
     <script type="text/javascript" src="http://platform.linkedin.com/in.js">
@@ -45,7 +48,7 @@
         authorize: true
     </script>
     <script src="scripts/controllers/linkedinController.js"></script>
-    <script src="scripts/linkedin.js"></script>
+    <script src="scripts/linkedin/linkedin.js"></script>
 
   </head>
   <body ng-app="searchGuardianApp">
