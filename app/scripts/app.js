@@ -15,7 +15,8 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
   function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/home.html',
+        controller: angular.noop
       })
       .when('/user-info', {
         templateUrl: 'views/user-info.html',

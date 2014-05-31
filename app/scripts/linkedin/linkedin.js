@@ -17,9 +17,11 @@ function onLinkedInLogout() {
 //execute on login event
 function onLinkedInLogin() {
 // pass user info to angular
-  angular.element(document.getElementById('appBody')).scope().$apply(
-    function($scope) {
-      $scope.getLinkedInData();
-    }
-  );
+  if (angular.element(document.getElementById('appBody')).scope()) {
+    angular.element(document.getElementById('appBody')).scope().$apply(
+      function($scope) {
+        $scope.getLinkedInData();
+      }
+    );  
+  }
 }
