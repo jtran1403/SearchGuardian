@@ -2,16 +2,95 @@
 <body>
     <div class="container">
         <h4>
-            {{welcomeMsg}}{{status}}
+           {{status}}<br/>
+
+            
         </h4>
+        <div ng-show="isLoggedIn" id = "Personal information">
+            <h2>Personal Information </h2>
+                <h4> Profile information </h4>
+                <ul>
+                    <img ng-src="{{picture}}"/>
+                    <li> ID: {{user.id}} <!-- {{auth.userID}} -->
+                    <!--<li> Access Token: {{auth.accessToken}} -->
+                    <li> Firstname: {{user.first_name}} 
+                    <li> Lastname: {{user.last_name}}  
+                    <li> Gender: {{user.gender}}  
+                    <li> Birthday: {{user.birthday}} 
+                    <li> Relationship: {{user.relationship_status}} 
+                    <li> Email: {{user.email}} 
+                    <li> Current location: {{user.location.name}}
+                    <li> Public profile: <a href="{{user.link}}">{{user.link}}</a>
+                    <li> <span ng-show="sports">Sports: </span><span ng-repeat="sport in sports">{{ sport.name }}{{$last ? '.' : ', '}}</span> 
+                </ul>
 
-        <!--fb:login-button scope="public_profile,email" onlogin="statusChangeCallback();" data-auto-logout-link="true">
-		</fb:login-button-->
 
-        <button type="button" ng-click="login()" ng-hide="isLoggedIn" class="btn btn-default navbar-btn">
+                <h4> Education </h4>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Year</th>
+                        <th>Degree</th>
+                        <th>Concentration</th>
+                    </tr>
+                    <tr ng-repeat="school in education">
+                        <td>{{school.type}}</td>
+                        <td>{{school.school.name}}</td>
+                        <td>{{school.year.name}}</td>
+                        <td>{{school.degree.name}}</td>
+                        <td><span ng-show="school.concentration" ng-repeat="spec in school.concentration">{{ spec.name }}){{$last ? '.' : ', '}}  </span>
+                    </tr>
+                </table>
+
+                <h4> Work </h4>
+                <table>
+                    <tr>
+                        <th>Employer</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    <tr ng-repeat="work in works">
+                        <td>{{work.employer.name}}</td>
+                        <td>{{work.start_date}}</td>
+                        <td>{{work.end_date}}</td>
+                    </tr>
+                </table>
+        </div>
+
+        <div ng-show="isLoggedIn" id="Albums">
+            <h2> Publications </h2>
+                <h4> Albums </h4>
+                <table>
+                    <tr>
+                        <th>Album name</th>
+                        <th>Description</th>
+                        <th>Who can see the content?</th>
+                        <th>Created time</th>
+                        <th>Link</th>
+                    </tr>
+                    <tr ng-repeat="album in albums">
+                        <td><button ng-click="loadAlbum($index)">{{album.name}}({{album.count}})</button></td>    
+                        <td>{{album.description}}</td>
+                        <td>{{album.privacy}}</td>
+                        <td>{{album.created_time}}</td>
+                        <td> <a href="{{album.link}}">{{album.link}}</a></td>
+                    </tr>
+                </table>
+
+                <div ng-show = "albumSelected">
+                    <span ng-repeat="photo in photos"><img ng-src="{{photo.source}}"></span>
+                </div>
+
+        </div>
+
+        <button type="button" ng-click="updateBataranq()" class="btn btn-default navbar-btn">
+            Bataranq
+        </button>
+        <button type="button" ng-click="login()" ng-show="!isLoggedIn" class="btn btn-default navbar-btn">
             Login
         </button>
-        <button type="button" ng-click="logout()" ng-hide="!isLoggedIn" class="btn btn-default navbar-btn">
+        <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn">
             Logout
         </button>
     </div>
