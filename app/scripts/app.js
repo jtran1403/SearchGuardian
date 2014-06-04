@@ -7,7 +7,7 @@ var searchGuardianApp = angular.module('searchGuardianApp',[
     'ngRoute',
     'searchGuardianControllers',
     'LinkedInControllers',
-    'facebookControllers',
+    'FacebookControllers',
     'ngFacebook'
   ]);
 
@@ -16,11 +16,19 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
+        controller: 'MainCtrl'
+      })
+      .when('/aboutme', {
+        templateUrl: 'views/aboutme.html',
+        controller: angular.noop
+      })
+      .when('/documentation', {
+        templateUrl: 'views/documentation.html',
         controller: angular.noop
       })
       .when('/user-info', {
         templateUrl: 'views/user-info.html',
-        controller: 'UserInfoCtrl'
+        controller: 'MainCtrl'
       })
       .when('/targets/Facebook', {
         templateUrl: 'views/facebook.html',

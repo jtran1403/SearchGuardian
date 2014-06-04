@@ -1,6 +1,6 @@
 <ng:include src="'views/header.html'"></ng:include>
 
-<div class="userInformation well" ng-controller= "UserInfoCtrl">
+<div class="userInformation well" ng-controller= "MainCtrl">
   <h4> Enter the target's information:</h4>
   <form>
     <p> First Name:
@@ -15,11 +15,11 @@
       <select id="years" class="DoB" ng-model="yearBirth" ng-change="resetDay()" required></select>
     </p>
     <p>
-      <input type="button" value="Confirm" class="btns btn-primary" ng-click="setBirthDate()" onClick="showHidden();" />
+      <input type="button" value="Confirm" class="btns btn-primary" ng-click="setBirthDate()"/>
       <input type="button" value="Reset" class="btns btn-primary" ng-click="resetForm()" />
     </p>
 
-    <table id="userInformationConfirm" style ="display:none" class = "table table-striped table-bordered">
+    <table id="userInformationConfirm" ng-show="profileSet" class = "table table-striped table-bordered">
       <thead>
       <tr>
           <th>First Name</th>
@@ -36,21 +36,6 @@
       </tbody>
     </table>  
   </form>
-
-  <div id="searchTargets" style="display:none; margin-top:25px">
-    <h4> Get results from:</h4>
-    <label ng-repeat= "target in targets" style="display: block;">
-      <p><input type="checkbox" name="target.name" value="target.id"  ng-click="updateSelection(target.id)" check-list="selection"> {{target.name}} </p>
-    </label>
-
-    <pre class="ng-binding"> {{selection|json}} </pre>
-
-    <p><input type="button" value="Search" class="btns btn-primary" ng-click="facebook()" /></p>
-  </div>
-
-  <div id="userAuthentication" style="height: auto;" >
-    <p><a class="btn btn-lg btn-success" href="#/targets/Facebook"> Facebook <span class="glyphicon glyphicon-ok"></span></a></p>
-  </div>
 
 </div>
 
@@ -96,8 +81,4 @@
     return new Date(year, month, 0).getDate();
   }
 
-  function showHidden(){
-    document.getElementById('userInformationConfirm').style.display ='block';
-    document.getElementById('searchTargets').style.display='block';
-  }
 </script>

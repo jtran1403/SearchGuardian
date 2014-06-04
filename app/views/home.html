@@ -5,14 +5,24 @@
   <p class="lead">
     SearchGuardian Application prototype
   </p>
-  <p><a class="btn btn-lg btn-success" href="#/user-info/"> Start!<span class="glyphicon glyphicon-ok"></span></a></p>
+  Click on the buttons below to discover what information is available about you. Refer to the documentation for more details.
 </div>  
 
 <div>
-  <h4>Description</h4>
-  <p>
-  This is an application developed in order to help internet users to protect their online privacy and be aware of information about them displayed without their knowledge and consent.
-  </p>
+  <h4>Search targets</h4>
+
+  <div id="searchTargets" style="margin-top:25px">
+    <!--label ng-repeat= "target in targets">
+      <p><input type="checkbox" name="target.name" value="target.id"  ng-click="updateSelection(target.id)" check-list="selection"> {{target.name}} </p>
+    </label>
+    <pre class="ng-binding"> {{selection|json}} </pre-->
+
+    <p><a class="btn btn-lg btn-success" href="#/targets/Facebook"> Facebook <span class="glyphicon glyphicon-ok"></span></a></p>
+
+    <p><a class="btn btn-lg btn-success" href="#/targets/LinkedIn"> LinkedIn <span class="glyphicon glyphicon-ok"></span></a></p>
+
+    <p><a class="btn btn-lg btn-success" href="#/user-info/"> Google <span class="glyphicon glyphicon-ok"></span></a></p>
+  </div>
   
 </div>
 

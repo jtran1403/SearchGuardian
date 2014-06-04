@@ -2,14 +2,14 @@
 
 /**Source: http://plnkr.co/edit/HcYBFKbqFcgQGhyCGQMw?p=preview **/
 
-var facebookControllers = angular.module('facebookControllers', ['ngFacebook'])
+var FacebookControllers = angular.module('FacebookControllers', ['ngFacebook'])
 
-facebookControllers.config( function( $facebookProvider ) {
+FacebookControllers.config( function( $facebookProvider ) {
   $facebookProvider.setAppId('1493426897539324');
-  $facebookProvider.setPermissions("public_profile, email, user_friends, user_birthday, user_about_me, user_activities, user_education_history, user_events, user_groups, user_interests, user_likes, user_location, user_photos, user_relationships, user_relationship_details, user_religion_politics, user_status, user_tagged_places, user_videos, user_website, user_work_history");
+  $facebookProvider.setPermissions("public_profile, email, user_friends, user_birthday, user_about_me, user_hometown, user_activities, user_actions.news, user_education_history, user_events, user_groups, user_interests, user_likes, user_location, user_photos, user_relationships, user_relationship_details, user_religion_politics, user_status, user_tagged_places, user_videos, user_website, user_work_history, read_friendlists, read_stream, read_insights");
 });
 
-facebookControllers.run( function( $rootScope ) {
+FacebookControllers.run( function( $rootScope ) {
   // Load the facebook SDK asynchronously
   (function(){
      // If we've already installed the SDK, we're done
@@ -30,7 +30,7 @@ facebookControllers.run( function( $rootScope ) {
    }());
 });
 
-facebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
+FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
   cleanInfo();
   
   $scope.login = function() {
@@ -39,6 +39,8 @@ facebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       refresh();
       loadPicture();
       loadAlbums();
+       searchPostLink();
+      loadFeed();
       loadFriends();
     });
   }
@@ -61,12 +63,18 @@ facebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
         $scope.isLoggedIn = false;
       });
   }
+
   function loadPicture()
   {
     FB.api("/me/picture?type=large", function (response) 
     {
-      if (response && !response.error) {
+      if (response && !response.error) 
+      {
         $scope.picture = response.data.url;
+      }
+      else
+      {
+        $scope.picture = "Profile picture error: " + response;
       }
     });
   }
@@ -75,40 +83,75 @@ facebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
   {
     FB.api("/me/albums", function (response) 
     {
-      if (response && !response.error) {
+      if (response && !response.error) 
+      {
         $scope.albums = response.data;
       }
       else
-        $scope.albums = "Error with albums";
+      {
+        $scope.albums = "Albums error: " + response;
+      }
     });
   }
-
 
   $scope.loadAlbum = function(index)
   {
-    $scope.albumSelected = $scope.albums[index].id;
-    $scope.photos = null;
-    FB.api("/"+$scope.albumSelected+"/photos", function (response)
+    if($scope.albumSelected == index.id)
     {
-      if (response && !response.error) 
+      $scope.albumSelected = false;
+      $scope.photos = null;
+    }
+    else
+    {
+      $scope.albumSelected = $scope.albums[index].id;
+      $scope.photos = null;
+      FB.api("/"+$scope.albumSelected+"/photos", function (response)
       {
-        $scope.photos = response.data;
+        if (response && !response.error) 
+        {
+          $scope.photos = response.data;
+        }
+        else
+        {
+          $scope.photos = "Photos error: " + response;
+        }
+      });
+    }
+  }
+
+  $scope.closeAlbum = function()
+  {
+    $scope.albumSelected = false;
+  }
+
+  function loadFeed()  //only friends using the same application (see Facebook documentation)
+  {
+    //FB.api("/me/friends?fields=name,picture.type(square)", function(response)
+    FB.api("/me/feed", function(response)
+    {
+      if (response)
+      {
+        $scope.feed = response.data;
+      }
+      else
+      {
+        $scope.feed = "Feed error: " + response;
       }
     });
   }
 
-  function loadFriends()  //only friends using the same application (see Facebook documentation)
+  function searchPostLink()
   {
-    //FB.api("/me/friends?fields=name,picture.type(square)", function(response)
-    FB.api("/me/friends", function(response)
+    FB.api("/me/posts", function(response)
     {
       if (response)
       {
-        $scope.friends = response.data;
+         var postData = response;
+         $scope.postLink = postData;
       }
       else
       {
-        $scope.friends = {error: "FRIENDS_FAIL", message: "Facebook friends error: " + response};
+        $scope.postLink = "Posts error: " + response;
       }
     });
   }
@@ -119,6 +162,21 @@ facebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.sports = response.sports;
     $scope.education = response.education;
     $scope.works = response.work;
+  }
+
+  function loadFriends()
+  {
+    FB.api("/me/friends", function(response)
+    {
+      if (response)
+      {
+        $scope.friends = response.data;
+      }
+      else
+      {
+        $scope.friends = "Friends error: " + response;
+      }
+    });
   }
 
   function updateBataranq(){}   //data not updating correctly on bataranq unless there is an action on the page
@@ -138,6 +196,7 @@ facebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.picture = null;
     $scope.photos = null;
     $scope.albums = null;
-    $scope.albumSelected = null;
+    $scope.albumSelected = false;
+    $scope.postLink = null;
   }
 }); 

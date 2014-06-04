@@ -1,0 +1,25 @@
+/* Facebook page */
+
+.albumButton{
+  height:100%;
+}
+
+.scrollPictures{
+  overflow-x:scroll; 
+  height:420px;
+}
+
+.ulScroll {
+  list-style:none; 
+  display:block;
+  white-space:nowrap;
+}
+
+.liScroll{
+  float:left; 
+  display:inline;
+}
+
+.imgScroll{
+  height:400px;
+}

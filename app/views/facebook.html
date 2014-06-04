@@ -1,17 +1,15 @@
 <ng:include src="'views/header.html'"></ng:include>
 <body>
     <div class="container">
-        <h4>
-           {{status}}<br/>
+        
+        <h4>{{status}}</h4>
 
-            
-        </h4>
         <div ng-show="isLoggedIn" id = "Personal information">
             <h2>Personal Information </h2>
                 <h4> Profile information </h4>
                 <ul>
                     <img ng-src="{{picture}}"/>
-                    <li> ID: {{user.id}} <!-- {{auth.userID}} -->
+                    <li> User ID: {{user.id}} <!-- {{auth.userID}} -->
                     <!--<li> Access Token: {{auth.accessToken}} -->
                     <li> Firstname: {{user.first_name}} 
                     <li> Lastname: {{user.last_name}}  
@@ -20,6 +18,7 @@
                     <li> Relationship: {{user.relationship_status}} 
                     <li> Email: {{user.email}} 
                     <li> Current location: {{user.location.name}}
+                    <li> Hometown: {{user.hometown.name}}
                     <li> Public profile: <a href="{{user.link}}">{{user.link}}</a>
                     <li> <span ng-show="sports">Sports: </span><span ng-repeat="sport in sports">{{ sport.name }}{{$last ? '.' : ', '}}</span> 
                 </ul>
@@ -70,7 +69,7 @@
                         <th>Link</th>
                     </tr>
                     <tr ng-repeat="album in albums">
-                        <td><button ng-click="loadAlbum($index)">{{album.name}}({{album.count}})</button></td>    
+                        <td><button ng-click="loadAlbum($index)" class="albumButton">{{album.name}}({{album.count}})</button></td>    
                         <td>{{album.description}}</td>
                         <td>{{album.privacy}}</td>
                         <td>{{album.created_time}}</td>
@@ -78,10 +77,26 @@
                     </tr>
                 </table>
 
-                <div ng-show = "albumSelected">
-                    <span ng-repeat="photo in photos"><img ng-src="{{photo.source}}"></span>
-                </div>
+                <div ng-show = "albumSelected" class="scrollPictures">
 
+                    <h4> {{photos.name}} </h4>
+                    <ul class = "ulScroll">
+                        <li class="liScroll"><span ng-repeat="photo in photos"><img ng-src="{{photo.source}}" class="imgScroll" ></span>
+                    </ul>
+                </div>
+{{postLink|json}}
+                <h4> Feed (posts, shares, likes, etc.) </h4>
+                    <div ng-show = "isLoggedIn" ng-repeat="activity in feed">
+                        <h5> {{activity.type}}: <span ng-if = "activity.story">{{activity.story}}</span><span ng-if = "activity.message">{{activity.message}}</span> </h5>
+                        <ul>
+                            <li> ID: {{activity.id}}
+                            <li> Link: <a href="{{activity.actions[0].link}}">{{activity.actions[0].link}}</a>
+                            <li> Created time: {{activity.created_time}}
+                            <li> Privacy: {{activity.privacy.description}}<span ng-if = "!activity.privacy.value"> Same as the  wall, group or event of the original status, comment or message (probably visible to everyone).</span>
+                            <li> Likes: {{activity.likes}}
+                            <li> Comments: {{activity.comments}}
+                        </ul>
+                    </div>
         </div>
 
         <button type="button" ng-click="updateBataranq()" class="btn btn-default navbar-btn">

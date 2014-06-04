@@ -4,30 +4,37 @@
 
 var searchGuardianControllers = angular.module('searchGuardianControllers', []);
 
-searchGuardianControllers.controller('UserInfoCtrl',
+searchGuardianControllers.controller('MainCtrl',
   function($scope, $http, $filter) {
     $scope.user = {
-      firstName:' ',
-      lastName:' ',
-      dateOfBirth:' '
+      firstName:'',
+      lastName:'',
+      dateOfBirth:''
     };
+    $scope.dayBirth ='';
+    $scope.monthBirth ='';
+    $scope.yearBirth ='';
+    $scope.profileSet = false;
 
     var emptyForm = angular.copy($scope.user);
     
     $scope.setBirthDate = function ()
     {
       $scope.user.dateOfBirth = $scope.dayBirth + '/' + $scope.monthBirth + '/' + $scope.yearBirth;
+      if($scope.user.firstName != '' && $scope.user.lastName != '' && $scope.yearBirth != '' && $scope.monthBirth != '' && $scope.dayBirth != '')
+        $scope.profileSet = true;
     };
 
     $scope.resetForm = function ()
     {
-      $scope.user = angular.copy(emptyForm);
-      $scope.dayBirth =' ';
-      $scope.monthBirth =' ';
-      $scope.yearBirth =' ';
+      $scope.user = angular.copy(emptyForm);  
+      $scope.dayBirth ='';
+      $scope.monthBirth ='';
+      $scope.yearBirth ='';
+      $scope.profileSet = false;
     };
 
-    $scope.resetDay = function ()
+    $scope.resetDay = function () //because of february
     {
       $scope.dayBirth = '1';
     };
