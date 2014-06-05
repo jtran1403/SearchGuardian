@@ -29,7 +29,12 @@ FacebookControllers.run( function( $rootScope ) {
      firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
    }());
 });
-
+FacebookControllers.filter('splitID', function(){
+  return function(input, splitChar, splitIndex) {
+      //take the second part of the ID 
+      return input.split(splitChar)[splitIndex];
+  }
+});
 FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
   cleanInfo();
   
@@ -39,7 +44,6 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       refresh();
       loadPicture();
       loadAlbums();
-       searchPostLink();
       loadFeed();
       loadFriends();
     });
@@ -132,6 +136,25 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       if (response)
       {
         $scope.feed = response.data;
+        if($scope.feed != "[  ]" && $scope.feed != null)
+        {
+          //try to retrieve URL of the activity logs
+
+          //look for an action with a link through the 25 last activity logs
+          for(var i=0;i<25;i++) {
+            if($scope.postLink == null)
+              searchLink(i);
+            else
+              break;
+          }
+
+          if($scope.postLink != null)
+          {
+            var tmp = $scope.postLink.split('/');
+            for(var i=0; i < tmp.length - 1; i++)
+              $scope.templateLink = $scope.templateLink + tmp[i]+'/';
+          }
+        }
       }
       else
       {
@@ -140,20 +163,13 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     });
   }
 
-  function searchPostLink()
+  function searchLink(i)
   {
-    FB.api("/me/posts", function(response)
-    {
-      if (response)
-      {
-         var postData = response;
-         $scope.postLink = postData;
-      }
-      else
-      {
-        $scope.postLink = "Posts error: " + response;
-      }
-    });
+    if("actions" in $scope.feed[i])
+      $scope.postLink = $scope.feed[i].actions[0].link;//every action refer to the same link
+    else
+      $scope.postLink = null;
+
   }
 
   function loadProfile(response)
@@ -198,5 +214,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.albums = null;
     $scope.albumSelected = false;
     $scope.postLink = null;
+    $scope.templateLink = '';
+    $scope.findpost = 0;
   }
 }); 
