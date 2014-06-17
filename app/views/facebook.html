@@ -2,26 +2,39 @@
 <body>
     <div class="container">
         
-        <h4>{{status}}</h4>
+        <h3>{{status}}</h3>
 
-        <div ng-show="isLoggedIn" id = "Personal information">
+        <div ng-show="isLoggedIn" id = "PublicOnly">
+            Show public information only: <input type="checkbox" ng-model="publicBox"><br/>
+            <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn">
+                Logout
+            </button>
+        </div>
+
+        <div ng-show="isLoggedIn" id = "PersonalInformation">
             <h2>Personal Information </h2>
                 <h4> Profile information </h4>
-                <ul>
-                    <img ng-src="{{picture}}"/>
-                    <li> User ID: {{user.id}} <!-- {{auth.userID}} -->
-                    <!--<li> Access Token: {{auth.accessToken}} -->
-                    <li> Firstname: {{user.first_name}} 
-                    <li> Lastname: {{user.last_name}}  
-                    <li> Gender: {{user.gender}}  
-                    <li> Birthday: {{user.birthday}} 
-                    <li> Relationship: {{user.relationship_status}} 
-                    <li> Email: {{user.email}} 
-                    <li> Current location: {{user.location.name}}
-                    <li> Hometown: {{user.hometown.name}}
-                    <li> Public profile: <a href="{{user.link}}">{{user.link}}</a>
-                    <li> <span ng-show="sports">Sports: </span><span ng-repeat="sport in sports">{{ sport.name }}{{$last ? '.' : ', '}}</span> 
-                </ul>
+                <table>
+                    <td class="centeredObject">
+                        <img ng-src="{{picture}}"/>
+                    </td>
+                    <td>
+                        <ul>
+                            <li> User ID: {{user.id}} <!-- {{auth.userID}} -->
+                            <!--<li> Access Token: {{auth.accessToken}} -->
+                            <li> Firstname: {{user.first_name}} 
+                            <li> Lastname: {{user.last_name}}  
+                            <li> Gender: {{user.gender}}  
+                            <li> Birthday: {{user.birthday}} 
+                            <li> Relationship: {{user.relationship_status}} 
+                            <li> Email: {{user.email}} 
+                            <li> Current location: {{user.location.name}}
+                            <li> Hometown: {{user.hometown.name}}
+                            <li> Public profile: <a href="{{user.link}}">{{user.link}}</a>
+                            <li> <span ng-show="sports">Sports: </span><span ng-repeat="sport in sports">{{ sport.name }}{{$last ? '.' : ', '}}</span> 
+                        </ul>
+                    </td>
+                </table>
 
 
                 <h4> Education </h4>
@@ -41,8 +54,8 @@
                         <td><span ng-show="school.concentration" ng-repeat="spec in school.concentration">{{ spec.name }}){{$last ? '.' : ', '}}  </span>
                     </tr>
                 </table>
-
-                <h4> Work </h4>
+            <div ng-show="works">
+                <h4> Work experience</h4>
                 <table>
                     <tr>
                         <th>Employer</th>
@@ -55,6 +68,7 @@
                         <td>{{work.end_date}}</td>
                     </tr>
                 </table>
+            </div>
         </div>
 
         <div ng-show="isLoggedIn" id="Albums">
@@ -68,8 +82,8 @@
                         <th>Created time</th>
                         <th>Link</th>
                     </tr>
-                    <tr ng-repeat="album in albums">
-                        <td><button ng-click="loadAlbum($index)" class="albumButton">{{album.name}}({{album.count}})</button></td>    
+                    <tr ng-repeat="album in albums" >
+                        <td class="centeredObject"><button ng-click="loadAlbum($index)" class="albumButton">{{album.name}}({{album.count}})</button></td>    
                         <td>{{album.description}}</td>
                         <td>{{album.privacy}}</td>
                         <td>{{album.created_time}}</td>
@@ -77,15 +91,26 @@
                     </tr>
                 </table>
 
-                <div ng-show = "albumSelected" class="scrollPictures">
+                <div ng-show = "albumSelected">
 
-                    <h4> {{photos.name}} </h4>
-                    <ul class = "ulScroll">
-                        <li class="liScroll"><span ng-repeat="photo in photos"><img ng-src="{{photo.source}}" class="imgScroll" ></span>
-                    </ul>
+                    Pictures of the album selected:
+                    <button type="button" ng-show="!isAlbum" ng-click="showAlbum()" class="btn btn-default navbar-btn"> Show album </button>
+                    <button type="button" ng-show="isAlbum" ng-click="closeAlbum()" class="btn btn-default navbar-btn"> Close album </button>
+                    
+                    <div ng-show = "isAlbum"  class="scrollPictures">
+                        <ul class = "ulScroll">
+                            <li class="liScroll"><span ng-repeat="photo in photos"><img ng-src="{{photo.source}}" class="imgScroll" ></span>
+                        </ul>
+                    </div>
+
                 </div>
                 <h4> Feed (posts, shares, likes, etc.) </h4>
-                    <div ng-show = "isLoggedIn" ng-repeat="activity in feed">
+
+                    Show the content of your activity log:
+                    <button type="button" ng-show="!isFeed" ng-click="showFeed()" class="btn btn-default navbar-btn"> Show feed </button>
+                    <button type="button" ng-show="isFeed" ng-click="hideFeed()" class="btn btn-default navbar-btn"> Hide feed </button>
+
+                    <div ng-show = "isFeed" ng-repeat="activity in feed">
                         <h5> {{activity.type}}: <span ng-if = "activity.story">{{activity.story}}</span><span ng-if = "activity.message">{{activity.message}}</span> </h5>
                         <ul>
                             <li> ID: {{activity.id}}
@@ -98,9 +123,7 @@
 
         </div>
 
-        <button type="button" ng-click="updateBataranq()" class="btn btn-default navbar-btn">
-            Bataranq
-        </button>
+
         <button type="button" ng-click="login()" ng-show="!isLoggedIn" class="btn btn-default navbar-btn">
             Login
         </button>

@@ -6,7 +6,7 @@ var FacebookControllers = angular.module('FacebookControllers', ['ngFacebook'])
 
 FacebookControllers.config( function( $facebookProvider ) {
   $facebookProvider.setAppId('1493426897539324');
-  $facebookProvider.setPermissions("public_profile, email, user_friends, user_birthday, user_about_me, user_hometown, user_activities, user_actions.news, user_education_history, user_events, user_groups, user_interests, user_likes, user_location, user_photos, user_relationships, user_relationship_details, user_religion_politics, user_status, user_tagged_places, user_videos, user_website, user_work_history, read_friendlists, read_stream, read_insights");
+  $facebookProvider.setPermissions("public_profile, email,  user_friends, user_birthday, user_about_me, user_hometown, user_activities, user_actions.news, user_education_history, user_events, user_groups, user_interests, user_likes, user_location, user_photos, user_relationships, user_relationship_details, user_religion_politics, user_status, user_tagged_places, user_videos, user_website, user_work_history, read_friendlists, read_stream, read_insights");
 });
 
 FacebookControllers.run( function( $rootScope ) {
@@ -29,6 +29,7 @@ FacebookControllers.run( function( $rootScope ) {
      firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
    }());
 });
+
 FacebookControllers.filter('splitID', function(){
   return function(input, splitChar, splitIndex) {
       //take the second part of the ID 
@@ -42,6 +43,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $facebook.login().then(function() {
       $scope.auth = $facebook.getAuthResponse();
       refresh();
+      checkPermissions();
       loadPicture();
       loadAlbums();
       loadFeed();
@@ -49,6 +51,11 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     });
   }
 
+  function checkPermissions(){
+      FB.api("/me/permissions", function(response) {
+      $scope.permissions = response;
+    });
+  }
   $scope.logout = function() {
     $facebook.logout().then(function() {
       cleanInfo();
@@ -123,9 +130,15 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     }
   }
 
+  $scope.showAlbum = function()
+  {
+    $scope.isAlbum = true;
+  }
+
   $scope.closeAlbum = function()
   {
     $scope.albumSelected = false;
+    $scope.isAlbum = false;
   }
 
   function loadFeed()  //only friends using the same application (see Facebook documentation)
@@ -162,6 +175,17 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       }
     });
   }
+
+  $scope.showFeed = function()
+  {
+    $scope.isFeed = true;
+  }
+
+  $scope.hideFeed = function()
+  {
+    $scope.isFeed = false;
+  }
+
 
   function searchLink(i)
   {
@@ -215,6 +239,9 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.albumSelected = false;
     $scope.postLink = null;
     $scope.templateLink = '';
-    $scope.findpost = 0;
+    $scope.findpost = 0;  
+    $scope.publicBox = false;
+    $scope.isAlbum = false;
+    $scope.isFeed = false;
   }
 }); 

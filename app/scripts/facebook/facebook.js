@@ -14,7 +14,7 @@
 angular.module('ngFacebook', [])
   .provider('$facebook', function() {
     var config = {
-      permissions:    'email',
+      permissions:    'public_profile, email,  user_friends, user_birthday, user_about_me, user_hometown, user_activities, user_actions.news, user_education_history, user_events, user_groups, user_interests, user_likes, user_location, user_photos, user_relationships, user_relationship_details, user_religion_politics, user_status, user_tagged_places, user_videos, user_website, user_work_history, read_friendlists, read_stream, read_insights',
       appId:          null,
       customInit:     {}
     };
@@ -146,7 +146,7 @@ angular.module('ngFacebook', [])
           FB.login(function(response) {
             if(response.error)  deferred.reject(response.error);
             else                deferred.resolve(response);
-          }, { scope: $facebook.config("permissions") });
+          }, { scope: $facebook.config("permissions") }, return_scopes=true);
           return deferred.promise;
         });
       };
