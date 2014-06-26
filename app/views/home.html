@@ -1,0 +1,31 @@
+<ng:include src="'views/header.html'"></ng:include>
+
+<div class="jumbotron">
+  <h1>Welcome!</h1>
+  <p class="lead">
+    SearchGuardian Application prototype
+  </p>
+  This web application aims to help you be more aware of the personal information available about you and to help you remove it directly or by giving you instructions if it is impossible to do it through the application. Refer to the documentation for more details.
+</div>  
+
+<div>
+
+  <h5>Click on a button, login and the application will return most of your data</h5>
+  <div id="searchTargets" style="margin-top:25px">
+    <!--label ng-repeat= "target in targets">
+      <p><input type="checkbox" name="target.name" value="target.id"  ng-click="updateSelection(target.id)" check-list="selection"> {{target.name}} </p>
+    </label>
+    <pre class="ng-binding"> {{selection|json}} </pre-->
+    <p><a class="btn btn-lg btn-success" href="#/targets/Facebook"> Facebook <span class="glyphicon"></span></a></p>
+    <p><a class="btn btn-lg btn-success" href="#/targets/LinkedIn"> LinkedIn <span class="glyphicon"></span></a></p>
+    <p><a class="btn btn-lg btn-success" href="#/user-info/"> Google <span class="glyphicon"></span></a></p>
+  </div>
+  
+  <h5>Other</h5>
+
+
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> Application based on the basic application from the Yeoman team.</p>
+</div>

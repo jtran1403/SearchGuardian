@@ -1,0 +1,63 @@
+/* Facebook page */
+
+.centeredObject{
+  vertical-align: middle;
+}
+
+.albumButton{
+  height:100%;
+}
+
+.scrollPictures{
+  overflow-x:scroll; 
+  height:420px;
+  width:100%;
+  margin:10px;
+}
+
+.ulScroll {
+  list-style:none; 
+  display:block;
+  white-space:nowrap;
+}
+
+.liScroll{
+  float:left; 
+  display:inline;
+}
+
+.imgScroll{
+  height:400px;
+}
+
+h2 {
+	text-align: left;
+	line-height: 1;
+	color: #3399FF;
+	border-bottom: thin solid;
+	padding: 0 0 0.2em 0;
+	font-weight: bold;
+	text-transform: uppercase;
+	clear: both;
+	margin-top: 2em;
+}
+
+h4 {
+	text-align: left;
+	color: #006666;
+	padding: 0 0 0.2em 0;
+	font-weight: bold;
+	clear: both;
+	margin: 1em 0 1em 2em;
+}
+
+h5 {
+	text-align: left;
+	font-weight: bold;
+	clear: both;
+	margin-top: 1em;
+}
+
+label {
+	margin-right: 1em;
+}
