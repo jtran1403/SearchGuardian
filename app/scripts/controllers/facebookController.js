@@ -36,6 +36,7 @@ FacebookControllers.filter('splitID', function(){
       return input.split(splitChar)[splitIndex];
   }
 });
+
 FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
   cleanInfo();
   
@@ -97,6 +98,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       if (response && !response.error) 
       {
         $scope.albums = response.data;
+        $scope.originalAlbums = $scope.albums;    //to apply filter on the albums => filterChanged():
       }
       else
       {
@@ -104,6 +106,34 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       }
     });
   }
+
+  $scope.albumFilterChanged = function()
+  {
+    if($scope.privacyFilterSet == 3)
+      $scope.albums = $scope.originalAlbums;
+    else if($scope.privacyFilterSet == 2)
+      {
+        $scope.privacyCustom = true;
+        $scope.privacyFriends = false;
+        $scope.privacyEveryone = false;
+      }
+    else if($scope.privacyFilterSet == 1)
+      {
+        $scope.privacyCustom = false; 
+        $scope.privacyFriends = true;
+        $scope.privacyEveryone = false;
+      }
+    else if($scope.privacyFilterSet == 0)
+      {
+        $scope.privacyCustom = false;
+        $scope.privacyFriends = false;
+        $scope.privacyEveryone = true;
+      }
+    else
+      $scope.albums = 'Filter error';
+  }
+
+
 
   $scope.loadAlbum = function(index)
   {
@@ -167,6 +197,8 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
             for(var i=0; i < tmp.length - 1; i++)
               $scope.templateLink = $scope.templateLink + tmp[i]+'/';
           }
+
+          $scope.originalFeed = $scope.feed; //saving feed to apply the filter => filterChanged2()
         }
       }
       else
@@ -174,6 +206,44 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
         $scope.feed = "Feed error: " + response;
       }
     });
+  }
+
+  $scope.feedFilterChanged = function()
+  {
+    if($scope.privacyFilterSet2 == 3)
+      $scope.feed = $scope.originalFeed;
+    else if($scope.privacyFilterSet2 == 2)
+      {
+        $scope.privacyCustom2 = true;
+        $scope.privacyFriends2 = false;
+        $scope.privacyEveryone2 = false;
+      }
+    else if($scope.privacyFilterSet2 == 1)
+      {
+        $scope.privacyCustom2 = false; 
+        $scope.privacyFriends2 = true;
+        $scope.privacyEveryone2 = false;
+      }
+    else if($scope.privacyFilterSet2 == 0)
+      {
+        $scope.privacyCustom2 = false;
+        $scope.privacyFriends2 = false;
+        $scope.privacyEveryone2 = true;
+      }
+    else
+      $scope.albums = 'Filter error';
+  }
+
+  $scope.deleteFeed = function(postId)
+  {
+
+    FB.api('/'+ postId, 'DELETE', function (response) {
+      if (response && !response.error) {
+        updateBataranq();
+      }
+    }
+);
+
   }
 
   $scope.showFeed = function()
@@ -237,11 +307,23 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.photos = null;
     $scope.albums = null;
     $scope.albumSelected = false;
+    $scope.originalAlbums = null;
+    $scope.privacyFilter = {value:['Everyone','Friends','Custom','No filter','No value']};
+    $scope.privacyFilterSet = 3;
+    $scope.privacyEveryone = false;
+    $scope.privacyFriends = false;
+    $scope.privacyCustom = false;
+    //$scope.previousPrivacyFilter = -1;
+    $scope.isAlbum = false;
+
     $scope.postLink = null;
     $scope.templateLink = '';
     $scope.findpost = 0;  
-    $scope.publicBox = false;
-    $scope.isAlbum = false;
+    $scope.privacyFilter2 = "";
     $scope.isFeed = false;
+    $scope.privacyFilterSet2 = 3;
+    $scope.privacyEveryone2 = false;
+    $scope.privacyFriends2 = false;
+    $scope.privacyCustom2 = false;
   }
 }); 
