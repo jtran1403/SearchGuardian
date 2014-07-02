@@ -5,6 +5,7 @@ var searchGuardianApp = angular.module('searchGuardianApp',[
     'ngResource',
     'ngSanitize',
     'ngRoute',
+    'mainController',
     'googleControllers',
     'LinkedInControllers',
     'FacebookControllers'
@@ -15,15 +16,15 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: angular.noop
+        controller: 'MainCtrl'
       })
       .when('/aboutme', {
         templateUrl: 'views/aboutme.html',
-        controller: angular.noop
+        controller: 'MainCtrl'
       })
       .when('/documentation', {
         templateUrl: 'views/documentation.html',
-        controller: angular.noop
+        controller: 'MainCtrl'  //angular.noop
       })
       .when('/user-info', {
         templateUrl: 'views/user-info.html',
