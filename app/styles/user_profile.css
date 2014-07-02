@@ -91,3 +91,8 @@ li {
     top:0;
     right:0;
 }
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: content-box;
+}

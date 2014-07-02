@@ -898,11 +898,6 @@ th {
   }
 }
 
-* {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 @media -sass-debug-info {
   filename {
     font-family: file\:\/\/C\:\/Users\/Jimmy\/Documents\/GitHub\/SearchGuardian\/app\/bower_components\/bootstrap-sass-official\/vendor\/assets\/stylesheets\/bootstrap\/_scaffolding\.scss;
@@ -20805,7 +20800,6 @@ th {
 
 * {
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 @media -sass-debug-info {
