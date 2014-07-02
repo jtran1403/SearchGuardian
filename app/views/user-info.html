@@ -1,6 +1,6 @@
 <ng:include src="'views/header.html'"></ng:include>
 
-<div class="userInformation well"  ng-controller= "GoogleCtrl">
+<div class="userInformation well">
   <h4> Enter the target's information:</h4>
   <form>
     <p> First Name:
@@ -39,16 +39,19 @@
 
 </div>
 
-<span id="signinButton">
-  <span
-    class="g-signin"
-    data-callback="signinCallback"
-    data-clientid="1013860809668-jkso8eqkoik68cu0k7vfkl7gjh3tj47i.apps.googleusercontent.com"
-    data-cookiepolicy="single_host_origin"
-    data-requestvisibleactions="http://schemas.google.com/AddActivity"
-    data-scope="https://www.googleapis.com/auth/plus.login">
+<div>
+  <span id="signinButton">
+    <span
+      class="g-signin"
+      data-callback="signinCallback"
+      data-clientid="1013860809668-jkso8eqkoik68cu0k7vfkl7gjh3tj47i.apps.googleusercontent.com"
+      data-cookiepolicy="single_host_origin"
+      data-requestvisibleactions="http://schemas.google.com/AddActivity"
+      data-scope="https://www.googleapis.com/auth/plus.login">
+    </span>
   </span>
-</span>
+  <gcse:search></gcse:search>
+</div>
 
 
 <div class="footer">
@@ -67,14 +70,14 @@
     {
         $('#months').append($('<option />').val(i).html(i));
     }
-    
-    updateDays(); 
         
     $('#years, #months').change(function(){
         updateDays(); 
     });
 
+    $('link[rel=stylesheet][href="styles/tables.css"]').remove();
   });
+
 
 function signinCallback(authResult) {
   console.log(authResult);

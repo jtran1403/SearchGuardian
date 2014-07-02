@@ -15,9 +15,19 @@ googleControllers.config(['GooglePlusProvider', function(GooglePlusProvider) {
 googleControllers.run( function() {
   // Load the facebook SDK asynchronously
   (function(){
-   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+   var po = document.createElement('script'); 
+   po.type = 'text/javascript'; po.async = true;
    po.src = 'https://apis.google.com/js/client:plusone.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+   var s = document.getElementsByTagName('script')[0]; 
+   s.parentNode.insertBefore(po, s);
+
+   var cx = '004039856569851461121:aflilnhyumc';
+   var gcse = document.createElement('script');
+   gcse.type = 'text/javascript';  gcse.async = true;
+   gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var t = document.getElementsByTagName('script')[0];
+    t.parentNode.insertBefore(gcse, t);
   }());
 
 });
