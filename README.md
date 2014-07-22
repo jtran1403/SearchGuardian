@@ -1,12 +1,12 @@
 SearchGuardian
 ==============
 
-A privacy web application to improve your awareness of personal information available on the Web. The first step to protect one's privacy is to 
+A privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully.
 
+The sections below describes the technology needed to use it and the functionalities contained in the web application.
 
-
-#Installations required
-
+#First steps to the SearchGuardian
+##Requirements
 To be able to use this application, you will have to:
 
 1. Install [Ruby and Compass] (http://rubyinstaller.org/downloads/) because the bootstrap I chose requires it
@@ -16,12 +16,12 @@ To be able to use this application, you will have to:
 5. Copy the following folders in the repository created previously to be able to use npm command lines
 6. Install Yeoman with the following [tutorial] (http://yeoman.io/learning/index.html)
 
-Further explanations are provided below if needed
+Further explanations are provided below if needed.
 
-#Copying NodeJS
+##Copying NodeJS
 
 
-#Installing Yeoman
+##Installing Yeoman
 
 Open a console in the repository of the project
 >Windows 7
@@ -30,7 +30,7 @@ Open a console in the repository of the project
 ```
 ```
 
-#Launching the application
+##Launching the application
 Download this project 
 Open the console again
 Type the following command line: grunt serve
