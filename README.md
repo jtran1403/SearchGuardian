@@ -33,7 +33,7 @@ Open a console in the repository of the project
 ##Launching the application
 Download this project 
 Open the console again
-Type the following command line: grunt serve
+Type the following command line: `grunt serve`
 
 
 
