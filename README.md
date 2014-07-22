@@ -7,7 +7,8 @@ A privacy web application to improve your awareness of personal information avai
 
 #Installations required
 
-To be able to use this application, you will have to :
+To be able to use this application, you will have to:
+
 1. Install [Ruby and Compass] (http://rubyinstaller.org/downloads/) because the bootstrap I chose requires it
 2. Install [NodeJS] (http://nodejs.org/)
 3. Reboot your machine
