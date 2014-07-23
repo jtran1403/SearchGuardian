@@ -1,25 +1,22 @@
-SearchGuardian
+Search Guardian
 ==============
 
-A privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully.
+The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces greatly the risk of invasions of privacy and of putting yourself in a delicate situation.
 
 The sections below describes the technology needed to use it and the functionalities contained in the web application.
 
 #First steps to the SearchGuardian
 ##Requirements
+
 To be able to use this application, you will have to:
 
-1. Install [Ruby and Compass] (http://rubyinstaller.org/downloads/) because the bootstrap I chose requires it
+1. Install [Ruby and Compass] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
 2. Install [NodeJS] (http://nodejs.org/)
-3. Reboot your machine
+3. Reboot your machine to finish the installation for NodeJS
 4. Create a repository for the project in your machine (e.g. "SearchGuardian" in your "Documents" folder)
-5. Copy the following folders in the repository created previously to be able to use npm command lines
-6. Install Yeoman with the following [tutorial] (http://yeoman.io/learning/index.html)
+5. Install Yeoman with the following [tutorial] (http://yeoman.io/learning/index.html)
 
 Further explanations are provided below if needed.
-
-##Copying NodeJS
-
 
 ##Installing Yeoman
 
@@ -31,14 +28,14 @@ Open a console in the repository of the project
 ```
 
 ##Launching the application
-Download this project 
-Open the console again
-Type the following command line: `grunt serve`
 
+Now that you have Yeoman installed, you need to:
 
+1. Create a new project by typing the command line: `yo webapp`
+2. Implement the project (via Git or manually)
+3. Start the application by typing the command line: `grunt serve`
 
-When installed, you can try out the first functionalities implemented to this prototype.
-
+The application should start in your mains web browser and you can now try the first functionalities implemented for this prototype.
 
 #Functionalties of the application
 ##Facebook features
