@@ -1,9 +1,9 @@
 Search Guardian
 ==============
 
-The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces greatly the risk of invasions of privacy and of putting yourself in a delicate situation.
+The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces significantly the risk of privacy incidents and of putting yourself in a delicate situation.
 
-The sections below describes the technology needed to use it and the functionalities contained in the web application.
+The guidelines for users are provided below so that anybody can test the application. 
 
 #First steps to the SearchGuardian
 ##Requirements
@@ -12,37 +12,47 @@ To be able to use this application, you will have to:
 
 1. Install [Ruby and Compass] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
 2. Install [NodeJS] (http://nodejs.org/)
-3. Reboot your machine to finish the installation for NodeJS
-4. Create a repository for the project in your machine (e.g. "SearchGuardian" in your "Documents" folder)
+3. Reboot your machine to finish both installations properly
 5. Install Yeoman with the following [tutorial] (http://yeoman.io/learning/index.html)
 
-Further explanations are provided below if needed.
+Further explanations for this last step are provided below if needed.
 
 ##Installing Yeoman
 
-Open a console in the repository of the project
->Windows 7
->Windows 8
->Linux
-```
-```
+1. Open a console
+2. Type the command line : `npm install -g yo`
+
 
 ##Launching the application
 
 Now that you have Yeoman installed, you need to:
 
-1. Create a new project by typing the command line: `yo webapp`
-2. Implement the project (via Git or manually)
-3. Start the application by typing the command line: `grunt serve`
+1. Open a console and go to the repository where you want to create the folder for the project (e.g. in your "Documents" folder)
+2. Create the new folder with the following commandliens
+```sh
+mkdir searchguardian-project
+cd searchguardian-project
+```
+2. Install the web application generator by typing the command line: `npm install -g generator-webapp`
+3. Create a new project by typing the command line: `yo webapp`
+4. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default) 
+5. Implement the project (via [Git](http://git-scm.com/downloads) or manually)
+6. Start the application by typing the command line: `grunt serve`
 
 The application should start in your mains web browser and you can now try the first functionalities implemented for this prototype.
 
 #Functionalties of the application
 ##Facebook features
 ###Log in Facebook  
-  Click on the Log in button and log on Facebook.
-  If it doesn't work, it may be because you are already logged in, so refresh the page if you are blocked and try to log in again.
-  The first time you will try this application, it will ask you permission to access informations available in your Facebook account, accept the conditions.
+
+Click on the Log in button and log on Facebook.
+
+If it doesn't appear, it may be because:
+  - You are already logged in and this caused a problem, so refresh the page.
+  - One of your plugin may be blocking the scripts
+  - You might have unactivated Javascript
+
+_Note: The first time you will try this application on your machine, it will ask you the permission to access informations available in your Facebook account, accept the conditions._
 
 ###Your personal profile
   The application will return you most of your personal information, check if they are correct. In this section, the web application will retrieve the information even if you set that information as a private one in your account since you just gave it access. More information could be returned and if pertinent, do tell me in the suggestions, the modifications are simple. 
