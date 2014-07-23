@@ -8,10 +8,11 @@ The guidelines for users are provided below so that anybody can test the applica
 #First steps to the SearchGuardian
 ##Requirements
 To be able to use this application, you will have to:
-1. Install [*Ruby and Compass*] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
-2. Install [*NodeJS*] (http://nodejs.org/)
-3. *Reboot* your machine to finish both installations properly
-4. Install *Yeoman* with the following [tutorial] (http://yeoman.io/learning/index.html)
+
+1. Install [**Ruby and Compass**] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
+2. Install [**NodeJS**] (http://nodejs.org/)
+3. **Reboot** your machine to finish both installations properly
+4. Install **Yeoman** with the following [tutorial] (http://yeoman.io/learning/index.html)
 Further explanations for this last step are provided below if needed.
 
 ##Installing Yeoman
