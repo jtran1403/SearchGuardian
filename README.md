@@ -7,28 +7,23 @@ The guidelines for users are provided below so that anybody can test the applica
 
 #First steps to the SearchGuardian
 ##Requirements
-
 To be able to use this application, you will have to:
-
 1. Install [Ruby and Compass] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
 2. Install [NodeJS] (http://nodejs.org/)
 3. Reboot your machine to finish both installations properly
 5. Install Yeoman with the following [tutorial] (http://yeoman.io/learning/index.html)
-
 Further explanations for this last step are provided below if needed.
 
 ##Installing Yeoman
-
 1. Open a console
 2. Type the command line : `npm install -g yo`
-
 
 ##Launching the application
 
 Now that you have Yeoman installed, you need to:
 
 1. Open a console and go to the repository where you want to create the folder for the project (e.g. in your "Documents" folder)
-2. Create the new folder with the following commandliens
+2. Create the new folder with the following command lines
 ```sh
 mkdir searchguardian-project
 cd searchguardian-project
@@ -38,15 +33,12 @@ cd searchguardian-project
 4. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default) 
 5. Implement the project (via [Git](http://git-scm.com/downloads) or manually)
 6. Start the application by typing the command line: `grunt serve`
-
 The application should start in your mains web browser and you can now try the first functionalities implemented for this prototype.
 
 #Functionalties of the application
 ##Facebook features
 ###Log in Facebook  
-
 Click on the Log in button and log on Facebook.
-
 If it doesn't appear, it may be because:
   - You are already logged in and this caused a problem, so refresh the page.
   - One of your plugin may be blocking the scripts
@@ -65,10 +57,8 @@ _Note: The first time you will try this application on your machine, it will ask
 
 
 ##LinkedIn features
-
   LinkedInAPI only allows us to read information and it is very limited, thus you can only logged in LinkedIn and see what it returns to you.
 
 ##Search engines
-
   Google: Search yourself on the web and see if one of the websites registered to the Google search engine I implemented can find you. Check by yourself then on the website 
 
