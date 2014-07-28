@@ -326,8 +326,8 @@
     function getImageData(img, callback) {
         function handleBinaryFile(binFile) {
             var data = findEXIFinJPEG(binFile);
-            //console.log(data);
             var iptcdata = findIPTCinJPEG(binFile);
+            //NoEXIF(data, iptcdata);
             img.exifdata = data || {};
             img.iptcdata = iptcdata || {};
             if (callback) {
@@ -335,11 +335,18 @@
             }
         }
 
+        /*function NoEXIF (data)
+        {
+            console.log(data);
+            console.log(img);
+        }*/
+
         if (img instanceof Image || img instanceof HTMLImageElement) {
             if (/^data\:/i.test(img.src)) { // Data URI
                 //console.log('1');
                 var arrayBuffer = base64ToArrayBuffer(img.src);
                 handleBinaryFile(arrayBuffer);
+
 
             } else if (/^blob\:/i.test(img.src)) { // Object URL
                 //console.log('2');
@@ -481,6 +488,7 @@
         0x74 : 'copyright',
         0x0F : 'category'
     };
+
     function readIPTCData(file, startOffset, sectionLength){
         var dataView = new DataView(file);
         var data = {};
@@ -668,8 +676,7 @@
         }
 
         tags = readTags(file, tiffOffset, tiffOffset + firstIFDOffset, TiffTags, bigEnd);
-        console.log(tags);
-        
+        //console.log(tags);
         if (tags.ExifIFDPointer) {
             exifData = readTags(file, tiffOffset, tiffOffset + tags.ExifIFDPointer, ExifTags, bigEnd);
             for (tag in exifData) {
@@ -747,7 +754,7 @@
     function getData(img, callback) {
         if ((img instanceof Image || img instanceof HTMLImageElement) && !img.complete) return false;
 
-        //if (!imageHasData(img) || tmp != img) {
+        //if (!imageHasData(img)) {
         //    console.log('2');
             getImageData(img, callback);
         /*    

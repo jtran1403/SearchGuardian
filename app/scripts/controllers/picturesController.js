@@ -4,10 +4,11 @@ var PictureController = angular.module('PictureController', []);
 
 PictureController.directive('fileDropzone', function() {
   return {
-    restrict: 'A',
+    restrict: 'AE',
     scope: {
       file: '=',
-      fileName: '='
+      fileName: '=',
+      file2:'='
     },
     link: function(scope, element, attrs) {
       var checkSize, isTypeValid, processDragOverOrEnter, validMimeTypes;
@@ -52,7 +53,6 @@ PictureController.directive('fileDropzone', function() {
           if (checkSize(size) && isTypeValid(type)) {
             return scope.$apply(function() {
               scope.file = evt.target.result;
-              //console.log(size);
               if (angular.isString(scope.fileName)) {
                 return scope.fileName = name;
               }
@@ -62,8 +62,8 @@ PictureController.directive('fileDropzone', function() {
         file = event.originalEvent.dataTransfer.files[0];
         name = file.name;
         type = file.type;
-        size = file.size;
-        reader.readAsDataURL(file);
+        size = file.size;     
+        reader.readAsDataURL(file);  
         return false;
       });
     }
@@ -73,19 +73,6 @@ PictureController.directive('fileDropzone', function() {
 PictureController.controller('PicturesCtrl', function ($scope) {
     $scope.image = null;
     $scope.imageFileName = '';
-
-    /*$scope.file = {};
-    $scope.exifData = '';
-
-    $scope.emptyEXIF = function(){
-      $scope.exifData = '';
-      //alert('hi');
-    };
-    
-    $scope.analyzeEXIF = function(){
-        EXIF.getData(this, function() {
-        alert(EXIF.pretty(this));
-      });
-    };*/
+    $scope.removedEXIF = false;
 });
 
