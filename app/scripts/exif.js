@@ -1,5 +1,5 @@
 
-    var debug = true;
+    var debug = false;
 
     var ExifTags = {
 
@@ -336,12 +336,13 @@
         }
 
         if (img instanceof Image || img instanceof HTMLImageElement) {
-            console.log("ozqsd,om,kxl");
             if (/^data\:/i.test(img.src)) { // Data URI
+                //console.log('1');
                 var arrayBuffer = base64ToArrayBuffer(img.src);
                 handleBinaryFile(arrayBuffer);
 
             } else if (/^blob\:/i.test(img.src)) { // Object URL
+                //console.log('2');
                 var fileReader = new FileReader();
                 fileReader.onload = function(e) {
                     handleBinaryFile(e.target.result);
@@ -350,6 +351,7 @@
                     fileReader.readAsArrayBuffer(blob);
                 });
             } else {
+                //console.log('3');
                 var http = new XMLHttpRequest();
                 http.onload = function() {
                     if (http.status == "200") {
@@ -365,6 +367,7 @@
             }
         } else if (window.FileReader && (img instanceof window.Blob || img instanceof window.File)) {
             var fileReader = new FileReader();
+            //console.log('4');
             fileReader.onload = function(e) {
                 if (debug) console.log("Got file of length " + e.target.result.byteLength);
                 handleBinaryFile(e.target.result);
@@ -665,7 +668,8 @@
         }
 
         tags = readTags(file, tiffOffset, tiffOffset + firstIFDOffset, TiffTags, bigEnd);
-
+        console.log(tags);
+        
         if (tags.ExifIFDPointer) {
             exifData = readTags(file, tiffOffset, tiffOffset + tags.ExifIFDPointer, ExifTags, bigEnd);
             for (tag in exifData) {
@@ -714,6 +718,22 @@
                             "." + gpsData[tag][1] +
                             "." + gpsData[tag][2] +
                             "." + gpsData[tag][3];
+                        break;
+
+                    case "GPSLatitude":
+                        gpsData[tag] = gpsData[tag][0] + 
+                        " " + gpsData[tag][1];
+                        break;
+
+                    case "GPSLongitude":
+                        gpsData[tag] = gpsData[tag][0] + 
+                        " " + gpsData[tag][1];
+                        break;
+
+                    case "GPSTimeStamp":
+                        gpsData[tag] = gpsData[tag][0] + 
+                        " " + gpsData[tag][1] +
+                        " " + gpsData[tag][2];
                         break;
                 }
                 tags[tag] = gpsData[tag];
@@ -766,16 +786,16 @@
             if (data.hasOwnProperty(a)) {
                 if (typeof data[a] == "object") {
                     if (data[a] instanceof Number) {
-                        strPretty += a + " : " + data[a] + " [" + data[a].numerator + "/" + data[a].denominator + "]\r\n";
+                        strPretty += a + " : " + data[a] + " [" + data[a].numerator + "/" + data[a].denominator + "]<br>";
                     } else {
-                        strPretty += a + " : [" + data[a].length + " values]\r\n";
+                        strPretty += a + " : [" + data[a].length + " values]<br>";
                     }
                 } else {
-                    strPretty += a + " : " + data[a] + "\r\n";
+                    strPretty += a + " : " + data[a] + "<br>";
                 }
             }
         }
-        console.log('pretty'+strPretty  );
+        //console.log('pretty'+strPretty  );
         return strPretty;
     }
 
