@@ -8,7 +8,8 @@ var searchGuardianApp = angular.module('searchGuardianApp',[
     'mainController',
     'googleControllers',
     'LinkedInControllers',
-    'FacebookControllers'
+    'FacebookControllers',
+    'PictureController'
   ]);
 
 searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
@@ -26,15 +27,19 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
         templateUrl: 'views/documentation.html',
         controller: 'MainCtrl'  //angular.noop
       })
-      .when('/user-info', {
-        templateUrl: 'views/user-info.html',
-        controller: 'GoogleCtrl'
+      .when('/pictures', {
+        templateUrl: 'views/pictures.html',
+        controller: 'PicturesCtrl'
       })
-      .when('/targets/Facebook', {
+      .when('/Facebook', {
         templateUrl: 'views/facebook.html',
         controller: 'FbCtrl'
       })
-      .when('/targets/LinkedIn', {
+      .when('/Google', {
+        templateUrl: 'views/google.html',
+        controller: 'GoogleCtrl'
+      })
+      .when('/LinkedIn', {
         templateUrl: 'views/linkedin.html',
         controller:'LiCtrl'
       })

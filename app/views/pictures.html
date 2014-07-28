@@ -1,0 +1,19 @@
+<ng:include src="'views/header.html'"></ng:include>
+
+<div class="dropzone" draggable="true" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
+	<span>Drop Image (.png, .jpeg, .gif)</span>
+</div>
+
+<div class="image-container">
+	<span ng-show="image">Filename: {{imageFileName}}</span>
+	<img id="imageDragged" ng-src={{image}} />
+	<span id="exif"></span>
+</div>	
+
+<script>
+	document.getElementById("imageDragged").onload = function(){
+		getData(this, function() {
+			document.getElementById("exif").innerHTML = pretty(this);
+	    });		
+	};
+</script>

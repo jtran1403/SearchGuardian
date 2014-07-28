@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles/user_profile.css">
     <link rel="stylesheet" href="styles/tables.css">
     <link rel="stylesheet" href="styles/result_display.css">
-
+    <link rel="stylesheet" href="styles/drop_pictures.css">
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -33,11 +33,11 @@
 
     <!-- Google scripts -->
     <script src="scripts/controllers/googleController.js"></script>
-    <script src="scripts/google/google.js"></script>
+    <script src="scripts/google.js"></script>
 
     <!-- Facebook scripts-->
     <script src="scripts/controllers/facebookController.js"></script>
-    <script src="scripts/facebook/facebook.js"></script>
+    <script src="scripts/facebook.js"></script>
 
     <!-- LinkedIn scripts -->
     <script type="text/javascript" src="http://platform.linkedin.com/in.js">
@@ -47,10 +47,11 @@
         authorize: true
     </script>
     <script src="scripts/controllers/linkedinController.js"></script>
-    <script src="scripts/linkedin/linkedin.js"></script>
+    <script src="scripts/linkedin.js"></script>
 
-
-
+    <!-- Pictures management -->
+    <script src="scripts/controllers/picturesController.js"></script>
+    <script src="scripts/exif.js"></script>
 
   </head>
   <body ng-app="searchGuardianApp">
