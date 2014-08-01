@@ -9,6 +9,7 @@ var options = {};
 /**
  * googleplus module
  */
+ 
 angular.module('googleplus', []).provider('GooglePlus', [ function() {
     /**
      * clientId

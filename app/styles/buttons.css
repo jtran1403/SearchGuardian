@@ -3,7 +3,6 @@
     padding: 7px;
 }
 
-
 .btns{
     -moz-user-select: none;
     background-color: #F8F8F8;
@@ -95,4 +94,10 @@ li {
 * {
   -moz-box-sizing: border-box;
   box-sizing: content-box;
+}
+
+.hint{
+    height:40px;
+    width:40px;
+    margin-left:25px;
 }

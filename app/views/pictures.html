@@ -6,47 +6,39 @@
 </div>
 
 <div>
-	<span>
-		<select ng-model="removedEXIF">
-			<option value="false" ng-selected = "!removedEXIF"> Your picture </option>
-			<option value="true" ng-disabled ="!image"> Picture without EXIF data </option>
+	<p>
+		<select ng-model="removedEXIF" class="dropdown_list">
+			<option value="false" ng-selected = "!removedEXIF"> Drag and drop your picture </option>
+			<option value="true" ng-disabled ="!image"> Generate a new picture without geolocation </option>
 		</select>
-	</span><br/>
+	</p>
 </div>
 
 <div ng-hide = "removedEXIF" class="image-container">
 	<span ng-show="image">Filename: {{imageFileName}}</span><br/>
 	<img id="imageDragged" ng-src={{image}} />
+
+
 	<span id="exif"></span>
 </div>	
 
 <div ng-show = "removedEXIF">
 	<textarea id="textarea" style="width:100%; height:300px"></textarea>
-	<input id="download" type="button" value="Download">
+	<img id="newImage" style="width:200px; height:200px"></span>
+	<input ng-model="pictureTitle"</input>
+	<a id="downloadLink" href="" download="{{pictureTitle}}"> Download the new image</a>
 </div>
 
-
 <script>
+
 	document.getElementById("imageDragged").onload = function(){
-		getData(this, function() {
+		var base64 = getData(this, function() {
 			document.getElementById("exif").innerHTML = pretty(this);
-			document.getElementById("textarea").value = document.getElementById("exif").value;
 	    });		
+	    document.getElementById("textarea").value = convertedCode;
+		document.getElementById("newImage").src = convertedCode;
+		document.getElementById("downloadLink").href = convertedCode;
 	};
-
-(function (view){
-	document = view.document;
-	document.getElementById('download').onclick = function(){
-		get_blob = function() {
-		return view.Blob;
-	}
-	var tmp = document.getElementById("textarea").value;
-	var bb = get_blob();
-	var blob = new bb([tmp], {type: "text/plain;charset=" + document.characterSet});
-	saveAs(blob, "test.txt");
-	}
-}(self));
-
 </script>
 
 

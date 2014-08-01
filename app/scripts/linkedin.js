@@ -1,10 +1,12 @@
+'use strict';
+
 //LinkedIn functions
 //Execute on load profile
 function onLinkedInLoad() {
-  IN.Event.on(IN, "auth", function() {
+  IN.Event.on(IN, 'auth', function() {
     onLinkedInLogin();
   });
-    IN.Event.on(IN, "logout", function() {
+    IN.Event.on(IN, 'logout', function() {
     onLinkedInLogout();
   });
 }
@@ -22,6 +24,6 @@ function onLinkedInLogin() {
       function($scope) {
         $scope.getLinkedInData();
       }
-    );  
+    );
   }
 }

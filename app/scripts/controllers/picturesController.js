@@ -59,6 +59,7 @@ PictureController.directive('fileDropzone', function() {
             });
           }
         };
+        
         file = event.originalEvent.dataTransfer.files[0];
         name = file.name;
         type = file.type;
@@ -74,5 +75,7 @@ PictureController.controller('PicturesCtrl', function ($scope) {
     $scope.image = null;
     $scope.imageFileName = '';
     $scope.removedEXIF = false;
+    $scope.pictureTitle='download.jpg';
+    $scope.pictureFormat='jpeg';
 });
 

@@ -1,5 +1,9 @@
+'use strict';
 
     var debug = false;
+    var convertedCode = '';
+    var removeGPSdata = true;
+    var tagList = [];
 
     var ExifTags = {
 
@@ -301,14 +305,53 @@
     function base64ToArrayBuffer(base64, contentType) {
         contentType = contentType || base64.match(/^data\:([^\;]+)\;base64,/mi)[1] || ''; // e.g. 'data:image/jpeg;base64,...' => 'image/jpeg'
         base64 = base64.replace(/^data\:([^\;]+)\;base64,/gmi, '');
+        //console.log(base64);
         var binary = atob(base64);
+        //console.log(binary);
         var len = binary.length;
         var buffer = new ArrayBuffer(len);
+
         var view = new Uint8Array(buffer);
         for (var i = 0; i < len; i++) {
             view[i] = binary.charCodeAt(i);
         }
+        //console.log(view);
         return buffer;
+    }
+
+    function base64ToArrayBufferWithoutTags(base64, contentType) {
+        contentType = contentType || base64.match(/^data\:([^\;]+)\;base64,/mi)[1] || ''; // e.g. 'data:image/jpeg;base64,...' => 'image/jpeg'
+        base64 = base64.replace(/^data\:([^\;]+)\;base64,/gmi, '');
+        var binary = atob(base64);
+        //console.log(binary);
+        var len = binary.length;
+        var buffer2 = new ArrayBuffer(len);
+        var view2 = new Uint8Array(buffer2);
+        for (var i = 0; i < len; i++) {
+            view2[i] = binary.charCodeAt(i);
+        }
+        for(var j = 0; j < tagList.length; j++){
+            for (var k = 0; k < 12 ; k++)
+            {
+            view2[tagList[j]+k] = 0;
+            //console.log(tagList[j]+k + ">>>" + view2[tagList[j]+k]);
+            }
+        }
+        //console.log(view2);
+        return view2;
+        //return buffer2;
+    }
+
+    function reconstructPicture(arrayNoTags){
+        var binaryCode = ''; 
+        //console.log(arrayNoTags.length);
+        for (var i = 0; i < arrayNoTags.length; i++) {
+            binaryCode += String.fromCharCode(arrayNoTags[i]);
+        }
+        //console.log(binaryCode);
+        convertedCode = "data:image/jpeg;base64,";
+        convertedCode += btoa(binaryCode);
+        return convertedCode;
     }
 
     function objectURLToBlob(url, callback) {
@@ -324,10 +367,13 @@
     }
 
     function getImageData(img, callback) {
+
         function handleBinaryFile(binFile) {
+            
             var data = findEXIFinJPEG(binFile);
+            //var dataTmp = findEXIFinJPEG(binFile);
             var iptcdata = findIPTCinJPEG(binFile);
-            //NoEXIF(data, iptcdata);
+            //var base64Picture = ArrayBufferTobase64(dataTmp);
             img.exifdata = data || {};
             img.iptcdata = iptcdata || {};
             if (callback) {
@@ -335,18 +381,31 @@
             }
         }
 
-        /*function NoEXIF (data)
-        {
-            console.log(data);
-            console.log(img);
-        }*/
-
         if (img instanceof Image || img instanceof HTMLImageElement) {
             if (/^data\:/i.test(img.src)) { // Data URI
                 //console.log('1');
+                //transform base64 data into an array
                 var arrayBuffer = base64ToArrayBuffer(img.src);
+
+                /*find exif data in the picture and display it 
+                + prepare tagList (table containing the position 
+                of the information which is going to be removed)*/
+                //console.log(tagList);
                 handleBinaryFile(arrayBuffer);
 
+                //generate a new picture without the GPS data
+                removeGPSdata = false;
+
+                //transform initial base64 data into an array but removing data from tagList
+                var arrayNoTags = base64ToArrayBufferWithoutTags(img.src);
+                //findEXIFinJPEG(arrayBufferNoTags);
+                //confirm information has been removed
+                //handleBinaryFile(arrayBufferNoTags);
+
+                //reconstruct the picture without the new array
+                var base64 = reconstructPicture(arrayNoTags);
+                //console.log(base64);
+                return base64;
 
             } else if (/^blob\:/i.test(img.src)) { // Object URL
                 //console.log('2');
@@ -385,24 +444,28 @@
     }
 
     function findEXIFinJPEG(file) {
+
         var dataView = new DataView(file);
         if (debug) console.log("1: Got file of length " + file.byteLength);
         if ((dataView.getUint8(0) != 0xFF) || (dataView.getUint8(1) != 0xD8)) {
             if (debug) console.log("Not a valid JPEG");
             return false; // not a valid jpeg
         }
-
         var offset = 2,
             length = file.byteLength,
             marker;
-
+            /*
+            console.log("0 ="  + dataView.getUint16(0)) ; 
+            console.log("1 ="  +dataView.getUint16(1)) ; 
+            console.log("22 ="  +dataView.getUint16(22)) ; 
+            */
         while (offset < length) {
             if (dataView.getUint8(offset) != 0xFF) {
                 if (debug) console.log("Not a valid marker at offset " + offset + ", found: " + dataView.getUint8(offset));
                 return false; // not a valid marker, something is wrong
             }
 
-            marker = dataView.getUint8(offset + 1);
+            marker = dataView.getUint8(offset + 1);                 //view[3] = 225
             if (debug) console.log(marker);
 
             // we could implement handling for other markers here, 
@@ -411,7 +474,7 @@
             if (marker == 225) {
                 if (debug) console.log("Found 0xFFE1 marker");
                 
-                return readEXIFData(dataView, offset + 4, dataView.getUint16(offset + 2) - 2);
+                return readEXIFData(dataView, offset + 4);    //offset = 6
                 
                 // offset += 2 + file.getShortAt(offset+2, true);
 
@@ -523,23 +586,31 @@
         return data;
     }
     
-    
-
-    function readTags(file, tiffStart, dirStart, strings, bigEnd) {
+/*
+        console.log("tiffOffset: "+ tiffOffset)                 //12
+        console.log("firstIFDOffset: "+ firstIFDOffset)         //8
+*/
+    function readTags(file, tiffStart, dirStart, strings, bigEnd, collectTagsPosition) {
         var entries = file.getUint16(dirStart, !bigEnd),
             tags = {}, 
             entryOffset, tag,
             i;
-            
+
         for (i=0;i<entries;i++) {
-            entryOffset = dirStart + i*12 + 2;
+            entryOffset = dirStart + i*12 + 2; 
             tag = strings[file.getUint16(entryOffset, !bigEnd)];
-            if (!tag && debug) console.log("Unknown tag: " + file.getUint16(entryOffset, !bigEnd));
-            tags[tag] = readTagValue(file, entryOffset, tiffStart, dirStart, bigEnd);
+            
+            if (typeof tag != 'undefined'){
+                if(tag.indexOf('GPS') > -1) {
+                    tagList.push(entryOffset);
+                }
+                //console.log("entryOffset: "+ entryOffset + " > " + file.getUint16(entryOffset, bigEnd) + " = " + tag) ;
+                if (!tag && debug) console.log("Unknown tag: " + file.getUint16(entryOffset, !bigEnd));
+                tags[tag] = readTagValue(file, entryOffset, tiffStart, dirStart, bigEnd);
+            }
         }
         return tags;
     }
-
 
     function readTagValue(file, entryOffset, tiffStart, dirStart, bigEnd) {
         var type = file.getUint16(entryOffset+2, !bigEnd),
@@ -643,7 +714,7 @@
     }
     
     function readEXIFData(file, start) {
-        if (getStringFromDB(file, start, 4) != "Exif") {
+        if (getStringFromDB(file, start, 4) != "Exif") {        //start = 6
             if (debug) console.log("Not valid EXIF data! " + getStringFromDB(file, start, 4));
             return false;
         }
@@ -651,7 +722,7 @@
         var bigEnd,
             tags, tag,
             exifData, gpsData,
-            tiffOffset = start + 6;
+            tiffOffset = start + 6;                              //tiffoffset = 12    
 
         // test for TIFF validity and endianness
         if (file.getUint16(tiffOffset) == 0x4949) {
@@ -669,16 +740,18 @@
         }
 
         var firstIFDOffset = file.getUint32(tiffOffset+4, !bigEnd);
-
         if (firstIFDOffset < 0x00000008) {
             if (debug) console.log("Not valid TIFF data! (First offset less than 8)", file.getUint32(tiffOffset+4, !bigEnd));
             return false;
         }
 
-        tags = readTags(file, tiffOffset, tiffOffset + firstIFDOffset, TiffTags, bigEnd);
-        //console.log(tags);
+        //console.log("tiffOffset: "+ tiffOffset)   ;              //12
+        //console.log("firstIFDOffset: "+ firstIFDOffset)     ;    //8
+        var collectTagsPosition = false;
+        tags = readTags(file, tiffOffset, tiffOffset + firstIFDOffset, TiffTags, bigEnd, collectTagsPosition);
+
         if (tags.ExifIFDPointer) {
-            exifData = readTags(file, tiffOffset, tiffOffset + tags.ExifIFDPointer, ExifTags, bigEnd);
+            exifData = readTags(file, tiffOffset, tiffOffset + tags.ExifIFDPointer, ExifTags, bigEnd, collectTagsPosition);
             for (tag in exifData) {
                 switch (tag) {
                     case "LightSource" :
@@ -717,36 +790,49 @@
         }
 
         if (tags.GPSInfoIFDPointer) {
-            gpsData = readTags(file, tiffOffset, tiffOffset + tags.GPSInfoIFDPointer, GPSTags, bigEnd);
+            if(removeGPSdata){
+                collectTagsPosition = true;
+                //console.log(tags.GPSInfoIFDPointer);
+                //tagList.push(tags.GPSInfoIFDPointer);
+            gpsData = readTags(file, tiffOffset, tiffOffset + tags.GPSInfoIFDPointer, GPSTags, bigEnd, collectTagsPosition);
             for (tag in gpsData) {
                 switch (tag) {
                     case "GPSVersionID" : 
+                        if (typeof gpsData[tag] != 'undefined'){
                         gpsData[tag] = gpsData[tag][0] +
                             "." + gpsData[tag][1] +
                             "." + gpsData[tag][2] +
                             "." + gpsData[tag][3];
+                        }
                         break;
 
                     case "GPSLatitude":
+                        if (typeof gpsData[tag] != 'undefined'){
                         gpsData[tag] = gpsData[tag][0] + 
                         " " + gpsData[tag][1];
+                        }
                         break;
 
                     case "GPSLongitude":
+                        if (typeof gpsData[tag] != 'undefined'){
                         gpsData[tag] = gpsData[tag][0] + 
                         " " + gpsData[tag][1];
+                        }
                         break;
 
                     case "GPSTimeStamp":
+                        if (typeof gpsData[tag] != 'undefined'){
                         gpsData[tag] = gpsData[tag][0] + 
                         " " + gpsData[tag][1] +
                         " " + gpsData[tag][2];
+                        }
                         break;
                 }
                 tags[tag] = gpsData[tag];
+                }
             }
         }
-
+        //console.log(tags);
         return tags;
     }
 
@@ -802,7 +888,6 @@
                 }
             }
         }
-        //console.log('pretty'+strPretty  );
         return strPretty;
     }
 

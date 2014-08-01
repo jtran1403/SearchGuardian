@@ -10,6 +10,7 @@
  *
  * 9/8/13 10:25 PM
  */
+'use strict';
 
 angular.module('ngFacebook', [])
   .provider('$facebook', function() {
