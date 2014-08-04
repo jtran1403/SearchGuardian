@@ -74,4 +74,6 @@ _Note: You can test the privacy of your comment by opening a different web brows
 
 ##Search engines
   Google: Search yourself on the web and see if one of the websites registered to the Google search engine I implemented can find you. Check by yourself then on the website 
-
+  
+##EXIF data in pictures
+The page accessed by the button entitled "Geolocation&pictures" enables the user to view the EXIF data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also generate this very same picture but without the GPS data contained in the EXIF data. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
