@@ -8,7 +8,6 @@ The guidelines for users are provided below so that anybody can test the applica
 #First steps to the SearchGuardian
 ##Requirements
 To be able to use this application, you will have to:
-
 1. Install [**Ruby and Compass**] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
 2. Install [**NodeJS**] (http://nodejs.org/)
 3. **Reboot** your machine to finish both installations properly
@@ -23,17 +22,21 @@ Further explanations for this last step are provided below if needed.
 
 If you have not done that already:
 1. Open a console and go to the repository where you want to create the folder for the project (e.g. in your "Documents" folder)
-2. Create the new folder and move on to that location. Example by command lines:
+2. Create the new folder and move on to that location. 
+
+Example by command lines:
 ```sh
 mkdir searchguardian-project
 cd searchguardian-project
 ```
+
 Once you are in the chosen repository, you need to:
 1. Install the web application generator by typing the command line: `npm install -g generator-webapp`
 2. Create a new project by typing the command line: `yo webapp`
 3. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default)
 4. Implement the project (via [Git](http://git-scm.com/downloads) or by copying the files manually)
 5. Start the application by typing the command line: `grunt serve`
+
 The application should start in your main web browser and you are now ready to try the first functionalities implemented for this prototype.
 
 #Functionalties of the application
