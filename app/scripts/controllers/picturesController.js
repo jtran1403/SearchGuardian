@@ -7,8 +7,7 @@ PictureController.directive('fileDropzone', function() {
     restrict: 'AE',
     scope: {
       file: '=',
-      fileName: '=',
-      file2:'='
+      fileName: '='
     },
     link: function(scope, element, attrs) {
       var checkSize, isTypeValid, processDragOverOrEnter, validMimeTypes;
