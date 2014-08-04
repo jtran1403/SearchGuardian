@@ -8,10 +8,12 @@ The guidelines for users are provided below so that anybody can test the applica
 #First steps to the SearchGuardian
 ##Requirements
 To be able to use this application, you will have to:
+
 1. Install [**Ruby and Compass**] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
 2. Install [**NodeJS**] (http://nodejs.org/)
 3. **Reboot** your machine to finish both installations properly
-4. Install **Yeoman** with the following [tutorial] (http://yeoman.io/learning/index.html)
+4.  Install **Yeoman** with the following [tutorial] (http://yeoman.io/learning/index.html)
+
 Further explanations for this last step are provided below if needed.
 
 ##Installing Yeoman
@@ -21,6 +23,7 @@ Further explanations for this last step are provided below if needed.
 ##Launching the application
 
 If you have not done that already:
+
 1. Open a console and go to the repository where you want to create the folder for the project (e.g. in your "Documents" folder)
 2. Create the new folder and move on to that location. 
 
@@ -31,6 +34,7 @@ cd searchguardian-project
 ```
 
 Once you are in the chosen repository, you need to:
+
 1. Install the web application generator by typing the command line: `npm install -g generator-webapp`
 2. Create a new project by typing the command line: `yo webapp`
 3. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default)
