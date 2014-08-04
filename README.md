@@ -21,19 +21,19 @@ Further explanations for this last step are provided below if needed.
 
 ##Launching the application
 
-Now that you have Yeoman installed, you need to:
-
+If you have not done that already:
 1. Open a console and go to the repository where you want to create the folder for the project (e.g. in your "Documents" folder)
-2. Create the new folder with the following command lines
+2. Create the new folder and move on to that location. Example by command lines:
 ```sh
 mkdir searchguardian-project
 cd searchguardian-project
 ```
-3. Install the web application generator by typing the command line: `npm install -g generator-webapp`
-4. Create a new project by typing the command line: `yo webapp`
-5. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default)
-6. Implement the project (via [Git](http://git-scm.com/downloads) or by copying the files manually)
-7. Start the application by typing the command line: `grunt serve`
+Once you are in the chosen repository, you need to:
+1. Install the web application generator by typing the command line: `npm install -g generator-webapp`
+2. Create a new project by typing the command line: `yo webapp`
+3. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default)
+4. Implement the project (via [Git](http://git-scm.com/downloads) or by copying the files manually)
+5. Start the application by typing the command line: `grunt serve`
 The application should start in your main web browser and you are now ready to try the first functionalities implemented for this prototype.
 
 #Functionalties of the application
