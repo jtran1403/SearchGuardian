@@ -68,12 +68,11 @@ You will notice some privacy parameter are returned as "", that is because graph
 
 _Note: You can test the privacy of your comment by opening a different web browser where you are not logged in Facebook and pasting the URL in the browser. You will see the post even though you are not logged in Facebook._
 
-
 ##LinkedIn features
-  LinkedInAPI only allows us to read information and it is very limited, thus you can only log in your LinkedIn account and see what it returns to you.
-
-##Search engines
-  Google: Search yourself on the web and see if one of the websites registered to the Google search engine I implemented can find you. Check by yourself then on the website 
+LinkedInAPI only allows us to read information and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted
   
 ##EXIF data in pictures
 The page accessed by the button entitled "Geolocation&pictures" enables the user to view the EXIF data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also generate this very same picture but without the GPS data contained in the EXIF data. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
+
+##Future search engine functionality
+A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.
