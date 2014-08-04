@@ -3,14 +3,21 @@
 <body>
     <div class="container">
         
-        <h3>{{status}}</h3>
-        <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn">
-            Logout
-        </button>
+        <!--h3>{{status}}</h3-->
+
+        <button type="button" ng-click="login()" ng-show="!isLoggedIn" class="btn btn-default navbar-btn"> Login </button>
+        <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="!isLoggedIn" ns-popover-template="templates/facebook/loginTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme">
+        </img>
+
+        <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn"> Logout </button>
+        <img src="images/hint_button_selfmade_JT.PNG" class="hint"
+            ng-show="isLoggedIn" ns-popover-template="templates/facebook/logoutTemplate.html"  ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|top">
+        </img>
 
         <div ng-show="isLoggedIn" id = "PersonalInformation">
-            <h2>Personal Information </h2>
-                <h4> Profile information </h4>
+            <h2>Personal Information          
+                <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/profileTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme"> </img></h2>
+                <h4> Profile information </h4> 
                 <table>
                     <td class="centeredObject">
                         <img ng-src="{{picture}}"/>
@@ -70,18 +77,18 @@
         <div ng-show="isLoggedIn" id="Albums">
             <h2> Publications </h2>
 
-            <div ng-show="isLoggedIn">
-                <!--No filter applied <input type="radio" ng-model="privacyFilterSet" ng-value="3" ng-init="checked=true" ng-change="filterChanged()"><br/> -->
+                <h4> Albums          
+                <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/albumsTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|top"> </img></h4>
+
                 Show publications available only to: <br/>
 
-                <!--label ng-repeat="i in [0,1,2,3]"><input type="radio" ng-value="i" ng-model="privacyFilterSet" ng-change="filterChanged()" > {{privacyFilter.value[i]}} </label-->
+                <!--label ng-repeat="i in [0,1,2,3]"><input type="radio" ng-value="i" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[i]}} </label-->
                 <label><input type="radio" ng-value="0" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[0]}}</label>                
                 <label><input type="radio" ng-value="1" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[1]}}</label>                
                 <label><input type="radio" ng-value="2" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[2]}}</label>           
-                <label><input type="radio" ng-value="3" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[3]}}</label>
-            </div>
+                <label><input type="radio" ng-value="3" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[3]}}</label>                
+                <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/filterTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|bottom"> </img></h4>
 
-                <h4> Albums </h4>
                 <table>
                     <tr>
                         <th>Album name</th>
@@ -90,7 +97,7 @@
                         <th>Created time</th>
                         <th>Link</th>
                     </tr>
-                    <tr ng-repeat="album in albums" ng-if="(privacyFilterSet == 3) || ((album.privacy == 'everyone') && (privacyFilterSet == 0)) || ((album.privacy == 'friends') && (privacyFilterSet == 1)) || ((album.privacy == 'custom') && (privacyFilterSet == 2))">
+                    <tr ng-repeat="album in albums" ng-if="(isLoggedIn) && ((privacyFilterSet == 3) || ((album.privacy == 'everyone') && (privacyFilterSet == 0)) || ((album.privacy == 'friends') && (privacyFilterSet == 1)) || ((album.privacy == 'custom') && (privacyFilterSet == 2)))">
                         <td class="centeredObject"><button ng-click="loadAlbum($index)" class="albumButton">{{album.name}}({{album.count}})</button></td>    
                         <td>{{album.description}}</td>
                         <td>{{album.privacy}}</td>
@@ -102,8 +109,9 @@
                 <div ng-show = "albumSelected">
 
                     Pictures of the album selected:
-                    <button type="button" ng-show="!isAlbum" ng-click="showAlbum()" class="btn btn-default navbar-btn"> Show album </button>
-                    <button type="button" ng-show="isAlbum" ng-click="closeAlbum()" class="btn btn-default navbar-btn"> Close album </button>
+                    <button type="button" ng-show="!isAlbum" ng-click="showAlbum()" class="btn btn-default navbar-btn"> Show album </button> <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="!isAlbum" ns-popover-template="templates/facebook/selectedAlbumTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|top"> </img>
+
+                    <button type="button" ng-show="isAlbum" ng-click="closeAlbum()" class="btn btn-default navbar-btn"> Close album </button><img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isAlbum" ns-popover-template="templates/facebook/selectedAlbumTemplate2.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|top"> </img>
                     
                     <div ng-show = "isAlbum"  class="scrollPictures">
                         <ul class = "ulScroll">
@@ -115,8 +123,9 @@
                 <h4> Feed (posts, shares, likes, etc.) </h4>
 
                     Show the content of your activity log:
-                    <button type="button" ng-show="!isFeed" ng-click="showFeed()" class="btn btn-default navbar-btn"> Show feed </button>
-                    <button type="button" ng-show="isFeed" ng-click="hideFeed()" class="btn btn-default navbar-btn"> Hide feed </button>
+                    <button type="button" ng-show="!isFeed" ng-click="showFeed()" class="btn btn-default navbar-btn"> Show feed</button><img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="!isFeed" ns-popover-template="templates/facebook/showFeedTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|top"></img>
+
+                    <button type="button" ng-show="isFeed" ng-click="hideFeed()" class="btn btn-default navbar-btn"> Hide feed </button><img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isFeed" ns-popover-template="templates/facebook/hideFeedTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|top"> </img>
                  
                     <div ng-show="isFeed" id = "PublicOnly2">
                         Show publications available only to: <br/>
@@ -125,6 +134,7 @@
                         <label><input type="radio" ng-value="2" ng-model="privacyFilterSet2" ng-change="feedFilterChanged()" > {{privacyFilter.value[2]}}</label>           
                         <label><input type="radio" ng-value="4" ng-model="privacyFilterSet2" ng-change="feedFilterChanged()" > {{privacyFilter.value[4]}}</label>                        
                         <label><input type="radio" ng-value="3" ng-model="privacyFilterSet2" ng-change="feedFilterChanged()" > {{privacyFilter.value[3]}}</label>
+                        <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isFeed" ns-popover-template="templates/facebook/filterTemplate2.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-hide-on-click="true" ns-popover-placement="right|bottom"></img></h4>
                     </div>
 
                     <div ng-show = "isFeed" ng-repeat="activity in feed" ng-if="(privacyFilterSet2 == 3) || ((activity.privacy.value == 'EVERYONE') && (privacyFilterSet2 == 0)) || ((activity.privacy.value == 'ALL_FRIENDS') && (privacyFilterSet2 == 1)) || ((activity.privacy.value == 'CUSTOM') && (privacyFilterSet2 == 2)) || ((activity.privacy.value == '') && (privacyFilterSet2 == 4)) ">
@@ -140,13 +150,13 @@
 <!--Same privacy setting as the wall, group or event of the original post and probably visible to everyone (see Facebook's privacy policy)-->
         </div>
 
-        <button type="button" ng-click="login()" ng-show="!isLoggedIn" class="btn btn-default navbar-btn">
-            Login
-        </button>
-        <img src="images/hint_button_selfmade_JT.PNG" class="hint"></img>
-        <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn">
-            Logout
-        </button>
+        <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn"> Logout </button>
+        <img src="images/hint_button_selfmade_JT.PNG" class="hint"
+            ng-show="isLoggedIn" ns-popover-template="templates/facebook/logoutTemplate.html"
+            ns-popover ns-popover-theme="ns-popover-tooltip-theme"
+            ns-popover-hide-on-click="true" ns-popover-placement="right|top">
+        </img>
+
     </div>
 
     <div id="fb-root">

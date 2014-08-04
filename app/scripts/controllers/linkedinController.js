@@ -47,4 +47,9 @@ LinkedInControllers.controller('LiCtrl', function LiCtrl($scope, $location, $roo
         delete $rootScope.userprofile;
         $rootScope.loggedUser = false;
     };
+
+    $scope.close = false;
+    $scope.closeTip = function(){
+      $scope.close = true;
+    }
 });

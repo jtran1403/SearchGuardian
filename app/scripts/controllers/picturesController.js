@@ -77,5 +77,11 @@ PictureController.controller('PicturesCtrl', function ($scope) {
     $scope.removedEXIF = false;
     $scope.pictureTitle='download.jpg';
     $scope.pictureFormat='jpeg';
+
+    $scope.close = false;
+    $scope.closeTip = function(){
+      $scope.close = true;
+    }
+
 });
 

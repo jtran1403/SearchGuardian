@@ -380,7 +380,7 @@
                 callback.call(img);
             }
         }
-
+        removeGPSdata = true;
         if (img instanceof Image || img instanceof HTMLImageElement) {
             if (/^data\:/i.test(img.src)) { // Data URI
                 //console.log('1');
@@ -707,7 +707,7 @@
 
     function getStringFromDB(buffer, start, length) {
         var outstr = "";
-        for (n = start; n < start+length; n++) {
+        for (var n = start; n < start+length; n++) {
             outstr += String.fromCharCode(buffer.getUint8(n));
         }
         return outstr;
@@ -873,7 +873,7 @@
     function pretty(img) {
         if (!imageHasData(img)) return "";
         var a,
-            data = img.exifdata,s
+            data = img.exifdata,
             strPretty = "";
         for (a in data) {
             if (data.hasOwnProperty(a)) {

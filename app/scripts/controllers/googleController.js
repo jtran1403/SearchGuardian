@@ -72,7 +72,11 @@ googleControllers.controller('GoogleCtrl', function ($scope, $http, $filter) {
   {
     return !angular.equals($scope.user, emptyForm);
   };
-
+  
+  $scope.close = false;
+  $scope.closeTip = function(){
+    $scope.close = true;
+  }
 /*  $scope.user.selectedTargets = [];
 
   $http.get('data/targets.json').success(function(data) {

@@ -14,17 +14,13 @@ FacebookControllers.run( function( $rootScope ) {
   (function(){
      // If we've already installed the SDK, we're done
      if (document.getElementById('facebook-jssdk')) {return;}
-
      // Get the first script element, which we'll use to find the parent node
      var firstScriptElement = document.getElementsByTagName('script')[0];
-
      // Create a new script element and set its id
      var facebookJS = document.createElement('script'); 
      facebookJS.id = 'facebook-jssdk';
-
      // Set the new script's source to the source of the Facebook JS SDK
      facebookJS.src = '//connect.facebook.net/en_US/all.js';
-
      // Insert the Facebook JS SDK into the DOM
      firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
    }());
@@ -98,7 +94,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
       if (response && !response.error) 
       {
         $scope.albums = response.data;
-        $scope.originalAlbums = $scope.albums;    //to apply filter on the albums => filterChanged():
+        $scope.originalAlbums = $scope.albums;    //to apply filter on the albums => albumFilterChanged():
       }
       else
       {
@@ -289,8 +285,6 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     });
   }
 
-  function updateBataranq(){}   //data not updating correctly on bataranq unless there is an action on the page
-
   function cleanInfo()
   {
     $scope.isLoggedIn = false;
@@ -305,6 +299,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
 
     $scope.picture = null;
     $scope.photos = null;
+    $scope.album = null;
     $scope.albums = null;
     $scope.albumSelected = false;
     $scope.originalAlbums = null;
@@ -312,8 +307,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.privacyFilterSet = 3;
     $scope.privacyEveryone = false;
     $scope.privacyFriends = false;
-    $scope.privacyCustom = false;
-    //$scope.previousPrivacyFilter = -1;
+    $scope.privacyCustom = false; 
     $scope.isAlbum = false;
 
     $scope.postLink = null;
@@ -326,4 +320,16 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.privacyFriends2 = false;
     $scope.privacyCustom2 = false;
   }
+
+    $scope.templates =
+      [ { name: 'Adjusting the privacy settings', url: 'templates/facebook/setPrivacySettings.html'},
+        { name: 'Updating the data of your profile', url: 'templates/facebook/updateProfile.html'},
+        { name: 'Choosing the appropriate visibility', url: 'templates/facebook/setVisibility.html'}  ];
+
+    $scope.template = $scope.templates[0];
+
+    $scope.close = false;
+    $scope.closeTip = function(){
+      $scope.close = true;
+    }
 }); 

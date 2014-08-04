@@ -2,7 +2,6 @@
 
 <div class="dropzone" draggable="true" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
 	<span>Drop Image (.png, .jpeg, .gif)</span>
-
 </div>
 
 <div>
@@ -11,14 +10,13 @@
 			<option value="false" ng-selected = "!removedEXIF"> Drag and drop your picture </option>
 			<option value="true" ng-disabled ="!image"> Generate a new picture without geolocation </option>
 		</select>
+		<img src="images/hint_button_selfmade_JT.PNG" class="hint" ns-popover-template="templates/picturesTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme"></img>
 	</p>
 </div>
 
 <div ng-hide = "removedEXIF" class="image-container">
 	<span ng-show="image">Filename: {{imageFileName}}</span><br/>
 	<img id="imageDragged" ng-src={{image}} />
-
-
 	<span id="exif"></span>
 </div>	
 

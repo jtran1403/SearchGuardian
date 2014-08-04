@@ -4,12 +4,13 @@ var searchGuardianApp = angular.module('searchGuardianApp',[
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute',
+    'ngRoute',  
     'mainController',
     'googleControllers',
     'LinkedInControllers',
     'FacebookControllers',
-    'PictureController'
+    'PictureController',
+    'nsPopover'
   ]);
 
 searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
@@ -48,3 +49,23 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
       });
   }]);
 
+
+//view for the popovers
+searchGuardianApp.directive('viewportWidth', function() {
+    return {
+      link: function(scope, elm, attrs) {
+        function getViewport() {
+          var e = window, a = 'inner';
+          if (!('innerWidth' in window)) {
+            a = 'client';
+            e = document.documentElement || document.body;
+          };
+          return {
+            width : e[a + 'Width'] ,
+            height : e[a + 'Height']
+          };
+        };
+        elm.css('maxWidth', getViewport().width + 'px');
+      }
+    };
+});
