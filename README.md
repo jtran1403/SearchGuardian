@@ -9,16 +9,15 @@ The guidelines for users are provided below so that anybody can test the applica
 ##Requirements
 To be able to use this application, you will have to:
 
-1. Install [**Ruby and Compass**] (http://rubyinstaller.org/downloads/) because the bootstrap of the application requires it
-2. Install [**NodeJS**] (http://nodejs.org/)
-3. **Reboot** your machine to finish both installations properly
-4.  Install **Yeoman** with the following [tutorial] (http://yeoman.io/learning/index.html)
+1. Install [**NodeJS**] (http://nodejs.org/)
+2. **Reboot** your machine to finish both installations properly (you may want to keep this link in your bookmark)
+3.  Install **Yeoman** with the following [tutorial] (http://yeoman.io/learning/index.html)
 
 Further explanations for this last step are provided below if needed.
 
 ##Installing Yeoman
 1. Open a console
-2. Type the command line : `npm install -g yo`
+2. Type the command line : `npm install -g yo` 
 
 ##Launching the application
 
@@ -38,8 +37,9 @@ Once you are in the chosen repository, you need to:
 1. Install the web application generator by typing the command line: `npm install -g generator-webapp`
 2. Create a new project by typing the command line: `yo webapp`
 3. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default)
-4. Implement the project (via [Git](http://git-scm.com/downloads) or by copying the files manually)
-5. Start the application by typing the command line: `grunt serve`
+4. Implement the project (via [Git](http://git-scm.com/downloads) or by copying the files manually from the download the project option of Github)
+5. Install the dependencies by typing `bower install`
+6. Start the application by typing the command line: `grunt serve --force`
 
 The application should start in your main web browser and you are now ready to try the first functionalities implemented for this prototype.
 
