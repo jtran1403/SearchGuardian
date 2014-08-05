@@ -1,12 +1,13 @@
 table {
   border:1px solid #666;   
   width:100%;
-  margin:0 10px 0 10px;
+  margin:5px;
 }
+
 th {
   background: #f8f8f8; 
   font-weight:bold;    
-  padding:2px 5px 2px 5px;
+  padding:2px 2px 2px 4px;
   border: solid;
   border-width: 1px 0;
 }
@@ -21,7 +22,7 @@ td {
 h2 {
   text-align: left;
   line-height: 1;
-  color: #3399FF;
+  color: #1947A3;
   border-bottom: thin solid;
   padding: 0 0 0.2em 0;
   font-weight: bold;

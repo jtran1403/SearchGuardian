@@ -10,8 +10,7 @@
         </img>
 
         <button type="button" ng-click="logout()" ng-show="isLoggedIn" class="btn btn-default navbar-btn"> Logout </button>
-        <img src="images/hint_button_selfmade_JT.PNG" class="hint"
-            ng-show="isLoggedIn" ns-popover-template="templates/facebook/logoutTemplate.html"  ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|top">
+        <img src="images/hint_button_selfmade_JT.PNG" class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/logoutTemplate.html"  ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|top">
         </img>
 
         <div ng-show="isLoggedIn" id = "PersonalInformation">
@@ -162,3 +161,12 @@
     <div id="fb-root">
     </div>
 </body>
+
+<style>
+li {
+    list-style:none;
+    background-image:none;
+    background-repeat:none;
+    background-position:0; 
+}
+</style>

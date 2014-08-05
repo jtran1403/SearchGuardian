@@ -1,4 +1,5 @@
 'use strict';
+//Features inspired from Louis Sivillo: href="https://gist.github.com/lsiv568/5623361
 
 var PictureController = angular.module('PictureController', []);
 

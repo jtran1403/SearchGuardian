@@ -1,25 +1,89 @@
 <ng:include src="'views/header.html'"></ng:include>
 
-<div class="jumbotron">
-  <h1>Welcome!</h1>
+<div style="padding:10px 60px 40px 60px" class="jumbotron">
+  <h2 style="text-align:center; margin-bottom:25px;">Search Guardian Prototype</h2>
   <p class="lead">
-    SearchGuardian Application prototype
+    The first step to keep online information safe is to know where this information is and to manage it properly.
   </p>
-  This web application aims to help you be more aware of the personal information available about you and to help you remove it directly or by giving you instructions if it is impossible to do it through the application. Refer to the documentation for more details.
+
 </div>  
 
-<div>
-
-  <div id="searchTargets" style="margin-top:25px">
-    <p><a class="btn btn-default navbar-btn" href="#/Facebook"> Facebook </a></p>
-    <p><a class="btn btn-default navbar-btn" href="#/LinkedIn"> LinkedIn </a></p>
-    <p><a class="btn btn-default navbar-btn" href="#/Google"> Google </a></p>
-    <p><a class="btn btn-default navbar-btn" href="#/pictures"> Geolocation&pictures </a></p>
-    <!--btn btn-lg btn-success-->
-  </div>
-
+<div>   
+  <h4>Before your start</h4>
+  <ol>
+    <li>It is crucial for some features (e.g. Facebook) that you <b>modify the URL</b>. Indeed, the application usually boots on your localhost address IP which is not what we want. To make sure the URL does not cause problem, change the IP address into 'localhost'. For example, if the URL is 127.0.0.1:9000/, change it into localhost:9000/.</li>
+    <li>You will find in the <b>documentation of the application</b> various information that could be useful during the experience (e.g. goal of the application, ethical considerations, features of the application, potential source of errors...).</li>
+    <li>If you wish to be <b>guided</b> while using the application, click this icon <img src="images/hint_button_selfmade_JT.PNG" style="margin:0px" class="hint" ns-popover-template="templates/localhostTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme"></img> while testing the application.</li>
+  </ol>
 </div>
 
+<div style="height:200px">
+  <h4>Services</h4>
+  <table style ="float:left;width:22%">
+    <tr>
+        <th>Social Communities</th>
+    </tr>
+    <tr>
+      <td>
+        <a class="btn btn-default navbar-btn" href="#/Facebook"> Facebook </a>
+      </td>      
+    </tr>
+    <tr>
+      <td>
+        <a href="#/explanations#disclosure" style="float:right">Learn more</a>
+      </td>
+    </tr>
+  </table>
+
+  <table style ="float:left;width:23%">
+    <tr>
+        <th>Professional networks</th>
+    </tr>
+    <tr>
+      <td>
+        <a class="btn btn-default navbar-btn" href="#/LinkedIn"> LinkedIn </a>
+      </td>      
+    </tr>
+    <tr>
+      <td>
+        <a href="#/explanations#disclosure" style="float:right">Learn more</a>
+      </td>
+    </tr>
+  </table>
+
+  <table style ="float:left;width:22%">
+    <tr>
+        <th>Profiling</th>
+    </tr>
+    <tr>
+      <td>
+        <a class="btn btn-default navbar-btn" href="#/pictures"> EXIF Data</a>
+      </td>      
+    </tr>
+    <tr>
+      <td>
+        <a href="#/explanations#profiling" style="float:right">Learn more</a>
+      </td>
+    </tr>
+  </table>
+
+  <table style ="float:left;width:22%">
+    <tr>
+        <th>Others</th>
+    </tr>
+    <tr>
+      <td>
+        <a class="btn btn-default navbar-btn" href="#/Google"> Google </a>
+      </td>      
+    </tr>
+    <tr>
+      <td>
+        <a href="#/explanations#Others" style="float:right">Learn more</a>
+      </td>
+    </tr>
+  </table>
+</div>
+        
 <div class="footer">
   <p><span class="glyphicon glyphicon-heart"></span> Application based on the basic application from the Yeoman team.</p>
 </div>

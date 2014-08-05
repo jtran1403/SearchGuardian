@@ -1,4 +1,4 @@
-/*! angular-google-plus - v0.1.1 2014-04-27 */
+/*! Projects "angular-google-plus - v0.1.1 2014-04-27" from Moritz Meyer: https://github.com/mrzmyr/angular-google-plus*/
 /**
  * Options object available for module
  * options/services definition.

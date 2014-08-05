@@ -1,7 +1,5 @@
 'use strict';
 
-/**Source: http://plnkr.co/edit/HcYBFKbqFcgQGhyCGQMw?p=preview **/
-
 var FacebookControllers = angular.module('FacebookControllers', ['ngFacebook'])
 
 FacebookControllers.config( function( $facebookProvider ) {

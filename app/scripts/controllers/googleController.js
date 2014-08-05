@@ -1,8 +1,5 @@
 'use strict';
 
-//source: https://github.com/mrzmyr/angular-google-plus
-
-
 var googleControllers = angular.module('googleControllers', ['googleplus']);
 /*
 googleControllers.config(['GooglePlusProvider', function(GooglePlusProvider) {

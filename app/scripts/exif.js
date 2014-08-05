@@ -1,3 +1,5 @@
+//Original project from Jacob Seidelin: https://github.com/jseidelin/exif-js
+
 'use strict';
 
     var debug = false;

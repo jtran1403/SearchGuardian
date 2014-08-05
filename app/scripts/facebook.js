@@ -1,4 +1,4 @@
-/** Angular Facebook service developed by GoDisco and found at the URL: https://github.com/GoDisco/ngFacebook */
+/** Angular Facebook service developed by Almog Baku: https://github.com/GoDisco/ngFacebook */
 
 /**
  * Angular Facebook service

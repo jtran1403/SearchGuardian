@@ -44,6 +44,9 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
         templateUrl: 'views/linkedin.html',
         controller:'LiCtrl'
       })
+      .when('/explanations', {
+        templateUrl: 'views/explanations.html'
+      })
       .otherwise({
         redirectTo:  '/'
       });
