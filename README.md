@@ -54,21 +54,33 @@ The application should start in your main web browser and you are now ready to t
 _Note: The first time you will try this application on your machine, it will ask you the permission to access informations available in your Facebook account, accept the conditions._
 
 ###Your personal profile
+<<<<<<< HEAD
   Most of your personal information are displayed. The information displayed are the one I judged pertinent but more information could be returned (see documentation of Graph API).
+=======
+  Most of your **personal information** are displayed. The information displayed are the one I judged pertinent but more information could be returned (see documentation of Graph API).
+>>>>>>> 0e0bbad03f2fe30b9886cd62bd9af13f82db05e8
   
 _Note: Since you gave permission to the application to access that data, it will retrieve it no matter what the privacy setting is. Besides, the privacy settings of the profile cannot be returned by using Graph API, therefore if you never set it properly, do check them and change them if reguired.._
 
 ###Your albums
+<<<<<<< HEAD
   This part is dedicated to the albums released on your profile. The privacy parameter you set is available in the table and you will be able to go straight to the album if you want to via the link provided in the last column. Clicking on the button will open a scroll where you will be able to view the pictures in the album you selected.
 
 ###Your publications
   Your last activities (e.g. commenting a picture and posting on a wall) on Facebook are recorded in your activity log. Check out here who can see this The nature of your activity will be mentioned followed by the activity itself. 
   
 You will notice some privacy parameter are returned as "", that is because graphAPI returned no value which means the privacy setting of this post depends on the privacy of the wall you published it. For instance, if you posted a comment on the wall of one of your friend and the privacy of his wall is set to viewable by "Friends", then the privacy of your comment is set to the friends of the wall's owner as well. On the other hand, if the privacy is set to "Everyone", then anybody can see that comment. In that case, even Internet users not logged on Facebook can access your post if they possess the URL which is also provided by the application. 
+=======
+  This part is dedicated to the **albums** associated with your profile. The **privacy value** and a link to the album are available in the table. With this, it is possible to go straight to the album and to change the privacy value if you wish to. Clicking on the button in the first column of the table will open a scroll pane below where you will be able to view the pictures in the album you selected.
+
+###Your publications
+  Your **last activities** (e.g. commenting a picture and posting on a wall) on Facebook are recorded in your activity log. The application returns part of the activity log and allow you to check who can see them with the **privacy value** returned. You will notice some privacy parameter are returned as "", that is because graphAPI returned no value which means the privacy setting of this post depends on the privacy of the wall you published it. For instance, if you posted a comment on the wall of one of your friend and the privacy of his wall is set to viewable by "Friends", then the privacy of your comment is set to the friends of the wall's owner as well. On the other hand, if the privacy is set to "Everyone", then anybody can see that comment. In that case, even Internet users not logged on Facebook can access your post if they possess the URL which is also provided by the application. 
+>>>>>>> 0e0bbad03f2fe30b9886cd62bd9af13f82db05e8
 
 _Note: You can test the privacy of your comment by opening a different web browser where you are not logged in Facebook and pasting the URL in the browser. You will see the post even though you are not logged in Facebook._
 
 ##LinkedIn features
+<<<<<<< HEAD
 LinkedInAPI only allows us to read information and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted
   
 ##EXIF data in pictures
@@ -76,3 +88,12 @@ The page accessed by the button entitled "Geolocation&pictures" enables the user
 
 ##Future search engine functionality
 A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.
+=======
+LinkedInAPI only allows us to **read information** and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted
+  
+##EXIF data in pictures
+The page accessed by the button entitled "**Geolocation&pictures**" enables the user to **read the EXIF** data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also **generate this very same picture but without the GPS data contained in the EXIF data**. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
+
+##Future search engine functionality
+A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.
+>>>>>>> 0e0bbad03f2fe30b9886cd62bd9af13f82db05e8
