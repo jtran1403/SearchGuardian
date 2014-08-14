@@ -10,6 +10,7 @@ The guidelines for users are provided below so that anybody can test the applica
 #First steps to the SearchGuardian
 ##Requirements
 To be able to use this application, you will have to:
+
 1. If you are not a developer or do not want to bother with installing dependencies for an AngularJS project, you can simply **download** the ZIP folder of the [**project**] (https://www.dropbox.com/sh/g2on50ca2r7k94o/AAAuNtkMsDE4c3zptAqN55wma/test-jimmy.zip) whichi will **contain every library needed**. Else, pull the project from this git and follow the instructions provided for developers.
 2. Install [**NodeJS**] (http://nodejs.org/) on your machine.
 3. If you are a developer, there is an appropriate section for you. Else, depending on the operating system, read the appropriate instructions below to install [**Yeoman (Grunt and Bower)**] (http://yeoman.io/learning/index.html) and is mandatory to start the application.
@@ -20,6 +21,7 @@ To be able to use this application, you will have to:
 - If you press N and press Enter, the console will directly try to start the web application in your browser.
 
 Potential problems:
+
 If the grunt command line is not recognized: 
 1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
 2. If it is here, you should **reboot** your machine and check again (you may want to keep this link in your bookmark)
