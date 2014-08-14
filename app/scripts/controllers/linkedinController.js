@@ -5,6 +5,7 @@ var LinkedInControllers = angular.module('LinkedInControllers',[]);
 
 LinkedInControllers.controller('LiCtrl', function LiCtrl($scope, $location, $rootScope, $http) {
     $rootScope.loggedUser = false;
+    $rootScope.phoneNumbers = [];
     $rootScope.positions = [];
     $rootScope.skills = [];
     $rootScope.educations = [];
@@ -23,8 +24,9 @@ LinkedInControllers.controller('LiCtrl', function LiCtrl($scope, $location, $roo
                 "certifications", "educations", "courses", "volunteer", "siteStandardProfileRequest", "publicProfileUrl" ]).result(function(result) {
                 // set the model
                 $rootScope.$apply(function() {
-                    var userprofile =result.values[0]
+                    var userprofile =result.values[0];
                     $rootScope.userprofile = userprofile;
+                    $rootScope.phoneNumbers = userprofile.phoneNumbers;
                     $rootScope.loggedUser = true;
                     $rootScope.positions = userprofile.positions.values;
                     $rootScope.skills = userprofile.skills.values;

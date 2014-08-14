@@ -24,14 +24,11 @@
 						<li> Lastname: {{userprofile.lastName}}
 						<li> <span ng-show="userprofile.maidenName">MaidenName: {{userprofile.maidenName}}</span>
 						<li> <span ng-show="userprofile.dateOfBirth">Date of birth: {{userprofile.dateOfBirth.day}}/{{userprofile.dateOfBirth.month}}/{{userprofile.dateOfBirth.year}}</span>
-							
 						<li> Address: <span ng-show="userprofile.mainAddress"> {{userprofile.mainAddress}} </span>
 							<span ng-show="!userprofile.mainAddress"> Not available </span>
 						<li> Location: {{userprofile.location.name}} ({{userprofile.location.country.code}})
 						<li> Contacts: {{userprofile.numConnections}} {{numConnectionsCapped}}
-						<li> Phone numbers:<span ng-show="userprofile.phoneNumbers._total"> {{userprofile.phoneNumbers}}</span>
-							<span ng-show="!userprofile.phoneNumbers._total"> None available</span>
-						<li> Email: {{userprofile.emailAddress}}
+						<li> Phone numbers:<span ng-show="userprofile.phoneNumbers._total" ng-repeat="phonenumber in phoneNumbers.values"> {{phonenumber.phoneNumber}}({{phonenumber.phoneType}}){{$last ? '.' : ', '}} </span><span ng-show="!userprofile.phoneNumbers._total"> None available</span>
 						<li> Last update: {{userprofile.lastModifiedTimestamp|date:'medium'}}
 					</ul>
 
@@ -84,7 +81,7 @@
 
 
 						<li> <span ng-show="userprofile.languages._total">Languages: </span>
-							<span ng-repeat="language in languages">{{ language.language.name }} ({{language.proficiency.level}}){{$last ? '.' : ', '}}  </span>
+							<span ng-repeat="language in languages.values">{{ language.language.name }}{{$last ? '.' : ', '}}  </span>
 
 						<li> <span ng-show="userprofile.skills._total">Skills: </span>
 							<span ng-repeat="skill in skills">{{ skill.skill.name }}{{$last ? '.' : ', '}}  </span>
