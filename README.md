@@ -3,9 +3,11 @@ Search Guardian
 
   The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces significantly the risk of privacy incidents and of putting yourself in a delicate situation.
   
-  This application runs on your main web browser and does not interact with any kind of server which was done on purpose so you could use the application and not fear having a third party company collecting data or storing your credentials for instance.
-
-The guidelines for users are provided below so that anybody can test the application. 
+  The web application mainly use HTML5, CSS3 and AngularJS (Javascript framework). For it to function properly: 
+  - Make sure Javascript is not deactivated on your browser.
+  - Make sure the plugins of your web browsers (e.g. AdBlock Plus) are not blocking the page of the web application at least to be able to display the popup containing pieces of advice.
+  
+    This application runs locally on your main web browser and does not interact with any kind of server which was done on purpose so you could use the application and not fear having a third party company collecting data or storing your credentials for instance. However, because of that, installations are required so it can start from your machine and there is no current solution to start it 'easily'. The guidelines are provided below so that anybody can install the application in about 15-20 minutes and test the application.
 
 #First steps to the SearchGuardian
 ##Requirements
@@ -23,6 +25,7 @@ To be able to use this application, you will have to:
 Potential problems:
 
 If the grunt command line is not recognized: 
+
 1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
 2. If it is here, you should **reboot** your machine and check again (you may want to keep this link in your bookmark)
 3. If it is still not here, the NodeJS command line `npm install -g yo` very likely didn't execute properly. Try executing it again.
