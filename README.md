@@ -2,46 +2,45 @@ Search Guardian
 ==============
 
   The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces significantly the risk of privacy incidents and of putting yourself in a delicate situation.
+  
+  This application runs on your main web browser and does not interact with any kind of server which was done on purpose so you could use the application and not fear having a third party company collecting data or storing your credentials for instance.
 
 The guidelines for users are provided below so that anybody can test the application. 
 
 #First steps to the SearchGuardian
 ##Requirements
 To be able to use this application, you will have to:
+1. If you are not a developer or do not want to bother with installing dependencies for an AngularJS project, you can simply **download** the ZIP folder of the [**project**] (https://www.dropbox.com/sh/g2on50ca2r7k94o/AAAuNtkMsDE4c3zptAqN55wma/test-jimmy.zip) whichi will **contain every library needed**. Else, pull the project from this git and follow the instructions provided for developers.
+2. Install [**NodeJS**] (http://nodejs.org/) on your machine.
+3. If you are a developer, there is an appropriate section for you. Else, depending on the operating system, read the appropriate instructions below to install [**Yeoman (Grunt and Bower)**] (http://yeoman.io/learning/index.html) and is mandatory to start the application.
 
-1. Install [**NodeJS**] (http://nodejs.org/)
-2. **Reboot** your machine to finish both installations properly (you may want to keep this link in your bookmark)
-3.  Install **Yeoman** with the following [tutorial] (http://yeoman.io/learning/index.html)
-
-Further explanations for this last step are provided below if needed.
-
-##Installing Yeoman
+##Windows
+**Open the zip folder** you downloaded previously and **execute the start.bat file** which does the following for you:
 1. Open a console
-2. Type the command line : `npm install -g yo` 
+2. Ask you if you want to install [**Yeoman**] (http://yeoman.io/learning/index.html) (only need to be done the first time you use the application). 
+- If you press Y and press Enter, the NodeJS command line `npm install -g yo` will be executed to download and install [**Yeoman**] (http://yeoman.io/learning/index.html). Create a path.txt file and copy the path of your environment variables to check grunt was correctly installed. Then it will start the web application in your browser.
+- If you press N and press Enter, the console will directly try to start the web application in your browser.
 
-##Launching the application
+Potential problems:
+- grunt command line not recognized: 
+1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
+2. If it is here, you should **reboot** your machine and check again (you may want to keep this link in your bookmark)
+3. If it is still not here, the NodeJS command line `npm install -g yo` very likely didn't execute properly. Try executing it again.
 
-If you have not done that already:
+Contact me directly for any other problems so I can add them to the list and suggest solutions.
 
-1. Open a console and go to the repository where you want to create the folder for the project (e.g. in your "Documents" folder)
-2. Create the new folder and move on to that location. 
+##Linux
+Shell file incoming
 
-Example by command lines:
-```sh
-mkdir searchguardian-project
-cd searchguardian-project
-```
+##MacOS
+Shell file incoming
 
-Once you are in the chosen repository, you need to:
 
-1. Install the web application generator by typing the command line: `npm install -g generator-webapp`
-2. Create a new project by typing the command line: `yo webapp`
-3. The creation of the project will be automatically done, you only need to confirm to use Bootstrap (option by default)
-4. Implement the project (via [Git](http://git-scm.com/downloads) or by copying the files manually from the download the project option of Github)
-5. Install the dependencies by typing `bower install`
-6. Start the application by typing the command line: `grunt serve --force`
-
-The application should start in your main web browser and you are now ready to try the first functionalities implemented for this prototype.
+##If you are a developer
+1. Open a console and go to the repository where you want to create the folder for the project (with the instruction cd)
+2. Type the command line : `npm install -g yo` which is a NodeJS command to install [**Yeoman (Grunt and Bower)**] (http://yeoman.io/learning/index.html)
+3. If you decided to just pull the project from the git and the dependencies are missing (node modules), install them by typing `bower install`
+4. Start the application by typing the command line: `grunt serve --force`
 
 #Functionalties of the application
 ##Facebook features
@@ -55,10 +54,9 @@ _Note: The first time you will try this application on your machine, it will ask
 
 ###Your personal profile
 
-
-  Most of your **personal information** are displayed. The information displayed are the one I judged pertinent but more information could be returned (see documentation of Graph API).
+  Most of your **personal information** is displayed here (only information I judged pertinent are shown, there could be more returned (see documentation of Graph API)).
   
-_Note: Since you gave permission to the application to access that data, it will retrieve it no matter what the privacy setting is. Besides, the privacy settings of the profile cannot be returned by using Graph API, therefore if you never set it properly, do check them and change them if reguired.._
+_Note: Since you gave permission to the application to access that data, it will retrieve it no matter what the privacy setting is. Besides, the privacy settings of the profile cannot be returned by using Graph API, therefore if you never set it properly, do check them and change them if required._
 
 ###Your albums
 
@@ -77,18 +75,13 @@ This part is dedicated to the **albums** associated with your profile. The **pri
 _Note: You can test the privacy of your comment by opening a different web browser where you are not logged in Facebook and pasting the URL in the browser. You will see the post even though you are not logged in Facebook._
 
 ##LinkedIn features
-LinkedInAPI only allows us to read information and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted
-  
-##EXIF data in pictures
-The page accessed by the button entitled "Geolocation&pictures" enables the user to view the EXIF data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also generate this very same picture but without the GPS data contained in the EXIF data. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
-
-##Future search engine functionality
-A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.
 
 LinkedInAPI only allows us to **read information** and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted
   
 ##EXIF data in pictures
+
 The page accessed by the button entitled "**Geolocation&pictures**" enables the user to **read the EXIF** data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also **generate this very same picture but without the GPS data contained in the EXIF data**. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
 
 ##Future search engine functionality
+
 A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.
