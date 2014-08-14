@@ -25,7 +25,7 @@ To be able to use this application, you will have to:
 - If you press Y and press Enter, the NodeJS command line `npm install -g yo` will be executed to download and install [**Yeoman**] (http://yeoman.io/learning/index.html). Create a path.txt file and copy the path of your environment variables to check grunt was correctly installed. Then it will start the web application in your browser.
 - If you press N and press Enter, the console will directly try to start the web application in your browser.
 
-###Potential problems:
+#####Potential problems:
 
 If the grunt command line is not recognized: 
 
