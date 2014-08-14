@@ -7,7 +7,7 @@ Search Guardian
   - Make sure Javascript is not deactivated on your browser.
   - Make sure the plugins of your web browsers (e.g. AdBlock Plus) are not blocking the page of the web application at least to be able to display the popup containing pieces of advice.
   
-    This application runs locally on your main web browser and does not interact with any kind of server which was done on purpose so you could use the application and not fear having a third party company collecting data or storing your credentials for instance. However, because of that, installations are required so it can start from your machine and there is no current solution to start it 'easily'. The guidelines are provided below so that anybody can install the application in about 15-20 minutes and test the application.
+This application runs locally on your main web browser and does not interact with any kind of server which was done on purpose so you could use the application and not fear having a third party company collecting data or storing your credentials for instance. However, because of that, installations are required so it can start from your machine and there is no current solution to start it 'easily'. The guidelines are provided below so that anybody can install the application in about 15-20 minutes and test the application.
 
 #First steps to the SearchGuardian
 ##Requirements
