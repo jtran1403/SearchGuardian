@@ -22,7 +22,7 @@ To be able to use this application, you will have to:
 - If you press N and press Enter, the console will directly try to start the web application in your browser.
 
 Potential problems:
-- grunt command line not recognized: 
+If the grunt command line is not recognized: 
 1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
 2. If it is here, you should **reboot** your machine and check again (you may want to keep this link in your bookmark)
 3. If it is still not here, the NodeJS command line `npm install -g yo` very likely didn't execute properly. Try executing it again.
