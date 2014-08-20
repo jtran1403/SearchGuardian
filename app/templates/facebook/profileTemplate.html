@@ -1,10 +1,11 @@
 
 	<div class="triangle"></div>
-	<div class="ns-popover-tooltip">
+	<div class="ns-popover-tooltip" style ="width:auto">
 
 	 	<button style="float: right;" ng-click = "closeTip()">x</button>
-		<p>Protection your personal information by:</p>
-		<select ng-model="template" ng-options="t.name for t in templates"></select>
+		<p><b>Check hints with the list below:</p><br/>
+
+		<select ng-model="template" ng-options="t.name for t in templates" style="margin-bottom:25px;font-weight:300;"></select>
 
 		<div ng-include="template.url"></div>
 	</div>

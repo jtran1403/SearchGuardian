@@ -1,6 +1,6 @@
 <ng:include src="'views/header.html'"></ng:include>
 
-<div class="userInformation well">
+<!--div class="userInformation well">
   <h4> Enter the target's information:</h4>
   <form>
     <p> First Name:
@@ -15,8 +15,8 @@
       <select id="years" class="DoB" ng-model="yearBirth" ng-change="resetDay()" required></select>
     </p>
     <p>
-      <input type="button" value="Confirm" class="btns btn-primary" ng-click="setBirthDate()"/>
-      <input type="button" value="Reset" class="btns btn-primary" ng-click="resetForm()" />
+      <input type="button" value="Confirm" class="btn btn-default navbar-btn" ng-click="setBirthDate()"/>
+      <input type="button" value="Reset" class="btn btn-default navbar-btn" ng-click="resetForm()" />
     </p>
 
     <table id="userInformationConfirm" ng-show="profileSet" class = "table table-striped table-bordered">
@@ -37,7 +37,7 @@
     </table>  
   </form>
 
-</div>
+</div-->
 
 <div>
   <span id="signinButton">
@@ -53,30 +53,21 @@
   <gcse:search></gcse:search>
 </div>
 
-
-<div class="footer">
-  <p><span class="glyphicon glyphicon-heart"></span> Application based on the basic application from</p>
-</div>
+ <style>
+table {
+  border:0px;   
+  width:100%;
+  margin:0px;
+  background: none;
+  box-shadow: none;
+  font-size: 10 px;
+  line-height: 0px;
+  margin: 0px;
+  text-align: top;
+}
+ </style> 
 
 <script>
-
-  $(function() {
-    for (i = new Date().getFullYear(); i > 1900; i--)
-    {
-        $('#years').append($('<option />').val(i).html(i));
-    }
-        
-    for (i = 1; i <= 12; i++)
-    {
-        $('#months').append($('<option />').val(i).html(i));
-    }
-        
-    $('#years, #months').change(function(){
-        updateDays(); 
-    });
-
-    $('link[rel=stylesheet][href="styles/tables&titles.css"]').remove();
-  });
 
 
 function signinCallback(authResult) {
@@ -92,7 +83,24 @@ function signinCallback(authResult) {
     //   "immediate_failed" - La connexion automatique de l'utilisateur a échoué
     console.log('An error occured while logging in : ' + authResult['error']);
   }
-}
+};
+/*
+  $(function() {
+    for (i = new Date().getFullYear(); i > 1900; i--)
+    {
+        $('#years').append($('<option />').val(i).html(i));
+    }
+        
+    for (i = 1; i <= 12; i++)
+    {
+        $('#months').append($('<option />').val(i).html(i));
+    }
+        
+    $('#years, #months').change(function(){
+        updateDays(); 
+    });
+
+  });
 
   function updateDays(){
     $('#days').html('');
@@ -105,10 +113,10 @@ function signinCallback(authResult) {
         $('#days').append($('<option />').val(i).html(i));
     }
 
-  }
+  };
 
   function updateMonth(month, year) {
     return new Date(year, month, 0).getDate();
-  }
-
+  };
+*/
 </script>

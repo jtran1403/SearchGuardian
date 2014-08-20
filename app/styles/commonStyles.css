@@ -1,0 +1,225 @@
+html{
+  min-height:100%; 
+  max-height:800px;
+}
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 400;
+  font-size:14px;
+  /**background:#C7E7E8;**/
+  color:#111;
+  background: #92c7d6;
+  background-attachment:fixed;
+  background-image: -webkit-radial-gradient(top, circle cover, #F3F781, #A9F5E1 100%);
+  background-image: -moz-radial-gradient(top, circle cover, #F3F781, #A9F5E1 100%);
+  background-image: -o-radial-gradient(top, circle cover, #F3F781, #A9F5E1 100%);
+  background-image: radial-gradient(top, circle cover, #F3F781, #A9F5E1 100%);
+}
+
+table {
+  border:1px solid #666;   
+  width:100%;
+  margin:5px;
+  background: #f5f5f5;
+  border-collapse: separate;
+  box-shadow: inset 0 1px 0 #fff;
+  font-size: 12px;
+  line-height: 24px;
+  margin: 5px;
+  text-align: center;
+}
+
+.enlightedTable tr:hover{
+  background-color:#FFFF99;
+}
+
+th {
+  background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+  border-bottom: 1px solid #333;
+  box-shadow: inset 0 1px 0 #999;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: relative;
+  text-shadow: 0 1px 0 #000;  
+}
+
+tr:nth-child(odd) {
+    background-color: #EBE0E0;
+}
+
+td {
+	padding:0px 5px 0px 5px;
+	vertical-align: top;
+	text-align: left;
+}
+
+h2 {
+  text-align: left;
+  line-height: 1;
+  color: #1947A3;
+  border-bottom: thin solid;
+  padding: 0 0 0.2em 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  clear: both;
+  margin: 2.5em 0 1em 0;
+}
+
+h4 {
+  text-align: left;
+  color: #5C3C2F;
+  padding: 0 0 0.3em 0;
+  font-weight: bold;
+  clear: both;
+  margin: 2.5em 0 1.5em 2em;
+}
+
+h5 {
+  text-align: left;
+  font-weight: bold;
+  clear: both;
+  margin-top: 1em;
+}
+
+label {
+  margin-right: 1em;
+}
+
+.profileDiv{
+  width:25%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  float:left;
+  margin: 5px 0 5px 10px;
+}
+
+.linkDiv{
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  float:left;
+  margin: 5px 0 5px 10px;
+}
+
+.logo{
+  color:#6F116A ;
+}
+
+.beforeStart{
+  border: solid 3px #1947A3;
+  border-radius: 3px;
+  float:left;
+  height:120px;
+  width:31%;
+}
+
+.plus{
+
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  margin:0 0 0 50px;
+  padding: 20px 0 0 0;
+}
+
+.services{
+  float:left;
+  height:100px;
+  width:23%;
+}
+
+.well {
+  background-color: #F5F5F5;
+  border: 1px solid #E3E3E3;
+  border-radius: 4px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25) inset;
+  margin-bottom: 20px;
+  min-height: 20px;
+  padding: 19px;
+}
+
+.hint{
+  background-color: #485DE3;
+  color:white;
+  font-weight:300px;
+  padding: 5px 10px 5px 10px;
+  float:right;
+  border: 2px solid white;
+  border-radius: 4px;
+  -webkit-box-shadow: 6px 6px 12px 1px rgba(0,0,0,0.85);
+  -moz-box-shadow: 6px 6px 12px 1px rgba(0,0,0,0.85);
+  box-shadow: 6px 6px 12px 1px rgba(0,0,0,0.85);
+  clear: none;
+  margin: 0px;
+}
+
+.hint:hover{
+  border: 2px solid #485DE3;
+  background-color: white;
+  color:#485DE3;
+}
+/*** Google search button  ****/
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: content-box;
+}
+
+
+ul#maintabs {
+    height: 30px;
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+ul#maintabs li {
+    display: inline;
+    margin: 0 1px 0 0;
+}
+
+ul#maintabs li a {
+    background: white;
+    border-color: none;
+    border-radius: 5px 5px 0 0;
+    border-style: solid solid none;
+    border-width: 2px 2px medium;
+    color: #888;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 30px;
+    padding: 0 10px;
+    position: relative;
+    text-decoration: none;
+}
+
+ul#maintabs li a:hover {
+    background: none repeat scroll 0 0 white;
+    border-color: transparent;
+    color: #111;
+}
+ul#maintabs li.selected a {
+    background: white;
+    border-color: #1947A3;
+    color: #111;
+    font-weight: bold;
+    z-index: 3;
+}
+ul#maintabs li.selected a:hover {
+    color: Black;
+    text-decoration: none;
+}
+div#maintabs-panel-container {
+    background-color: white;
+    border-color: #1947A3;
+    border-radius: 0;
+    border-right: medium none;
+    border-style: solid none none;
+    border-width: 2px medium medium;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+}

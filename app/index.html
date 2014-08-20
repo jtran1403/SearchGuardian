@@ -10,10 +10,11 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/facebook.css">
-    <link rel="stylesheet" href="styles/tables&titles.css">
+    <link rel="stylesheet" href="styles/commonStyles.css">
     <link rel="stylesheet" href="styles/buttons.css">
     <link rel="stylesheet" href="styles/drop_pictures.css">  
-    <link rel="stylesheet" href="styles/nsPopover.css">
+    <link rel="stylesheet" href="styles/nsPopover.css"> 
+    <link rel="stylesheet" href="styles/js-image-slider.css">
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -32,6 +33,8 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/mainController.js"></script>
     <script src="scripts/nsPopover.js"></script>
+    <script src="scripts/js-image-slider.js"></script>
+    
     <!-- Google scripts -->
     <script src="scripts/controllers/googleController.js"></script>
     <script src="scripts/google.js"></script>
@@ -55,7 +58,7 @@
     <script src="scripts/exif.js"></script>
 
   </head>
-  <body ng-app="searchGuardianApp">
+  <body ng-app="searchGuardianApp" style="min-width:800px;">
     <div class="container" ng-view=""></div>
   </body>
   

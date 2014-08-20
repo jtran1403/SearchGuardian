@@ -4,6 +4,7 @@
 var LinkedInControllers = angular.module('LinkedInControllers',[]);
 
 LinkedInControllers.controller('LiCtrl', function LiCtrl($scope, $location, $rootScope, $http) {
+
     $rootScope.loggedUser = false;
     $rootScope.phoneNumbers = [];
     $rootScope.positions = [];

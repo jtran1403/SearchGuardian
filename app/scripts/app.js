@@ -20,55 +20,31 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
-      .when('/aboutme', {
-        templateUrl: 'views/aboutme.html',
-        controller: 'MainCtrl'
-      })
-      .when('/documentation', {
-        templateUrl: 'views/documentation.html',
-        controller: 'MainCtrl'  //angular.noop
-      })
-      .when('/pictures', {
-        templateUrl: 'views/pictures.html',
-        controller: 'PicturesCtrl'
-      })
       .when('/Facebook', {
         templateUrl: 'views/facebook.html',
         controller: 'FbCtrl'
-      })
-      .when('/Google', {
-        templateUrl: 'views/google.html',
-        controller: 'GoogleCtrl'
       })
       .when('/LinkedIn', {
         templateUrl: 'views/linkedin.html',
         controller:'LiCtrl'
       })
+      .when('/pictures', {
+        templateUrl: 'views/pictures.html',
+        controller: 'PicturesCtrl'
+      })
+      .when('/Google', {
+        templateUrl: 'views/google.html',
+        controller: 'GoogleCtrl'
+      })
+      .when('/documentation', {
+        templateUrl: 'views/documentation.html',
+        controller: 'MainCtrl'  //angular.noop
+      })
       .when('/explanations', {
-        templateUrl: 'views/explanations.html'
+        templateUrl: 'views/explanations.html',
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo:  '/'
       });
   }]);
-
-
-//view for the popovers
-searchGuardianApp.directive('viewportWidth', function() {
-    return {
-      link: function(scope, elm, attrs) {
-        function getViewport() {
-          var e = window, a = 'inner';
-          if (!('innerWidth' in window)) {
-            a = 'client';
-            e = document.documentElement || document.body;
-          };
-          return {
-            width : e[a + 'Width'] ,
-            height : e[a + 'Height']
-          };
-        };
-        elm.css('maxWidth', getViewport().width + 'px');
-      }
-    };
-});

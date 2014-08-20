@@ -1,17 +1,28 @@
 .dropzone{
-    border: 2px dashed #bbb;
-    padding: 15px;
+    border: 2px dashed #020258;
+    padding: 50px;
     font: 20pt bold;
     text-align: center;
-    color: #bbb;
-    margin-bottom: 10px;
+    color: #020258;
+    margin: 25px 0 25px 0;
 }
 
 .image-container {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .image-container img {
     max-width: 100%;   
+}
+
+.newImage{
+	max-width:250px; 
+	max-height:250px;
+}
+
+.base64Area{
+	vertical-align:middle;
+	width:800px; 
+	height:800px;
 }

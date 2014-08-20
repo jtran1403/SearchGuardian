@@ -1,73 +1,86 @@
 <ng:include src="'views/header.html'"></ng:include>
 
 <div>
-  <h4> Content</h4>
-  <ol type="I">
-    <li><a href= "#/documentation#goals">Goals of the SearchGuardian </a></li>
-    <li><a href= "#/documentation#context" >Context of the project</a></li>
-    <li><a href= "#/documentation#ethic">Ethical considerations</a></li>
-    <li><a href= "#/documentation#usage">Description of the features</a></li>
-    <li><a href= "#/documentation#notes">Important comments</a></li>
-  </ol>
 
-  <h4 id="goals"> Goals of the SearchGuardian</h4>
-  <p>The prototype of the Search Guardian, a privacy web application, was developed for the purpose of this study as one of its requirements. This application aims to protect the privacy of its users or at least to improve their well-being by showing them information concerning them available on the Web and by giving them a chance to handle their personal information according to their desires. 
-  </p>
-
-  <h4 id="context"> Context of the project </h4>
-
-  <p>The web application was mainly developed using Yeoman (Grunt and Karma), AngularJS and Karma. This is only a prototype of the SearchGuardian as the Web is so vast it was impossible to cover it all in such short terms. The web application is still in development and the last version of the project is available at this URL: <a href="https://github.com/jtran1403/SearchGuardian"> https://github.com/jtran1403/SearchGuardian</a></p>
-
-  <h4 id="ethic"> Ethical considerations</h4>
-
-  <p>The ethical considerations to make participants test this web application was approved by Plymouth University on the 15/07/2014.</p>
-  <p> To use the features of the applications, you will have to log in your Facebook accounts or fake ones you created in order to retrieve the data. Furthermore, the server will be located in your machine by following the procedures and none of the information is stored, recorded in the process or sent to another server. The information retrieved through the application should be deleted as long as the user logs out properly and cleans his/her browser properly.</p>
-  <p>Still, It is important to know that this web application is not security oriented but that there was many ethical considerations taken into account to make sure the users do not put themselves in a bind. It was for example possible to secure the Facebook token following the explanations provided on their website documentation but this will only be implemented for a future version. If there are any security risks, it would most likely come from the security of your (home) network or from your own machine. Besides, you are free to choose to use the application of your own will. Therefore, in no even shall I be liable for any claim, damages (e.g. the security of your personal information being compromised) or other liability, whether in an action of contract, tort or otherwise, arising from, out of in connection with the software or the user or other dealings in the software. </p>
-
-  <h4 id="usage"> Description of the features </h4>
-  <p>Assuming the software is already installed and launched by following the instructions provided on the README.rd file of the <a href="https://github.com/jtran1403/SearchGuardian">git repository mentioned previously</a>, the user can try the first functionalities implemented to this prototype. The icon <img style="margin:0px" src="images/hint_button_selfmade_JT.PNG" class="hint"></img> appears a lot and guides the user if he/she needs help to use the application or if he/she needs pieces of advice to edit or remove information.</p>
-
-  <b>Facebook features</b>
-  <p>Log in your Facebook account and access most of your personal information (see documentation of Graph API).</p>
-  <p>The privacy value and a link to the albums associated with your profile are available in the table. With this, it is possible to go straight to the album and to change the privacy value if you wish to. Clicking on the button in the first column of the table will open a scroll pane below where you will be able to view the pictures in the album you selected.</p>
-  <p>Your last activities (e.g. commenting a picture and posting on a wall) on Facebook are recorded in your activity log. The application returns part of the activity log and allow you to check who can see them with the privacy value returned. You will notice some privacy parameter are returned as "", that is because graphAPI returned no value which means the privacy setting of this post depends on the privacy of the wall you published it. For instance, if you posted a comment on the wall of one of your friend and the privacy of his wall is set to viewable by "Friends", then the privacy of your comment is set to the friends of the wall's owner as well. On the other hand, if the privacy is set to "Everyone", then anybody can see that comment. In that case, even Internet users not logged on Facebook can access your post if they possess the URL which is also provided by the application. </p>
-
-  <b>LinkedIn features</b>
-  <p>LinkedInAPI only allows us to read information and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted.</p>
-
-  <b>EXIF data manipulation</b>
-  <p> The page accessed by the button entitled "Geolocation&pictures" enables the user to view the EXIF data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also generate this very same picture but without the GPS data contained in the EXIF data. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
-  </p>
-
-  <b>Future search engine feature</b>
-  <p>A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.</p>
-  <h4 id="notes"> Notes </h4>
-
-  <b>Expected software failure:</b>
-  <ul>
-    <li> Deactivated Javascript on the browser used</li>
-    <li> Scripts blocked by plugins installed on the browser</li>
-    <li> Loading failures for various reasons (e.g. already logged in the network targeted, previous uses of the application on the machine...)</li>
+  <ul class="mctabs" id="maintabs">
+    <li ng-repeat="tab in documentation" ng-class="{ 'selected': $index == selectedIndex }"><a ng-click="selectTab($index);">{{tab}}</a></li>
   </ul>
 
-  <b>Respective solutions:</b>
-  <ul>
-    <li> Activate it via the options or settings of your browser</li>
-    <li> Deactivate plugins blocking the scripts</li>
-    <li> Refresh the page</li>
-  </ul>
+  <div id="maintabs-panel-container" class="panel-container" style="height: auto;">
 
-  <b>Pertinent comments</b>
-  <ul>
-    <li> The Graph API from the Facebook features requires the user to change the URL if it contains the IP address instead of 'localhost' (e.g. '127.0.0.1:9000/' becomes 'localhost:9000/'), else it does not even load the API.</li>
-    <li> The APIs used by the application will ask the permission to access information available in your Facebook account for instance; just log in and accept the conditions. This occurs the first time the user tries out the application on his/her machine or if the browser does not memorize this information.</li>
-    <li> Most of the personal information available through the API is displayed which does not mean all information entrusted to the service provider is shown. </li>
-    <li> Since you gave permission to the application to access that data, it will retrieve it no matter what the privacy setting is. Besides, the privacy settings of the profile cannot be returned by using Graph API, therefore if you never set it properly, do check them and change them if reguired.</li>
-    <li>You can test the privacy of your comment by opening a different web browser where you are not logged in Facebook and pasting the URL in the browser. You will see the post even though you are not logged in Facebook.</li>
-  </ul>
+    <div id="context" ng-show="selectedIndex == 0;">
+      <p>The prototype of the Search Guardian, a privacy web application, was developed for the purpose of this study as one of its requirements. This application aims to protect the privacy of its users or at least to improve their well-being by showing them information concerning them available on the Web and by giving them a chance to handle their personal information according to their desires. </p>
+      <p>The web application was mainly developed using Yeoman (Grunt and Karma), AngularJS and Karma. This is only a prototype of the SearchGuardian as the Web is so vast it was impossible to cover it all in such short terms. The web application is still in development and the last version of the project is available at this URL: <a href="https://github.com/jtran1403/SearchGuardian"> https://github.com/jtran1403/SearchGuardian</a></p>
+    </div>
 
+    <div id="acknowledgements" ng-show="selectedIndex == 1;">
+     <p> This web application was developed by Jimmy Tran, a French student aiming to be an IT engineer and currently studying at Plymouth University (2013-2014) to obtain a degree in MSc Computer Science.<br/>
+
+      This section is dedicated to the persons who directly or indirectly contributed to the project.<br/>
+      Firstly, I would like to thanks Dr. Shirley Atkinson, lecturer in Information Systems and my supervisor for my MSc project, who guided me through this project and took on her time to advise me.<br/>
+      Secondly, this project was not entirely developed from scratch. Indeed, several functionalities are inspired from projects of four developers who deserve a lot of credits for their work:</p>
+      <ul>
+        <li> Almog Baku: <a href="https://github.com/GoDisco/ngFacebook">https://github.com/GoDisco/ngFacebook</a> </li>
+        <li> Moritz Meyer: <a href="https://github.com/mrzmyr/angular-google-plus">https://github.com/mrzmyr/angular-google-plus</a></li>
+        <li> Louis Sivillo: <a href="https://gist.github.com/lsiv568/5623361">https://gist.github.com/lsiv568/5623361</a></li>
+        <li> Jacob Seidelin: <a href="https://github.com/jseidelin/exif-js">https://github.com/jseidelin/exif-js</a></li>
+      </ul>
+    </div>
+
+    <div id="ethic" ng-show="selectedIndex == 2;">
+      <p>The ethical considerations to make participants test this web application was approved by Plymouth University on the 15/07/2014.</p>
+      <p> To use the features of the applications, you will have to log in your Facebook accounts or fake ones you created in order to retrieve the data. Furthermore, the server will be located in your machine by following the procedures and none of the information is stored, recorded in the process or sent to another server. The information retrieved through the application should be deleted as long as the user logs out properly and cleans his/her browser properly.</p>
+      <p>Still, It is important to know that this web application is not security oriented but that there was many ethical considerations taken into account to make sure the users do not put themselves in a bind. It was for example possible to secure the Facebook token following the explanations provided on their website documentation but this will only be implemented for a future version. If there are any security risks, it would most likely come from the security of your (home) network or from your own machine. Besides, you are free to choose to use the application of your own will. Therefore, in no even shall I be liable for any claim, damages (e.g. the security of your personal information being compromised) or other liability, whether in an action of contract, tort or otherwise, arising from, out of in connection with the software or the user or other dealings in the software. </p>
+    </div>
+
+    <div id="usage" ng-show="selectedIndex == 3;">
+
+      <p>Assuming the software is already installed and launched by following the instructions provided on the README.rd file of the <a href="https://github.com/jtran1403/SearchGuardian">git repository mentioned previously</a>, the user can try the first functionalities implemented to this prototype. Several buttons are available to guide the user if he/she needs help to use the application or if he/she needs pieces of advice to edit or remove information.</p>
+
+      <b>Facebook features</b>
+      <p>Log in your Facebook account and access most of your personal information (see documentation of Graph API).</p>
+      <p>The privacy value and a link to the albums associated with your profile are available in the table. With this, it is possible to go straight to the album and to change the privacy value if you wish to. Clicking on the button in the first column of the table will open a scroll pane below where you will be able to view the pictures in the album you selected.</p>
+      <p>Your last activities (e.g. commenting a picture and posting on a wall) on Facebook are recorded in your activity log. The application returns part of the activity log and allow you to check who can see them with the privacy value returned. You will notice some privacy parameter are returned as "", that is because graphAPI returned no value which means the privacy setting of this post depends on the privacy of the wall you published it. For instance, if you posted a comment on the wall of one of your friend and the privacy of his wall is set to viewable by "Friends", then the privacy of your comment is set to the friends of the wall's owner as well. On the other hand, if the privacy is set to "Everyone", then anybody can see that comment. In that case, even Internet users not logged on Facebook can access your post if they possess the URL which is also provided by the application. </p>
+
+      <b>LinkedIn features</b>
+      <p>LinkedInAPI only allows us to read information and offers a very limited freedom to its consumers. Through the application, the user can only log in his/her LinkedIn account and review the information he entrusted.</p>
+
+      <b>EXIF data manipulation</b>
+      <p> The page accessed by the button entitled "Geolocation&pictures" enables the user to view the EXIF data registered on the picture if the picture is in the format.jpeg, .gif and .png and if its size is smaller than 3Mo only. By changing the value of the dropdown list below the drag and drop zone, the user can also generate this very same picture but without the GPS data contained in the EXIF data. This is only possible if the picture is smaller than 1.5Mo though because the burden from generating and encoding the data for the picture is too heavy for the browser.
+      </p>
+
+      <b>Future search engine feature</b>
+      <p>A Google search engine allows the user to find information about someone on the websites I associated to the search engine. The development of this feature is not over yet but will provide search results pertinent to the profile associated above the search engine.</p>
+    </div>
+
+    <div id="notes" ng-show="selectedIndex == 4;">
+
+      <b>Expected software failure:</b>
+      <ul>
+        <li> Deactivated Javascript on the browser used</li>
+        <li> Scripts blocked by plugins installed on the browser</li>
+        <li> Loading failures for various reasons (e.g. already logged in the network targeted, previous uses of the application on the machine...)</li>
+      </ul>
+
+      <b>Respective solutions:</b>
+      <ul>
+        <li> Activate Javascript via the options or settings of your browser</li>
+        <li> Deactivate plugins blocking the scripts</li>
+        <li> Refresh the page</li>
+      </ul>
+
+      <b>Pertinent comments</b>
+      <ul>
+        <li> The Graph API from the Facebook features requires the user to change the URL if it contains the IP address instead of 'localhost' (e.g. '127.0.0.1:9000/' becomes 'localhost:9000/'), else it does not even load the API.</li>
+        <li> The APIs used by the application will ask the permission to access information available in your Facebook account for instance; just log in and accept the conditions. This occurs the first time the user tries out the application on his/her machine or if the browser does not memorize this information.</li>
+        <li> Most of the personal information available through the API is displayed which does not mean all information entrusted to the service provider is shown. </li>
+        <li> Since you gave permission to the application to access that data, it will retrieve it no matter what the privacy setting is. Besides, the privacy settings of the profile cannot be returned by using Graph API, therefore if you never set it properly, do check them and change them if reguired.</li>
+        <li>You can test the privacy of your comment by opening a different web browser where you are not logged in Facebook and pasting the URL in the browser. You will see the post even though you are not logged in Facebook.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
  <style>
- p { text-indent : 25px; }
+ p { text-indent : 25px; text-align: justify;}
  </style> 

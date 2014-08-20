@@ -2,36 +2,51 @@
 
 <div>
 	<p>
-		To protect you from profiling, this feature allows you to check the metadata hidden in pictures and if the conditions are met to generate a new picture without the GPS coordinates hidden in the picture which allow others to track your daily moves.
+		To protect you from profiling, this feature allows you to check the metadata hidden in pictures and if the conditions are met to generate a new picture without the GPS coordinates hidden in the picture which allow others to track your daily moves. 
 	</p>
+	<p>
+		However, this feature can read the EXIF data from JPEG, PNG and GIF pictures which are smaller than 3Mo. Also, the browser can only generate a picture without GPS data using javascript if the original picture is in a JPEG format and if its size is smaller than 1.5Mo.
+	</p>
+	
 </div>
 
 <div class="dropzone" draggable="true" file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName" data-max-file-size="3">
-	<span>Drop Image (.png, .jpeg, .gif)</span>
+	<span>Drop Image here (Don't miss the box!)</span>
 </div>
 
 <div>
 	<p>
 		<select ng-model="removedEXIF" class="dropdown_list">
-			<option value="false" ng-selected = "!removedEXIF"> Drag and drop your picture </option>
+			<option value="false" ng-selected = "!removedEXIF"> Read EXIF data from your picture </option>
 			<option value="true" ng-disabled ="!image"> Generate a new picture without geolocation </option>
 		</select>
-		<img src="images/hint_button_selfmade_JT.PNG" class="hint" ns-popover-template="templates/picturesTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme"></img>
 	</p>
 </div>
 
 <div ng-hide = "removedEXIF" class="image-container">
+	<h4 ng-show={{image}}> Your picture with the hidden EXIF data </h4>
 	<span ng-show="image">Filename: {{imageFileName}}</span><br/>
 	<img id="imageDragged" ng-src={{image}} />
 	<span id="exif"></span>
 </div>	
 
 <div ng-show = "removedEXIF">
-	<textarea id="textarea" style="width:100%; height:300px"></textarea>
-	<img id="newImage" style="width:200px; height:200px"></span>
-	<input ng-model="pictureTitle"</input>
-	<a id="downloadLink" href="" download="{{pictureTitle}}"> Download the new image</a>
+	<div>
+		<h4> Here's your new picture </h4>
+		<img id="newImage" class="newImage"></span>
+		<input ng-model="pictureTitle"</input>
+		<a id="downloadLink" href="" download="{{pictureTitle}}"> Download the new image</a>
+	</div>
+	<div>
+		<h4> Content of the picture (Base64) </h4>
+		<textarea id="textarea" class="base64Area"></textarea>
+	</div>
 </div>
+
+
+ <style>
+ p { text-indent : 25px; text-align: justify;}
+ </style> 
 
 <script>
 	document.getElementById("imageDragged").onload = function(){

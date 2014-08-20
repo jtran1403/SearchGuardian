@@ -301,7 +301,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
     $scope.albums = null;
     $scope.albumSelected = false;
     $scope.originalAlbums = null;
-    $scope.privacyFilter = {value:['Everyone','Friends','Custom','No filter','No value']};
+    $scope.privacyFilter = {value:['Everyone','Friends','Custom','No filter','Depends of the original post']};
     $scope.privacyFilterSet = 3;
     $scope.privacyEveryone = false;
     $scope.privacyFriends = false;

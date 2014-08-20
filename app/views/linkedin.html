@@ -1,132 +1,130 @@
 
-<body>
-	<!-- header -->
-	<ng:include src="'views/header.html'"></ng:include>
-	<!-- body -->
+<ng:include src="'views/header.html'"></ng:include>
 
-	<div ng-show="loggedUser">
-		<button class="btn btn-default navbar-btn" style="margin-top:0px;" type="button" ng-click="logoutLinkedIn()">Logout</button>
-		<img src="images/hint_button_selfmade_JT.PNG" class="hint" ns-popover-template="templates/linkedIn/logoutTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|center"></img>
-	</div>
+<div ng-show="loggedUser">
+	<button class="btn btn-default navbar-btn" style="margin-top:0px;" type="button" ng-click="logoutLinkedIn()">Logout</button>
+</div>
 
-	<div id="appBody">
-		<div ng-show="loggedUser">
-			<h2>LinkedIn API data
-			<img src="images/hint_button_selfmade_JT.PNG" class="hint" ns-popover-template="templates/linkedIn/privacySettingsTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|top"></img>
-			</h2>
-				<h4> Personal information </h4>
-				<a href="{{userprofile.publicProfileUrl}}" target="_blank"> 
-					<img style="margin:0 0 10px 50px" ng-src="{{userprofile.pictureUrl}}"/>
-				</a>
-					<ul>
-						<li> ID: {{userprofile.id}} 
-						<li> Firstname: {{userprofile.firstName}} 
-						<li> Lastname: {{userprofile.lastName}}
-						<li> <span ng-show="userprofile.maidenName">MaidenName: {{userprofile.maidenName}}</span>
-						<li> <span ng-show="userprofile.dateOfBirth">Date of birth: {{userprofile.dateOfBirth.day}}/{{userprofile.dateOfBirth.month}}/{{userprofile.dateOfBirth.year}}</span>
-						<li> Address: <span ng-show="userprofile.mainAddress"> {{userprofile.mainAddress}} </span>
-							<span ng-show="!userprofile.mainAddress"> Not available </span>
-						<li> Location: {{userprofile.location.name}} ({{userprofile.location.country.code}})
-						<li> Contacts: {{userprofile.numConnections}} {{numConnectionsCapped}}
-						<li> Phone numbers:<span ng-show="userprofile.phoneNumbers._total" ng-repeat="phonenumber in phoneNumbers.values"> {{phonenumber.phoneNumber}}({{phonenumber.phoneType}}){{$last ? '.' : ', '}} </span><span ng-show="!userprofile.phoneNumbers._total"> None available</span>
-						<li> Last update: {{userprofile.lastModifiedTimestamp|date:'medium'}}
-					</ul>
-
-				<h4> Job related information </h4>
-					<ul>
-						<li> Headline: {{userprofile.headline}} 
-						<li> Specialities: Cannot be shown via API connection
-						<li> Summary: Cannot be shown via API connection
-						<li> <span ng-show="userprofile.industry">Industry: {{userprofile.industry.description}} ({{userprofile.industry.code}})</span>
-					</ul>
-					
-					<table>
-					    <tr>
-					        <th>ID</th>
-					        <th>Title</th>
-					        <th>Start</th>
-					        <th>End</th>
-					        <th>Company</th>
-					        <th>CompanyID</th>
-					        <th>Industry</th>
-					        <th>Size</th>
-					        <th>Ticker</th>
-					        <th>Type</th>
-					    </tr>
-					    <tr ng-repeat="position in positions">
-					        <td>{{position.id}}</td>
-					        <td>{{position.title}}</td>
-					        <td><span ng-show="position.startDate">{{position.startDate.month}}/{{position.startDate.year}}</span></td>
-					        <td><span ng-show="position.endDate">{{position.endDate.month}}/{{position.endDate.year}}</span></td>
-					        <td>{{position.company.name}}</td>
-					        <td>{{position.company.id}}</td>
-					        <td>{{position.company.industry}}</td>
-					        <td>{{position.company.size}}</td>
-					        <td>{{position.company.ticker}}</td>
-					        <td>{{position.company.type}}</td>
-					    </tr>
-					</table>
-
-				<h4> Other information </h4>
-					<ul>
-						<li> <span ng-show="userprofile.interests">Interests: {{userprofile.interests}}</span>
-						<li> <span ng-show="userprofile.associations">Associations: {{userprofile.associations}} </span>
-
-						<!-- ._total if not displayed as collections instead of text -->
-						<li> <span ng-show="userprofile.publications._total">Publications: </span>
-							<span ng-repeat="publication in publications">{{ publication.title }} published in {{publication.date.year}} ({{<a href="{{publication.url}}" target="_blank"> {{publication.url}}</a>}}){{$last ? '.' : ', '}}  </span>
-
-						<li> <span ng-show="userprofile.patents._total">Patents: </span>
-							<span ng-repeat="patent in patents">{{ patent.title }} granted in {{patent.date.year}} ({{<a href="{{publication.url}}" target="_blank"> {{publication.url}}</a>}}){{$last ? '.' : ', '}}  </span>
-
-
-						<li> <span ng-show="userprofile.languages._total">Languages: </span>
-							<span ng-repeat="language in languages.values">{{ language.language.name }}{{$last ? '.' : ', '}}  </span>
-
-						<li> <span ng-show="userprofile.skills._total">Skills: </span>
-							<span ng-repeat="skill in skills">{{ skill.skill.name }}{{$last ? '.' : ', '}}  </span>
-
-						<li> <span ng-show="userprofile.educations._total">Educations: 
-							<span ng-repeat="education in educations">{{education.schoolName}} from {{education.startDate.year}} to {{education.endDate.year}}{{$last ? '.' : ', '}} </span>
-
-						<li> <span ng-show="userprofile.courses._total">Courses: </span>
-							<span ng-repeat="course in courses">{{ course.name }}{{$last ? '.' : ', '}}  </span>
-
-						<li> <span ng-show="userprofile.volunteer._total">Volunteer: {{userprofile.volunteer}} )</span>
-							<span ng-repeat="volunteer in volunteers">{{ volunteer.role }} for {{volunteer.organization.name}}{{$last ? '.' : ', '}}  </span>
-					</ul>
-
-				<h4>Your profile</h4>
-					<ul>
-						<li> Public profile: <a href="{{userprofile.publicProfileUrl}}" target="_blank"> {{userprofile.publicProfileUrl}}</a>
-						<li> Full profile: <a href="{{userprofile.siteStandardProfileRequest.url}}" target="_blank"> {{userprofile.siteStandardProfileRequest.url}}</a>
-					</ul>
-					<button class="btn btn-default navbar-btn" style="margin-top:0px;" type="button" ng-click="logoutLinkedIn()">Logout</button> 
-					<img src="images/hint_button_selfmade_JT.PNG" class="hint" ns-popover-template="templates/linkedIn/logoutTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|center"></img>
-				
-		</div>
-
-		<div>
-			<div ng-show="!loggedUser">
-				<p>Please sign in with your LinkedIn account.
-					<img src="images/hint_button_selfmade_JT.PNG" class="hint" ns-popover-template="templates/linkedIn/loginTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|center"></img>
-				</p>
-				<script type="IN/Login"></script>
+<div id="appBody">
+	<div ng-show="loggedUser">		
+		<button class="hint" ns-popover-template="templates/linkedIn/privacySettingsTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="right|top"> Hint to change your settings </button>
+		<h4> Personal information </h4>
+		<div style="height:300px">
+			<div>
+				<ul>
+					<li><b>Public profile:</b> <a href="{{userprofile.publicProfileUrl}}" target="_blank"> {{userprofile.publicProfileUrl}}</a></li>
+					<li><b>Full profile:</b> <a href="{{userprofile.siteStandardProfileRequest.url}}" target="_blank"> {{userprofile.siteStandardProfileRequest.url}}</a></li>
+					<li><b>Last update:</b> {{userprofile.lastModifiedTimestamp|date:'medium'}}</li>
+				</ul>
+			</div>
+			<div class="profileDiv">
+				<h5></h5>
+				<img style="height:111px;width:111px;vertical-align: middle;" ng-src="{{userprofile.pictureUrl}}"/>
+			</div>
+			<div class="profileDiv">
+				<h5>Firstname</h5>{{userprofile.firstName}} 
+			</div>
+			<div class="profileDiv">
+				<h5>Lastname</h5>{{userprofile.lastName}}
+			</div>
+			<div class="profileDiv" ng-show="userprofile.maidenName">
+				<h5>MaidenName</h5>{{userprofile.maidenName}}
+			</div>
+			<div class="profileDiv" ng-show="userprofile.dateOfBirth">
+				<h5>Date of birth</h5>{{userprofile.dateOfBirth.day}}/{{userprofile.dateOfBirth.month}}/{{userprofile.dateOfBirth.year}}
+			</div>
+			<div class="profileDiv" ng-show="userprofile.mainAddress">
+				<h5>Address</h5>{{userprofile.mainAddress}} 
+			</div>		
+			<div class="profileDiv" ng-show="!userprofile.mainAddress">
+				<h5>Address</h5>Not available
+			</div>
+			<div class="profileDiv" ng-show="userprofile.location.name">
+				<h5>Location</h5>{{userprofile.location.name}} ({{userprofile.location.country.code}})
+			</div>
+			<div class="profileDiv">
+				<h5>Contacts</h5>{{userprofile.numConnections}} {{numConnectionsCapped}}
+			</div>
+			<div class="profileDiv">
+				<h5>Phone number(s)</h5><span ng-show="userprofile.phoneNumbers._total" ng-repeat="phonenumber in phoneNumbers.values"> {{phonenumber.phoneNumber}}({{phonenumber.phoneType}}){{$last ? '' : ', '}} </span><span ng-show="!userprofile.phoneNumbers._total"> None available</span>
 			</div>
 		</div>
+		<h4> Job related information </h4>
+			<ul>
+				<li><b>Headline:</b> {{userprofile.headline}}</li> 
+				<li><b>Specialities:</b> Cannot be shown via LinkedIn API (refer to LinkedIn documentation)</li> 
+				<li><b>Summary:</b> Cannot be shown via LinkedIn API (refer to LinkedIn documentation)</li> 
+			</ul>
+			
+			<table class="enlightedTable">
+			    <tr>
+			        <th>ID</th>
+			        <th>Title</th>
+			        <th>Start</th>
+			        <th>End</th>
+			        <th>Company</th>
+			        <th>CompanyID</th>
+			        <th>Industry</th>
+			        <th>Size</th>
+			        <th>Ticker</th>
+			        <th>Type</th>
+			    </tr>
+			    <tr ng-repeat="position in positions">
+			        <td>{{position.id}}</td>
+			        <td>{{position.title}}</td>
+			        <td><span ng-show="position.startDate">{{position.startDate.month}}/{{position.startDate.year}}</span></td>
+			        <td><span ng-show="position.endDate">{{position.endDate.month}}/{{position.endDate.year}}</span></td>
+			        <td>{{position.company.name}}</td>
+			        <td>{{position.company.id}}</td>
+			        <td>{{position.company.industry}}</td>
+			        <td>{{position.company.size}}</td>
+			        <td>{{position.company.ticker}}</td>
+			        <td>{{position.company.type}}</td>
+			    </tr>
+			</table>
 
-		<hr>
-		<footer>
-			<p>LinkedIn functionalities inspired from the repository published by <a href="https://github.com/eucuepo/angular-linkedin">Eugenio Cuevas</a></p>
-		</footer>
+		<h4> Other information </h4>
+			<ul>
+				<li ng-show="userprofile.interests"> <b>Interests:</b> {{userprofile.interests}}</li>
+				<li ng-show="userprofile.associations"><b>Associations:</b> {{userprofile.associations}}</li>
+
+				<!-- ._total if not displayed as collections instead of text -->
+				<li ng-show="userprofile.publications._total"><b>Publications:</b>
+					<span ng-repeat="publication in publications">{{ publication.title }} published in {{publication.date.year}} ({{<a href="{{publication.url}}" target="_blank"> {{publication.url}}</a>}}){{$last ? '' : ', '}}  </span></li>
+
+				<li ng-show="userprofile.patents._total"><b>Patents:</b>
+					<span ng-repeat="patent in patents">{{ patent.title }} granted in {{patent.date.year}} ({{<a href="{{publication.url}}" target="_blank"> {{publication.url}}</a>}}){{$last ? '' : ', '}}  </span></li>
+
+				<li ng-show="userprofile.languages._total"><b>Languages:</b>
+					<span ng-repeat="language in languages.values">{{ language.language.name }}{{$last ? '' : ', '}}  </span></li>
+
+				<li ng-show="userprofile.skills._total"><b>Skills:</b>
+					<span ng-repeat="skill in skills">{{ skill.skill.name }}{{$last ? '' : ', '}}  </span></li>
+
+				<li ng-show="userprofile.educations._total"><b>Educations: </b>
+					<span ng-repeat="education in educations">{{education.schoolName}} from {{education.startDate.year}} to {{education.endDate.year}}{{$last ? '' : ', '}} </span></li>
+
+				<li ng-show="userprofile.courses._total"><b>Courses:</b>
+					<span ng-repeat="course in courses">{{ course.name }}{{$last ? '' : ', '}}  </span></li>
+
+				<li  ng-show="userprofile.volunteer._total"><b>Volunteer:</b> {{userprofile.volunteer}}
+					<span ng-repeat="volunteer in volunteers">{{ volunteer.role }} for {{volunteer.organization.name}}{{$last ? '' : ', '}}  </span></li>
+			</ul>
+
+			<button class="btn btn-default navbar-btn" style="margin-top:20px;" type="button" ng-click="logoutLinkedIn()">Logout</button> 
 	</div>
-</body>
 
-<style>
+	<div ng-show="!loggedUser">
+		<p>Please sign in with your LinkedIn account. </p> 
+		<script type="IN/Login"></script>
+	</div>
+</div>
+
+<!--style>
 li {
     list-style:none;
     background-image:none;
     background-repeat:none;
     background-position:0; 
 }
-</style>
+</style-->

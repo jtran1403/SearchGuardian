@@ -2,7 +2,10 @@
 
 //LinkedIn functions
 //Execute on load profile
-function onLinkedInLoad() {
+function onLinkedInLoad() {    
+  //location.reload(true);
+  //reloadPage();
+
   IN.Event.on(IN, 'auth', function() {
     onLinkedInLogin();
   });
@@ -27,3 +30,14 @@ function onLinkedInLogin() {
     );
   }
 }
+/*
+function reloadPage(){
+  var type = window.location.hash.substr(1);
+  alert(type.indexOf("/LinkedIn#reload"));
+  if(type.indexOf("/LinkedIn#reload") != -1){
+    alert(type);
+    type = '';
+    window.location.replace('#/LinkedIn/');
+    location.reload(true);
+  }
+}*/

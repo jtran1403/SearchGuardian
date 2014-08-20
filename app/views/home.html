@@ -1,86 +1,106 @@
 <ng:include src="'views/header.html'"></ng:include>
 
-<div style="padding:10px 60px 40px 60px" class="jumbotron">
-  <h2 style="text-align:center; margin-bottom:25px;">Search Guardian Prototype</h2>
-  <p class="lead">
-    The first step to keep online information safe is to know where this information is and to manage it properly.
-  </p>
-
-</div>  
-
-<div>   
-  <h4>Before your start</h4>
-  <ol>
-    <li>It is crucial for some features (e.g. Facebook) that you <b>modify the URL</b>. Indeed, the application usually boots on your localhost address IP which is not what we want. To make sure the URL does not cause problem, change the IP address into 'localhost'. For example, if the URL is 127.0.0.1:9000/, change it into localhost:9000/.</li>
-    <li>You will find in the <b>documentation of the application</b> various information that could be useful during the experience (e.g. goal of the application, ethical considerations, features of the application, potential source of errors...).</li>
-    <li>If you wish to be <b>guided</b> while using the application, click this icon <img src="images/hint_button_selfmade_JT.PNG" style="margin:0px" class="hint" ns-popover-template="templates/localhostTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme"></img> while testing the application.</li>
-  </ol>
+<div>
+      <div id="sliderFrame">
+          <div id="slider">
+              <img src="images/jsImgSlider/slide1.PNG" />
+              <img src="images/jsImgSlider/slide2.PNG" />
+          </div>
+          <!--Custom navigation buttons on both sides-->
+          <div class="group1-Wrapper">
+              <a onclick="imageSlider.previous()" class="group1-Prev"></a>
+              <a onclick="imageSlider.next()" class="group1-Next"></a>
+          </div>
+          <!--nav bar-->
+          <div style="text-align:center;padding:20px;z-index:20;">
+              <a onclick="imageSlider.previous()" class="group2-Prev"></a>
+              <a id='auto' onclick="switchAutoAdvance()"></a>
+              <a onclick="imageSlider.next()" class="group2-Next"></a>
+          </div>
+      </div>
 </div>
 
-<div style="height:200px">
+<div style="height:175px;vertical-align:middle;">   
+  <h4>Before your start, do the following: </h4>
+  <table class="beforeStart enlightedTable" style="float:left; margin: 0 15px 0 50px">
+    <tr>
+      <td style="padding:10px">
+        Modify the URL <b>127.0.0.1:9000/ into localhost:9000/</b> (for Facebook features to function).
+      </td>
+    </tr>
+  </table>
+
+  <label class="plus"> + </label>
+
+  <table class="beforeStart enlightedTable" style="float:right; margin: 0 50px 0 15px">
+    <tr>
+      <td style="padding:10px">
+        Make sure plugins like <b>AdBlockPlus</b> are deactivated for the page of the application and that Javascript is activated.
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div style="height:200px;">
   <h4>Services</h4>
-  <table style ="float:left;width:22%">
+  <table class="services">
     <tr>
         <th>Social Communities</th>
     </tr>
     <tr>
       <td>
-        <a class="btn btn-default navbar-btn" href="#/Facebook"> Facebook </a>
+        <button class="btn btn-default navbar-btn" onclick="location.replace('#/Facebook');location.reload();"> Facebook </button>
       </td>      
-    </tr>
-    <tr>
-      <td>
-        <a href="#/explanations#disclosure" style="float:right">Learn more</a>
-      </td>
     </tr>
   </table>
 
-  <table style ="float:left;width:23%">
+  <table class="services" style ="width:24%">
     <tr>
         <th>Professional networks</th>
     </tr>
     <tr>
       <td>
-        <a class="btn btn-default navbar-btn" href="#/LinkedIn"> LinkedIn </a>
+        <button class="btn btn-default navbar-btn" onclick="location.replace('#/LinkedIn');location.reload();"> LinkedIn </button>
       </td>      
-    </tr>
-    <tr>
-      <td>
-        <a href="#/explanations#disclosure" style="float:right">Learn more</a>
-      </td>
     </tr>
   </table>
 
-  <table style ="float:left;width:22%">
+  <table class="services">
     <tr>
         <th>Profiling</th>
     </tr>
     <tr>
       <td>
-        <a class="btn btn-default navbar-btn" href="#/pictures"> EXIF Data</a>
+        <button class="btn btn-default navbar-btn" onclick="location.replace('#/pictures');location.reload();"> EXIF Data</button>
       </td>      
-    </tr>
-    <tr>
-      <td>
-        <a href="#/explanations#profiling" style="float:right">Learn more</a>
-      </td>
     </tr>
   </table>
 
-  <table style ="float:left;width:22%">
+  <table class="services">
     <tr>
         <th>Others</th>
     </tr>
     <tr>
       <td>
-        <a class="btn btn-default navbar-btn" href="#/Google"> Google </a>
+        <button class="btn btn-default navbar-btn" onclick="location.replace('#/Google');location.reload();"> Google </button>
       </td>      
     </tr>
-    <tr>
-    </tr>
   </table>
+
 </div>
-        
-<div class="footer">
-  <p><span class="glyphicon glyphicon-heart"></span> Application based on the basic application from the Yeoman team.</p>
-</div>
+
+<script type="text/javascript">
+    /* http://www.menucool.com */
+    //The following script is for the group 2 navigation buttons.
+    function switchAutoAdvance() {
+        imageSlider.switchAuto();
+        switchPlayPauseClass();
+    }
+    function switchPlayPauseClass() {
+        var auto = document.getElementById('auto');
+        var isAutoPlay = imageSlider.getAuto();
+        auto.className = isAutoPlay ? "group2-Pause" : "group2-Play";
+        auto.title = isAutoPlay ? "Pause" : "Play";
+    }
+    switchPlayPauseClass();
+</script>
