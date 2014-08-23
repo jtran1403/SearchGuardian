@@ -145,6 +145,7 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
         if (response && !response.error) 
         {
           $scope.photos = response.data;
+          $scope.showAlbum();
         }
         else
         {

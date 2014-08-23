@@ -1,11 +1,9 @@
 /* Facebook page */
 
-.centeredObject{
-  vertical-align: middle;
-}
 
 .albumButton{
   height:100%;
+  width:80px;
 }
 
 .scrollPictures{

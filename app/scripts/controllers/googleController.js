@@ -29,6 +29,7 @@ googleControllers.run( function() {
 
 });
 
+
 googleControllers.controller('GoogleCtrl', function ($scope, $http, $filter) {
 //['$scope', 'GooglePlus', function ($scope, $http, $filter, GooglePlus) {
 

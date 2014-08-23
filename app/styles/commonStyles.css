@@ -108,6 +108,14 @@ label {
 
 .logo{
   color:#6F116A ;
+  cursor:pointer;
+  cursor: hand;
+  width:30%;
+}
+
+.tabPanel{
+  cursor:pointer;
+  cursor: hand;
 }
 
 .beforeStart{
@@ -163,12 +171,17 @@ label {
   background-color: white;
   color:#485DE3;
 }
+
 /*** Google search button  ****/
 * {
   -moz-box-sizing: border-box;
   box-sizing: content-box;
 }
 
+.warning{
+  height:25px;
+  width:25px;
+}
 
 ul#maintabs {
     height: 30px;

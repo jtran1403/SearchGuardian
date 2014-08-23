@@ -112,9 +112,9 @@
                     <th>Link</th>
                 </tr>
                 <tr ng-repeat="album in albums" ng-if="(isLoggedIn) && ((privacyFilterSet == 3) || ((album.privacy == 'everyone') && (privacyFilterSet == 0)) || ((album.privacy == 'friends') && (privacyFilterSet == 1)) || ((album.privacy == 'custom') && (privacyFilterSet == 2)))">
-                    <td class="centeredObject"><button ng-click="loadAlbum($index)" class="albumButton">{{album.name}}({{album.count}})</button></td>    
+                    <td><button ng-click="loadAlbum($index)" class="albumButton">{{album.name}}({{album.count}})</button></td>    
                     <td>{{album.description}}</td>
-                    <td>{{album.privacy}}</td>
+                    <td><b>{{album.privacy}}</b><img ng-src="images/warning-sign.png" ng-if="(album.privacy == 'everyone')" class="warning"></td>
                     <td>{{album.created_time}}</td>
                     <td> <a href="{{album.link}}">{{album.link}}</a></td>
                 </tr>
@@ -133,7 +133,7 @@
 
             </div>
 
-            <h4> Feed (posts, shares, likes, etc.) </h4>
+            <h4> Activity log (posts, shares, likes, etc.) </h4>
 
                 Show the content of your activity log:
                 <button type="button" ng-show="!isFeed" ng-click="showFeed()" class="btn btn-default navbar-btn"> Show feed</button>
@@ -154,7 +154,7 @@
                             <td>
                                 <h5> {{activity.type}}: <span ng-if = "activity.story">{{activity.story}}</span><span ng-if = "activity.message">{{activity.message}}</span> </h5>
                                 <ul>
-                                    <li> Visibility: {{activity.privacy.description}}<span ng-if = "!activity.privacy.value"> Same privacy value as the original post(eventually public, see Facebook's privacy policy).</span></li>
+                                    <li> Visibility: {{activity.privacy.description}}<img ng-src="images/warning-sign.png" ng-if="(activity.privacy.description == 'Public')" class="warning"><span ng-if = "!activity.privacy.value"> Same as the original post(eventually public, check out the link below while being logged out).</span></li>
                                     <li> Created time: {{activity.created_time}}</li>
                                     <li> Link: <a href="{{templateLink}}{{activity.id | splitID:'_':1}}">{{templateLink}}{{activity.id | splitID:'_':1}}</a></li>
                                 </ul>                        
@@ -168,14 +168,4 @@
 
 <div id="fb-root">
 </div>
-
-<!--style>
-li {
-    list-style:none;
-    background-image:none;
-    background-repeat:none;
-    background-position:0; 
-}
-</style-->
-
 

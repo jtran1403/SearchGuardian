@@ -3,7 +3,7 @@
 <div>
 
   <ul class="mctabs" id="maintabs">
-    <li ng-repeat="tab in documentation" ng-class="{ 'selected': $index == selectedIndex }"><a ng-click="selectTab($index);">{{tab}}</a></li>
+    <li ng-repeat="tab in documentation" class="tabPanel" ng-class="{ 'selected': $index == selectedIndex }"><a ng-click="selectTab($index);">{{tab}}</a></li>
   </ul>
 
   <div id="maintabs-panel-container" class="panel-container" style="height: auto;">
