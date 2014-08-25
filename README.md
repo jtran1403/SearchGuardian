@@ -114,6 +114,5 @@ This section is dedicated to the persons who directly or indirectly contributed 
 2. Secondly, this project was not entirely developed from scratch. Indeed, several functionalities are inspired from projects of four developers who deserve a lot of credits for their work:
 
 - [**Almog Baku**] (https://github.com/GoDisco/ngFacebook">https://github.com/GoDisco/ngFacebook)
-- [**Moritz Meyer**] (https://github.com/mrzmyr/angular-google-plus">https://github.com/mrzmyr/angular-google-plus)
 - [**Louis Sivillo**] (https://gist.github.com/lsiv568/5623361">https://gist.github.com/lsiv568/5623361)
 - [**Jacob Seidelin**] (https://github.com/jseidelin/exif-js">https://github.com/jseidelin/exif-js)
