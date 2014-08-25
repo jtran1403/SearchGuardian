@@ -51,14 +51,15 @@ The batch file should stay open and starts the application by itself once the in
 
 **If the console shuts down immediately after it starts**, then the problem is very likely NodeJS and the reason is probably that npm was not recognized. To adress this problem, you will need open a console/terminal window. For this: 
 
-1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
-2. If it is here, follow the instructions for developers above without the step 3 since you already have the libraries. Executing the command lines in a real console instead of the one opened by the batch file give you the opportunity to have the error message. If npm is still not recognized, the installations may need a **reboot** of your machine to finish. Do it and check again (you may want to keep the links you were using in your bookmark). If it still does not work, contact me.
-3. If it is not here, you need to go to C:\Users\your-session-name\Appdata\Roaming and create the folder npm. Try again.
+1. Type `path` in the console and check there is a path ending by: `AppData\Roaming\npm`and one by `nodejs` wherever you installed nodejs.
+2. If it is here, follow the instructions for developers above without the step 3 since you already have the libraries. Executing the command lines in a real console instead of the one opened by the batch file give you the opportunity to have the error message. If npm is still not recognized, the installations may need a **reboot**, else your machine won't recognized the new environment variables. Do it and check again (you may want to keep the links you were using in your bookmark). If it still does not work, contact me.
+3. If it is not here, you need to go to C:\Users\your-session-name\Appdata\Roaming and create the folder npm. Try again starting from just after the nodejs installation.
 
 **If the console shuts down after installing several things**, then you will need to:
+
 1. Open a console and go to the repository where you want to create the folder for the project (with the instruction cd)
-2. Try to start the application by typing the command line: `grunt serve --force` to check if the installations were completed but the application just crashed by switching to grunt.
-3. If the applications fail to launch from here, try the command line `npm install -g yo` to do the installations again, this will show the error which occured if there was one. Then contact me to solve the issue.
+2. Try to start the application by typing the command line: `grunt serve --force` to check if the installations were completed although the batch execution failed.
+3. If the applications fail to launch from here, try the command line `npm install -g yo` to do the installations again, this will show the error which occured if there was one. It may be that your path of nodejs is set to a wrong one, contact me to solve the issue.
 
 **Contact me directly for any other situations/problems so I can add them to the list and suggest solutions.**
 
