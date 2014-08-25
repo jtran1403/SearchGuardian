@@ -321,8 +321,8 @@ FacebookControllers.controller('FbCtrl', function ($q, $scope, $facebook) {
   }
 
     $scope.templates =
-      [ { name: 'Adjusting the privacy settings', url: 'templates/facebook/setPrivacySettings.html'},
-        { name: 'Updating the data of your profile', url: 'templates/facebook/updateProfile.html'},
+      [ { name: 'Adjusting the privacy settings and updating the data of your profile', url: 'templates/facebook/setPrivacySettings.html'},
+        { name: 'Modifying the visibility of your actions', url: 'templates/facebook/updatePost.html'},
         { name: 'Choosing the appropriate visibility', url: 'templates/facebook/setVisibility.html'}  ];
 
     $scope.template = $scope.templates[0];

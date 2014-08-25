@@ -18,9 +18,9 @@
 
     <div ng-show="isLoggedIn" id = "PersonalInformation">
         <h2>Personal Information</h2> 
-        <button class="hint" ns-popover-template="templates/facebook/profileTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="bottom"> Hints to change your settings </button>   
+        <button class="hint" ns-popover-template="templates/facebook/profileTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="left|top"> Hints to change your settings and update your profile </button>   
             <h4> Profile information </h4> 
-            <div style="height:350px">
+            <div style="height:400px">
                 <div class="profileDiv">
                     <h5></h5>
                     <img ng-src="{{picture}}"/>
@@ -54,6 +54,10 @@
                 </div>       
                 <div class="linkDiv">
                     <h5>Public profile:</h5><a href="{{user.link}}">{{user.link}}</a>
+                </div>      
+                <div class="linkDiv">
+                    <h5>Enter your username and check what other can see: <input type="text" name="username" ng-model="username"></h5>
+                    <a href="https://www.facebook.com/{{username}}?viewas=100000686899395&privacy_source=privacy_settings_page">https://www.facebook.com/{{username}}?viewas=100000686899395&privacy_source=privacy_settings_page</a>
                 </div>      
             </div>      
  
@@ -92,10 +96,10 @@
     </div>
 
     <div ng-show="isLoggedIn" id="Albums">
-        <h2> Publications </h2>
-        <button class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/albumsTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="left|top"> Hints to modify the visibility of your albums </button>   
+        <h2> Publications </h2>  
             <h4> Albums </h4>
 
+        <button class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/albumsTemplate.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="left|top"> Hints to modify the visibility of your albums </button> 
             Show publications available only to: <br/>
             <!--label ng-repeat="i in [0,1,2,3]"><input type="radio" ng-value="i" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[i]}} </label-->
             <label><input type="radio" ng-value="0" ng-model="privacyFilterSet" ng-change="albumFilterChanged()" > {{privacyFilter.value[0]}}</label>                
@@ -132,9 +136,9 @@
                 </div>
 
             </div>
-
             <h4> Activity log (posts, shares, likes, etc.) </h4>
 
+            <button class="hint" ng-show="isLoggedIn" ns-popover-template="templates/facebook/updatePost.html" ns-popover ns-popover-theme="ns-popover-tooltip-theme" ns-popover-placement="left|top"> Hints to modify the visibility of your action </button>   
                 Show the content of your activity log:
                 <button type="button" ng-show="!isFeed" ng-click="showFeed()" class="btn btn-default navbar-btn"> Show feed</button>
                 <button type="button" ng-show="isFeed" ng-click="hideFeed()" class="btn btn-default navbar-btn"> Hide feed </button>

@@ -3,9 +3,10 @@
 	<div class="ns-popover-tooltip" style ="width:auto">
 
 	 	<button style="float: right;" ng-click = "closeTip()">x</button>
-		<p><b>Check hints with the list below:</p><br/>
+		<p><b>Change your privacy settings and handle the information in your profile:</p><br/>
 
-		<select ng-model="template" ng-options="t.name for t in templates" style="margin-bottom:25px;font-weight:300;"></select>
+		<!--select ng-model="template" ng-options="t.name for t in templates" style="margin-bottom:25px;font-weight:300;"></select>
+		<div ng-include="template.url"></div-->
 
-		<div ng-include="template.url"></div>
+		<img src="images/facebookTips/settings-profile.PNG"></img>
 	</div>

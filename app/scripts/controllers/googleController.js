@@ -1,6 +1,6 @@
 'use strict';
 
-var googleControllers = angular.module('googleControllers', ['googleplus']);
+var googleControllers = angular.module('googleControllers', []);
 /*
 googleControllers.config(['GooglePlusProvider', function(GooglePlusProvider) {
      GooglePlusProvider.init({
@@ -29,7 +29,7 @@ googleControllers.run( function() {
 
 });
 
-
+/*
 googleControllers.controller('GoogleCtrl', function ($scope, $http, $filter) {
 //['$scope', 'GooglePlus', function ($scope, $http, $filter, GooglePlus) {
 
@@ -75,7 +75,7 @@ googleControllers.controller('GoogleCtrl', function ($scope, $http, $filter) {
   $scope.closeTip = function(){
     $scope.close = true;
   }
-/*  $scope.user.selectedTargets = [];
+  $scope.user.selectedTargets = [];
 
   $http.get('data/targets.json').success(function(data) {
     $scope.targets = data;
@@ -98,5 +98,5 @@ googleControllers.controller('GoogleCtrl', function ($scope, $http, $filter) {
   $scope.uncheckCheckboxes = function() {
     $scope.selection = [];
   };
-*/
-  });
+
+  });*/

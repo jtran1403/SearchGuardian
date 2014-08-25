@@ -33,8 +33,7 @@ searchGuardianApp.config(['$routeProvider','$locationProvider','$httpProvider',
         controller: 'PicturesCtrl'
       })
       .when('/Google', {
-        templateUrl: 'views/google.html',
-        controller: 'GoogleCtrl'
+        templateUrl: 'views/google.html'
       })
       .when('/documentation', {
         templateUrl: 'views/documentation.html',
