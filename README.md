@@ -4,6 +4,7 @@ Search Guardian
   The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces significantly the risk of privacy incidents and of putting yourself in a delicate situation.
   
   The web application mainly use HTML5, CSS3 and AngularJS (Javascript framework). For it to function properly: 
+  - Change the URL 127.0.0.1:9000 into localhost:9000 for Facebook features to function properly
   - Make sure Javascript is not deactivated on your browser.
   - Make sure the plugins of your web browsers (e.g. AdBlock Plus) are not blocking the page of the web application at least to be able to display the popup containing pieces of advice.
   
@@ -16,37 +17,50 @@ This application runs locally on your main web browser and does not interact wit
 ####Requirements
 To be able to use this application, you will have to:
 
-1. If you are not a developer or do not want to bother with installing dependencies for an AngularJS project, you can simply **download** the ZIP folder of the [**project**] (https://www.dropbox.com/sh/g2on50ca2r7k94o/AAAuNtkMsDE4c3zptAqN55wma/test-jimmy.zip) whichi will **contain every library needed**. Else, pull the project from this git and follow the instructions provided for developers.
+1. If you are not a developer or do not want to bother with installing dependencies for an AngularJS project, you can simply **download** the ZIP folder of the [**project**] (https://www.dropbox.com/sh/g2on50ca2r7k94o/AAAuNtkMsDE4c3zptAqN55wma/test-jimmy.zip) whichi will **contain the application and every library needed**. Else, pull the project from this git and follow the instructions provided for developers.
 2. Install [**NodeJS**] (http://nodejs.org/) on your machine.
 3. If you are a developer, there is an appropriate section for you. Else, depending on the operating system, read the appropriate instructions below to install [**Yeoman (Grunt and Bower)**] (http://yeoman.io/learning/index.html) and is mandatory to start the application.
 
 ####Windows
-**Open the zip folder** you downloaded previously and **execute the start.bat file** which opens a console for you and ask you if you want to install [**Yeoman**] (http://yeoman.io/learning/index.html) (only need to be done the first time you use the application). 
-- If you press Y and press Enter, the NodeJS command line `npm install -g yo` will be executed to download and install [**Yeoman**] (http://yeoman.io/learning/index.html). Create a path.txt file and copy the path of your environment variables to check grunt was correctly installed. Then it will start the web application in your browser.
+**Open the zip folder** you downloaded previously, extract it and **execute the start.bat file** which opens a console (or terminal window) for you and ask you if you want to install [**Yeoman**] (http://yeoman.io/learning/index.html) (only need to be done the first time you use the application). 
+- If you press Y and press Enter, the NodeJS command line `npm install -g yo` will be executed to download and install [**Yeoman**] (http://yeoman.io/learning/index.html). Then it will start the web application in your browser.
 - If you press N and press Enter, the console will directly try to start the web application in your browser.
 
-#####Potential problems:
+Several tester had issues while executing the batch file. Refer to the section "Potential problems with Windows" below.
 
-If the grunt command line is not recognized: 
+####Linux and Mac OS X
+If you use a machine operating on Linux or Mac OS X, then the instructions are slightly different from Windows. A shell file was prepared to execute the two command lines but it is impossible to execute it by double clicking on it like on Windows. Therefore, follow those instructions:
 
-1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
-2. If it is here, you should **reboot** your machine and check again (you may want to keep this link in your bookmark)
-3. If it is still not here, the NodeJS command line `npm install -g yo` very likely didn't execute properly. Try executing it again.
+1. Open a console (Mac OS X: Applications > Utilities) and go to the repository where you extracted the zip folder.
+2. Execute the following command line to give permission to execute the shell file: `chmod +x start.sh`
+3. Execut the following command line to execute the shell file (the sudo is necessary since the first command line of the shellf file installs [**Yeoman**] (http://yeoman.io/learning/index.html)).
+4. The installations will be automatically done and the application should start by itself in your browser.
 
-Contact me directly for any other problems so I can add them to the list and suggest solutions.
-
-###Linux
-Shell file incoming
-
-###MacOS
-Shell file incoming
-
+None of the testers of the application have encountered problems so far, **contact me directly for any situations/problems so I can add them to the list and suggest solutions.**
 
 ###If you are a developer
 1. Open a console and go to the repository where you want to create the folder for the project (with the instruction cd)
 2. Type the command line : `npm install -g yo` which is a NodeJS command to install [**Yeoman (Grunt and Bower)**] (http://yeoman.io/learning/index.html)
 3. If you decided to just pull the project from the git and the dependencies are missing (node modules), install them by typing `bower install`
 4. Start the application by typing the command line: `grunt serve --force`
+
+
+#####Potential problems with Windows:
+
+The batch file should stay open and starts the application by itself once the installations are over. In general, everything is fine when you execute the batch file but several testers encountered problems. Two potential issues are mentioned below:
+
+**If the console shuts down immediately after it starts**, then the problem is very likely NodeJS and the reason is probably that npm was not recognized. To adress this problem, you will need open a console/terminal window. For this: 
+
+1. Type `path` in the console and check there is a path ending by: AppData\Roaming\npm
+2. If it is here, follow the instructions for developers above without the step 3 since you already have the libraries. Executing the command lines in a real console instead of the one opened by the batch file give you the opportunity to have the error message. If npm is still not recognized, the installations may need a **reboot** of your machine to finish. Do it and check again (you may want to keep the links you were using in your bookmark). If it still does not work, contact me.
+3. If it is not here, you need to go to C:\Users\your-session-name\Appdata\Roaming and create the folder npm. Try again.
+
+**If the console shuts down after installing several things**, then you will need to:
+1. Open a console and go to the repository where you want to create the folder for the project (with the instruction cd)
+2. Try to start the application by typing the command line: `grunt serve --force` to check if the installations were completed but the application just crashed by switching to grunt.
+3. If the applications fail to launch from here, try the command line `npm install -g yo` to do the installations again, this will show the error which occured if there was one. Then contact me to solve the issue.
+
+**Contact me directly for any other situations/problems so I can add them to the list and suggest solutions.**
 
 #Functionalties of the application
 ###Facebook features
