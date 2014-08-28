@@ -3,7 +3,7 @@ Search Guardian
 
   The Search Guardian is a privacy web application to improve your awareness of personal information available on the Web and promote its users to manage this information more carefully. Keeping safe online information reduces significantly the risk of privacy incidents and of putting yourself in a delicate situation.
   
-  The web application mainly use HTML5, CSS3 and AngularJS (Javascript framework). For it to function properly: 
+  The web application mainly use HTML5, CSS3 and AngularJS (Javascript framework) and is supported by Mozilla Firefox, Google Chrome and Opera and is not supported by Internet Explorer. Before you start using it: 
   - Change the URL 127.0.0.1:9000 into localhost:9000 for Facebook features to function properly
   - Make sure Javascript is not deactivated on your browser.
   - Make sure the plugins of your web browsers (e.g. AdBlock Plus) are not blocking the page of the web application at least to be able to display the popup containing pieces of advice.
@@ -112,8 +112,10 @@ A Google search engine allows the user to find information about someone on the 
 This section is dedicated to the persons who directly or indirectly contributed to the project:
 
 1. Firstly, I would like to thanks Dr. Shirley Atkinson, lecturer in Information Systems and my supervisor for my MSc project, who guided me through this project and took on her time to advise me.
-2. Secondly, this project was not entirely developed from scratch. Indeed, several functionalities are inspired from projects of four developers who deserve a lot of credits for their work:
+2. Secondly, this project was not entirely developed from scratch. Indeed, the application use codes that  come from the following projects:
 
-- [**Almog Baku**] (https://github.com/GoDisco/ngFacebook">https://github.com/GoDisco/ngFacebook)
-- [**Louis Sivillo**] (https://gist.github.com/lsiv568/5623361">https://gist.github.com/lsiv568/5623361)
-- [**Jacob Seidelin**] (https://github.com/jseidelin/exif-js">https://github.com/jseidelin/exif-js)
+- An angular library facilitating the connection to Facebok developed by [**Almog Baku**] (https://github.com/GoDisco/ngFacebook">https://github.com/GoDisco/ngFacebook)
+- An angular directive to detect drag and drop developed by [**Louis Sivillo**] (https://gist.github.com/lsiv568/5623361">https://gist.github.com/lsiv568/5623361)
+- A Javascript library reading EXIF data developed by [**Jacob Seidelin**] (https://github.com/jseidelin/exif-js">https://github.com/jseidelin/exif-js)
+- A Javascript library from [**menucool**] (http://www.menucool.com/javascript-image-slider).
+- An angular directive to show pop-ups developed by [**nohros**](https://github.com/nohros/nsPopover ).
